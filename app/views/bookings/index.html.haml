@@ -1,0 +1,18 @@
+%h1 Recent Bookings
+
+%table#bookings
+  %thead
+    %tr
+      %th Room_id
+      %th Booker_id
+      %th Reason
+      %th startAt
+      %th endAt
+  %tbody
+    - @bookings.each do |booking|
+      %tr
+        %td= booking.room_id
+        %td= booking.booker_id
+        %td= booking.reason
+        %td= booking.time_start.strftime("%I:%M%p")
+        %td= booking.time_end.strftime("%I:%M%p")
