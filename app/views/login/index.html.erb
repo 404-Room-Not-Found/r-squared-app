@@ -4,16 +4,22 @@
         <meta name="description" content="R^2">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        
-        
-        <title>R^2</title>
+        <title>R^2 login</title>
     </head>
         
     <body>
         <header>
-            <img src="../assets/logo.jpg" width="180" alt="R^2 logo">
+            <%= image_tag("logo.jpg", :alt => "logo") %>
         </header>
         
+
+        <nav>
+            <%= link_to "Login", login_path %>
+            <%= link_to "Home", home_path %>
+            <%= link_to "Advanced Search", advancedsearch_path %>
+        </nav>
+
+
         <table width="90%">
             <tr>
                 <td>
