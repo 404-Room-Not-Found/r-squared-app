@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="R^2">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>R^2 advanced search</title>
+    </head>
+    
+    <body>
+        <header>
+            <%= image_tag("logo.jpg", :alt => "logo") %>
+        </header>
+        
+        <nav>
+            <%= link_to "Login", login_path %>
+            <%= link_to "Home", welcome_path %>
+            <%= link_to "Advanced Search", advancedsearch_path %>
+        </nav>
+        
+        <main>
+            <fieldset>
+                <legend>Advanced Search</legend>
+                
+                <div class="heading">Room Preferences</div>
+                
+                <label for="location">Location</label>
+                <select>
+                    <option value="north">North</option>
+                    <option value="south">South</option>
+                    <option value="east">East</option>
+                    <option value="west">West</option>
+                    <option value="central">Central</option>
+                </select>
+                
+                <br><label for="roomtype">Room Type</label>
+                <select>
+                    <option value="executive">Excutive Meeting Room</option>
+                    <option value="event">Event Room</option>
+                    <option value="workspace">Workspace</option>
+                </select>
+                
+                <br><label for="facilities">Facilities</label>
+                <form action="">
+                    <input type="checkbox" name="furnishing" value="furnishing">Basic Furnishing<br>
+                    <input type="checkbox" name="airconditioner" value="airconditioner">Air Conditioner<br>
+                    <input type="checkbox" name="projector" value="projector">Projector<br>
+                </form>
+                
+                <div class="heading">Reservation Period</div>
+                <form>
+                    <label for="startdate">Start Date</label>
+                    <input type="date" name="period">
+                    <label for="enddate">End Date</label>
+                    <input type="date" name="period"><br>
+                    <label for="starttime">Start Time</label>
+                    <input type="time" name="period">
+                    <label for="endtime">End Time</label>
+                    <input type="time" name="period">
+                </form>
+                
+                <button class="btn" type="search">Search!</button>
+            </fieldset>
+        </main>
+    </body>
+</html>
