@@ -1,0 +1,18 @@
+%h1 Recent Bookings
+
+%table#bookings
+  %thead
+    %tr
+      %th Room
+      %th Booker
+      %th Reason
+      %th startAt
+      %th endAt
+  %tbody
+    - @bookings.each do |booking|
+      %tr
+        %td= Room.find(booking.room_id).name
+        %td= User.find(booking.booker_id).name
+        %td= booking.reason
+        %td= booking.time_start.strftime("%b %d %Y, %-l.%M%P")
+        %td= booking.time_end.strftime("%b %d %Y, %-l.%M%P")
