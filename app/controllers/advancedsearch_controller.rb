@@ -1,0 +1,2 @@
+class AdvancedsearchController < ApplicationController
+end

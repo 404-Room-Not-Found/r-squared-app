@@ -1,4 +1,4 @@
-// Place all the styles related to the home controller here.
+// Place all the styles related to the Advancedsearch controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
@@ -35,21 +35,34 @@ nav>a:hover {
     color: #5a0a25;
 }
 
-img {
-    width: 180px;
+fieldset {
+    width: 450px;
+    margin: 30px auto;
+    border-radius: 10px;
+    border: 1px solid #5a0a25;
 }
 
-.log-form{
+legend {
+    color: #5a0a25;
+    font-size: 1.5rem;
+}
+
+label {
+    display: inline-block;
+    margin: 10px 5px;
+}
+
+input[type="checkbox"] {
+    margin-left: 20px;
+}
+
+.heading {
+    color: #5a0a25;
+    font-size: 1.3rem;
     margin-top: 30px;
-}
-
-.bor{
-    border: 1px solid black;
-    width: 50%; 
 }
 
 .btn {
     display: block;
     margin: 30px auto;
 }
-
