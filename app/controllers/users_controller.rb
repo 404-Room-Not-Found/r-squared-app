@@ -15,7 +15,12 @@ class UsersController < ApplicationController
   end
 
   def new
-    # default: render 'new' template
+    attr_accessor :name, :email, :password
+    def initialize(attributes = {})
+      @name  = attributes[:name]
+      @email = attributes[:email]
+      @password = attributes[:password]
+    end
   end
 
   def create
