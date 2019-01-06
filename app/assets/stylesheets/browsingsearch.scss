@@ -1,0 +1,54 @@
+// Place all the styles related to the Browsingsearch controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+html, body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+    color: 1c3738;
+    background: #ffffff;
+    padding:0;
+    margin:0;
+}
+
+header {
+    background-color: #5a0a25;
+    text-align:center;
+}
+
+nav {
+    background: #5a0a25;
+    font-size: 1.3rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+nav>a {
+    display: inline-block;
+    padding: 0.5%;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+nav>a:hover {
+    background: #ffffff;
+    color: #5a0a25;
+}
+fieldset {
+    width: 450px;
+    margin: 30px auto;
+    border-radius: 10px;
+    border: 1px solid #5a0a25;
+}
+
+.btn {
+  background-color: #5a0a25; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 40px auto;
+}
