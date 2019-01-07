@@ -16,9 +16,9 @@ Rails.application.routes.draw do
   
   # get    '/bookings',   to: '#bookings', as: 'bookings'
 
-  # get    '/login',   to: 'sessions#new'
-  # post   '/login',   to: 'sessions#create', as: 'login_path'
-  # delete '/logout',  to: 'sessions#destroy'
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
 
   # resources :home
   # resources :login
