@@ -1,9 +1,9 @@
-rooms = [{:name => 'Testing Room', :roomtype => 'Executive Room',
+rooms = [{:building_name => 'HRBB', :room_id => 126, :roomtype => 'Executive Room',
         :description=> 'nothing fancy', :occupied=>true, :booker=>'estee', 
         :operate_start=> Time.parse("01-01-19 08:00"),
         :operate_end =>  Time.parse("04-01-19 19:00")},
-        {:name => 'Room 404', :roomtype => '???',
-        :description=> 'zzz', :occupied=>true, :booker=>'estee', 
+        {:building_name => 'HRBB', :room_id => 124, :roomtype => 'Lecture Hall',
+        :description=> 'Regular lecture hall', :occupied=>true, :booker=> 'Admin', 
         :operate_start=> Time.parse("04-01-19 08:00"),
         :operate_end =>  Time.parse("04-01-19 19:00")}
         
@@ -13,9 +13,11 @@ rooms.each do |room|
     Room.create!(room)
 end
 
-users = [{:name => "Testing User", :email => "rsquared.rooms@gmail.com",
+users = [{:name => "Admin", :email => "rsquared.rooms@gmail.com",
+        :password => "1234",
         :usertype => "Admin"},
         {:name => "Estee", :email => "estee.tsw@gmail.com",
+        :password => "1234",
         :usertype => "Student"}]
 
 users.each do |user|

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def user_params
-    params.require(:User).permit(:name, :email, :usertype)
+    params.require(:User).permit(:name, :email, :password, :usertype)
   end
 
   def show
@@ -15,11 +15,12 @@ class UsersController < ApplicationController
   end
 
   def new
-    attr_accessor :name, :email, :password
+    attr_accessor :name, :email, :password, :usertype
     def initialize(attributes = {})
       @name  = attributes[:name]
       @email = attributes[:email]
       @password = attributes[:password]
+      @usertype = attributes[:usertype]
     end
   end
 
