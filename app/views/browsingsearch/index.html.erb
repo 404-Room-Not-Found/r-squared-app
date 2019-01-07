@@ -6,35 +6,31 @@
         <meta name="description" content="R^2">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <title>R^2 home</title>
+        <title>R^2 browsing search</title>
     </head>
     
     <body>
         <header>
             <%= image_tag("logo.jpg", :alt => "logo") %>
         </header>
-        
+
         <nav>
             <%= link_to "Login", login_path %>
             <%= link_to "Home", home_path %>
             <%= link_to "Advanced Search", advancedsearch_path %>
             <%= link_to "Browsing Search", browsingsearch_path %>
         </nav>
+
         
         <main>
-            <center>
-                <table class="bod" width= 90%>
-                
-                  <tr>
-                    <td rowspan= 2 class="bor" height="90%">MY RESERVATION</td>
-                    <td class= "bor" height="45%">CAMPUS</td>
-                  </tr>
-                  <tr>
-                    <td class= "bor" height="45%">MORE INFORMATION</td>
-                  </tr>
-                  
-                </table>
-            </center>
+            
+            <fieldset>
+            <legend>Browsing Search</legend>
+            <center><button class="btn" type="search">HRBB</button></center>
+            <center>Computer Science/Engineering Buildings</center> 
+            <center><button class="btn" type="search">RDMC</button></center>
+            </fieldset>
+           
         </main>
     </body>
 </html>

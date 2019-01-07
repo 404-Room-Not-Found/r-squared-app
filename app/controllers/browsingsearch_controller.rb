@@ -1,0 +1,2 @@
+class BrowsingsearchController < ApplicationController
+end
