@@ -2,35 +2,51 @@ require "rails_helper"
 RSpec.describe Room, :type => :model do
   
   before(:all) do
-    @user1 = create(:user)
+    @test_room_complete = Room.new(
+      building_name: "Building 5", room_id => 2, roomtype => 'Executive Room',
+        description=> 'test desc', occupied=>true, booker=>'Testing User', 
+        operate_start=> Time.parse("01-01-19 08:00"),
+        operate_end =>  Time.parse("04-01-19 19:00"))
+    @test_room_basic = Room.new(room_id => 123, roomtype => 'Lecture Hall',
+        operate_start=> Time.parse("06-06-18 08:00"),
+        operate_end =>  Time.parse("09-09-18 19:00"))
+    
   end
   
-  it "is valid with valid attributes" do
-    expect(@user1).to be_valid
+  it "is valid with only basic attributes filled up" do
+    expect(@test_room_basic).to be_valid
   end
   
-  it "has a unique username" do
-    user2 = build(:user, email: "bob@gmail.com")
-    expect(user2).to_not be_valid
+  it "can be created only with a unique room_id" do
+    duplicate_room = build(:user, room_id => 2, roomtype => 'Study room',
+        operate_start=> Time.parse("06-06-18 08:00"),
+        operate_end =>  Time.parse("09-09-18 19:00"))
+    expect(duplicate_room).to_not be_valid
   end
   
-  it "has a unique email" do
-    user2 = build(:user, name: "Bob")
-    expect(user2).to_not be_valid
+  it "updates optional attributes successfully with correct parameters" do
+      @test_room_basic.building_name = "THE NEW BUILDING"
+      @test_room_basic.description = "test description"
+      expect(@test_room_basic).to be_valid
+    end
+    
+  it "fails to update with missing parameters" do
+    @test_room_basic.operate_start = nil
+    expect(@test_room_basic).to_not be_valid
   end
   
-  it "is not valid without a password" do 
-    user2 = build(:user, password: nil)
-    expect(user2).to_not be_valid
+    
+  it "can be created with both basic and optional attributes filled up" do
+    expect(@test_room_complete).to be_valid
   end
   
-  it "is not valid without a username" do 
-    user2 = build(:user, name: nil)
-    expect(user2).to_not be_valid
+  it "is not valid without operating start hours" do 
+    @test_room_basic.operate_start = nil
+    expect(@test_room_basic).to_not be_valid
   end
   
-  it "is not valid without an email" do
-    user2 = build(:user, email: nil)
-    expect(user2).to_not be_valid
+  it "is not valid without operating end hours" do
+    testroom = build(:user, email: nil)
+    expect(testroom).to_not be_valid
   end
 end

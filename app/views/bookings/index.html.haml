@@ -1,18 +1,25 @@
 %h1 Recent Bookings
-
-%table#bookings
-  %thead
+- if @bookings != nil && Booking.any?
+  %table#bookings
     %tr
-      %th Room
+      %th Building
+      %th Room type
       %th Booker
       %th Reason
       %th startAt
       %th endAt
-  %tbody
+      
     - @bookings.each do |booking|
       %tr
-        %td= Room.find(booking.room_id).name
+        %td= Room.find(booking.room_id).building_name
+        %td= Room.find(booking.room_id).roomtype
         %td= User.find(booking.booker_id).name
         %td= booking.reason
         %td= booking.time_start.strftime("%b %d %Y, %-l.%M%P")
         %td= booking.time_end.strftime("%b %d %Y, %-l.%M%P")
+
+- else 
+  %p No bookings found.
+
+
+= link_to "Make new booking", new_booking_path
