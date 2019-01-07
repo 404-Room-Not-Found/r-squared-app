@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'app/views/browsingsearch/index.html.erb', to: 'browsingsearch#index', as: 'browsingsearch'
 
   get    '/login',   to: 'sessions#new'
-  post   '/login',   to: 'sessions#create'
+  post   '/login',   to: 'sessions#create', as: 'login_path'
   delete '/logout',  to: 'sessions#destroy'
 
   resources :home
