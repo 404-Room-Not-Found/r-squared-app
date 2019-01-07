@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   
   # get 'sessions/new'
   # get 'app/views/login/index.html.erb', to: 'login#index', as: 'login'
-  # get 'app/views/home/index.html.erb', to: 'home#index', as: 'home'
-  # get 'app/views/advancedsearch/index.html.erb', to: 'advancedsearch#index', as: 'advancedsearch'
-  # get 'app/views/browsingsearch/index.html.erb', to: 'browsingsearch#index', as: 'browsingsearch'
+  get 'app/views/home/index.html.erb', to: 'home#index', as: 'home'
+  get 'app/views/advancedsearch/index.html.erb', to: 'advancedsearch#index', as: 'advancedsearch'
+  get 'app/views/browsingsearch/index.html.erb', to: 'browsingsearch#index', as: 'browsingsearch'
   
   # get    '/bookings',   to: '#bookings', as: 'bookings'
 

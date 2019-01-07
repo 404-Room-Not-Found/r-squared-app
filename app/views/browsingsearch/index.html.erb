@@ -22,11 +22,10 @@
 
         
         <main>
+            <center><%= button_to("See All Rooms", rooms_path, method: :get, :class => "btn") %></center>
             
             <fieldset>
             <legend>Browsing Search</legend>
-
-            <%= submit_tag("Show all rooms", class: "btn") %>
 
             <center><button class="btn" type="search">HRBB</button></center>
             <center>Computer Science/Engineering Buildings</center> 

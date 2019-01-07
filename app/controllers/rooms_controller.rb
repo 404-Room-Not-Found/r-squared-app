@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
 
   def room_params
-    params.require(:Room).permit(:room_id, :roomtype, :operate_start, :operate_end)
+    params.require(:Room).permit(:building_name, :room_id, :roomtype, :description, :booked, :booker, :operate_start, :operate_end)
   end
 
   def show
@@ -31,7 +31,7 @@ class RoomsController < ApplicationController
 
   def create
     @room = Room.create!(room_params)
-    flash[:notice] = "#{@room.name} was successfully created."
+    flash[:notice] = "#{@room.room_id} was successfully created."
     redirect_to rooms_path
   end
 
