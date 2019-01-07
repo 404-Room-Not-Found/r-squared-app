@@ -1,2 +1,58 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="R^2">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>R^2 login</title>
+    </head>
+        
+    <body>
+        <header>
+            <%= image_tag("logo.jpg", :alt => "logo") %>
+        </header>
+        
+
+        <nav>
+            
+        </nav>
+
+
+        <table width="90%">
+            <tr>
+                <td>
+                    <div class="about">
+                        <h1>ABOUT R-Squared</h1>
+                        <p>We are a room reservation application that makes life eaiser.</p>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="log-form">
+                    <center>
+                    <h2>Login to your account</h2>
+                    <form>
+                       <%= form_for(:session, url: login_path) do |f| %>
+
+                          <%= f.label :email %>
+                          <%= f.email_field :email, class: 'form-control' %>
+                    
+                          <%= f.label :password %>
+                          <%= f.password_field :password, class: 'form-control' %>
+                    
+                          <%= f.submit "Log in", class: "btn btn-primary" %>
+                        <% end %>
+                        <a class="forgot" href="#">Forgot Username?</a>
+                    </form>
+                    </center>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </body>
+    <body>
+    <div class="container">
+      <%= debug(params) if Rails.env.development? %>
+    </div>
+  </body>
+</html>

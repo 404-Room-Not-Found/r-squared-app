@@ -21,6 +21,4 @@ root 'login#index'
   resources :browsingsearch
   resources :user
   resources :sessions
-
-  root 'login#index'
 end
