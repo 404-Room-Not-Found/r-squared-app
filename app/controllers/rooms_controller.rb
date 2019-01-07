@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
 
   def room_params
-    params.require(:Room).permit(:name, :operate_start, :operate_end)
+    params.require(:Room).permit(:room_id, :roomtype, :operate_start, :operate_end)
   end
 
   def show

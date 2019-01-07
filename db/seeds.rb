@@ -1,9 +1,9 @@
 rooms = [{:building_name => 'HRBB', :room_id => 126, :roomtype => 'Executive Room',
-        :description=> 'nothing fancy', :occupied=>true, :booker=>'estee', 
+        :description=> 'nothing fancy', :booked=>true, :booker=>'estee', 
         :operate_start=> Time.parse("01-01-19 08:00"),
         :operate_end =>  Time.parse("04-01-19 19:00")},
         {:building_name => 'HRBB', :room_id => 124, :roomtype => 'Lecture Hall',
-        :description=> 'Regular lecture hall', :occupied=>true, :booker=> 'Admin', 
+        :description=> 'Regular lecture hall', :booked=>true, :booker=> 'Admin', 
         :operate_start=> Time.parse("04-01-19 08:00"),
         :operate_end =>  Time.parse("04-01-19 19:00")}
         
