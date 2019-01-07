@@ -12,15 +12,6 @@
             <%= image_tag("logo.jpg", :alt => "logo") %>
         </header>
         
-
-        <nav>
-            <%= link_to "Login", login_path %>
-            <%= link_to "Home", home_path %>
-            <%= link_to "Advanced Search", advancedsearch_path %>
-            <%= link_to "Browsing Search", browsingsearch_path %>
-        </nav>
-
-
         <table width="90%">
             <tr>
                 <td>
@@ -35,10 +26,7 @@
                     <center>
                     <h2>Login to your account</h2>
                     <form>
-                        <input type="text" title="username" placeholder="username" /></br>
-                        <input type="password" title="username" placeholder="password" /></br>
-                        <button type="submit" class="btn">Login</button></br>
-                        <a class="forgot" href="#">Forgot Username?</a>
+                        <br><%= link_to "Login", "/login" %>
                     </form>
                     </center>
                     </div>

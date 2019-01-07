@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 # For admin page
 #     root 'bookings#index'
 #     resources :users, :bookings, :rooms
-root 'login#index'
+  root 'login#index'
 
 # For styled pages
   get 'app/views/login/index.html.erb', to: 'login#index', as: 'login'
