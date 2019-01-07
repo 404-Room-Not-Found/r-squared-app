@@ -23,11 +23,11 @@
         <main>
             <fieldset>
                 <legend>Advanced Search</legend>
-                
-                <div class="heading">Room Preferences</div>
 
                 <%= form_tag("/search", method: "get") do %>
                 
+                <div class="heading">Room Preferences</div>
+
                 <%= label_tag(:location, "Location") %>
                 <%= select_tag(:location, options_for_select([['North', 1], ['East', 2], ['South', 3], ['West', 4], ['Central', 5]])) %>
 
