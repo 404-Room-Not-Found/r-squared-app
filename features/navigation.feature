@@ -4,7 +4,7 @@ I want to access common links
 So that I can have convenience
 
 Scenario: User accesses Login page
-  When I click on the Login button
+  When I visit the website
   Then I should see the Login view
 
 Scenario: User accesses Home page

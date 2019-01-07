@@ -1,4 +1,4 @@
-When(/^I click on the Login button$/) do
+When(/^I visit the website$/) do
   visit login_path
 end
 
