@@ -1,0 +1,29 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="R^2">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>R^2 home</title>
+    </head>
+    
+    
+    <!-- Need to change the data structure of booking to work. requires to accomodate building. -->
+    <body>
+        <%= render './layouts/nav.html.erb' %>
+        <%= form_for Booking.new, :url => { :action => "create" }, 
+        html: {class: "tobestyled"} do |f| %>
+          <label>Building</label>
+          <%= f.collection_select :building_name, Room.select('DISTINCT building_name'), :id, :building_name %>
+          <label>Room Type</label>
+          <%= f.collection_select :room_id, Room.select('DISTINCT roomtype'), :id, :roomtype %>
+          <label>Reason</label>
+          <%= f.text_field :reason %>
+          <label>Start Time</label>
+          <%= f.time_field(:time_start) %>
+          <label>End Time</label>
+          <%= f.time_field(:time_end) %>
+          <%= f.submit "Make Booking" %>
+        <% end %>
+    </body>
+</html>

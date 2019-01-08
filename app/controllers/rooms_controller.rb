@@ -15,7 +15,7 @@ class RoomsController < ApplicationController
   end
 
   def new
-    attr_accessor :building_name, :room_id, :roomtype, :description, :booked, :booker, :operate_start, :operate_end
+    #attr_accessor :building_name, :room_id, :roomtype, :description, :booked, :booker, :operate_start, :operate_end
     def initialize(attributes = {})
       @building_name  = attributes[:building_name]
       @room_id = attributes[:room_id]

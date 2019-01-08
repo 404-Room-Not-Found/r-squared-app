@@ -16,7 +16,7 @@
  
  
 html, body {
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Comfortaa', cursive;
     font-size: 16px;
     color: 1c3738;
     background: #ffffff;
@@ -30,6 +30,7 @@ header {
 }
 
 nav {
+    font-family: 'Montserrat', sans-serif;
     background: #5a0a25;
     font-size: 1.3rem;
     margin: 0 auto;
@@ -51,7 +52,6 @@ nav>a:hover {
 
 .btn {
     display: block;
-    border-radius: 12px;
     margin: 30px auto;
     transition-duration: 0.4s;
     border: 2px solid #5a0a25;

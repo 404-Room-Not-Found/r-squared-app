@@ -3,9 +3,9 @@ class SessionsController < ApplicationController
   def new
   end
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
-      log_in user
+    @user = User.find_by(email: params[:session][:email].downcase)
+    if @user && @user.authenticate(params[:session][:password])
+      log_in @user
       current_user
       redirect_to home_index_url
     else
@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
   
 
   def destroy
-    log_out user
+    log_out
     redirect_to root_url, notice: "Logged out!"
   end
 end
