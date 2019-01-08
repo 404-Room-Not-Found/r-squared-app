@@ -1,0 +1,76 @@
+<h1>All Rooms</h1>
+
+<table>
+  <tr>
+    <th>Building Name</th>
+    <th>Room ID</th>
+    <th>Room Type</th>
+    <th>Description</th>
+    <th>Booked</th>
+    <th>Booker</th>
+    <th>Operate Start</th>
+    <th>Operate End</th>
+  </tr>
+
+  <% @rooms.each do |room| %>
+    <tr>
+      <td><%= room.building_name %></td>
+      <td><%= room.room_id %></td>
+      <td><%= room.roomtype %></td>
+      <td><%= room.description %></td>
+      <td><%= room.booked %></td>
+      <td><%= room.booker %></td>
+      <td><%= room.operate_start %></td>
+      <td><%= room.operate_end %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Back', :back, :class => "btn" %>
+
+<h1>Add Rooms</h1>
+<%= form_with scope: :Room, local: true do |form| %>
+  <p>
+    <%= form.label :building_name %>
+    <%= form.text_field :building_name %>
+  </p>
+
+  <p>
+    <%= form.label :room_id %>
+    <%= form.text_field :room_id %>
+  </p>
+
+  <p>
+    <%= form.label :roomtype %>
+    <%= form.text_field :roomtype %>
+  </p>
+
+  <p>
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </p>
+
+  <p>
+    <%= form.label :booked %>
+    <%= form.text_field :booked %>
+  </p>
+
+  <p>
+    <%= form.label :booker %>
+    <%= form.text_field :booker %>
+  </p>
+
+  <p>
+    <%= form.label :operate_start %>
+    <%= form.text_field :operate_start %>
+  </p>
+
+  <p>
+    <%= form.label :operate_end %>
+    <%= form.text_field :operate_end %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

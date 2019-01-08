@@ -1,13 +1,7 @@
 Rails.application.routes.draw do
-  
-# For admin page
-
-  
 
 # For styled pages
-   root 'login#index'
-  
-  # get 'sessions/new'
+  root 'login#index'
 
   get 'sessions/new'
   get 'app/views/login/index.html.erb', to: 'login#index', as: 'login'
