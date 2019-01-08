@@ -16,7 +16,14 @@ class BookingsController < ApplicationController
   end
 
   def new
-    # default: render 'new' template
+    attr_accessor :room_id, :booker_id, :reason, :time_start, :time_end
+    def initialize(attributes = {})
+      @room_id  = attributes[:room_id]
+      @booker_id = attributes[:booker_id]
+      @reason = attributes[:reason]
+      @time_start = attributes[:time_start]
+      @time_end = attributes[:time_end]
+    end
   end
 
   def create

@@ -12,18 +12,12 @@
             <%= image_tag("logo.jpg", :alt => "logo") %>
         </header>
         
-<<<<<<< HEAD
 
         <nav>
-            <%= link_to "Login", login_path %>
-            <%= link_to "Home", home_path %>
-            <%= link_to "Advanced Search", advancedsearch_path %>
-            <%= link_to "Browsing Search", browsingsearch_path %>
+            
         </nav>
 
 
-=======
->>>>>>> master
         <table width="90%">
             <tr>
                 <td>
@@ -37,8 +31,18 @@
                     <div class="log-form">
                     <center>
                     <h2>Login to your account</h2>
-                    <form>
-                        <br><%= link_to "Login", "/login" %>
+                   <form accept-charset="UTF-8" action="/login" method="post">
+                      <input name="utf8" type="hidden" value="&#x2713;" />
+                      <input name="authenticity_token" type="hidden"
+                             value="NNb6+J/j46LcrgYUC60wQ2titMuJQ5lLqyAbnbAUkdo=" />
+                      <label for="session_email">Email</label>
+                      <input class="form-control" id="session_email"
+                             name="session[email]" type="text" />
+                      <label for="session_password">Password</label>
+                      <input id="session_password" name="session[password]"
+                             type="password" />
+                      <input class="btn btn-primary" name="commit" type="submit"
+                           value="Log in" />
                     </form>
                     </center>
                     </div>
@@ -46,4 +50,9 @@
             </tr>
         </table>
     </body>
+    <body>
+    <div class="container">
+      <%= debug(params) if Rails.env.development? %>
+    </div>
+  </body>
 </html>

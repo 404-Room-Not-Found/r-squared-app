@@ -23,10 +23,11 @@ ActiveRecord::Schema.define(version: 2019_01_04_012155) do
   end
 
   create_table "rooms", force: :cascade do |t|
-    t.string "name"
+    t.string "building_name"
+    t.integer "room_id"
     t.string "roomtype"
     t.text "description"
-    t.boolean "occupied"
+    t.boolean "booked"
     t.string "booker"
     t.time "operate_start"
     t.time "operate_end"
@@ -37,6 +38,7 @@ ActiveRecord::Schema.define(version: 2019_01_04_012155) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
+    t.string "password_digest"
     t.string "usertype"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

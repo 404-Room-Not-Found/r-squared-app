@@ -13,7 +13,7 @@ Then("I should see the Advanced Search form") do
   expect(page).to have_content("End Date")
   expect(page).to have_content("Start Time")
   expect(page).to have_content("End Time")
-  expect(page).to have_content("Search!")
+  expect(page).to have_content("Search")
 end
 
 When("I submit the form") do
