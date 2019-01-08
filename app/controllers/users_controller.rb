@@ -5,9 +5,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    id = params[:id] # retrieve user ID from URI route
-    @user = User.find(id) # look up user by unique ID
-    # will render app/views/users/show.<extension> by default
+    @user = User.find(params[:id])
   end
 
   def index

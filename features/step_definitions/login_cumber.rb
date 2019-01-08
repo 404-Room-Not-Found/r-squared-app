@@ -8,7 +8,7 @@ Given("I am on the login page") do
 end
 
 When("enter details for Login") do
-   fill_in('First Name', :with => 'pcr@gmail.com')
+   fill_in('Email', :with => 'pcr@gmail.com')
    fill_in('Password', :with => '1234')
    click_button('login')
 end
