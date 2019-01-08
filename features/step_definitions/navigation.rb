@@ -1,3 +1,4 @@
+require 'user'
 When(/^I click on the Login button$/) do
   visit login_path
 end

@@ -1,3 +1,5 @@
+require 'user'
+
 Given("I am on the Advanced Search page") do
   visit advancedsearch_path
 end
@@ -17,7 +19,7 @@ Then("I should see the Advanced Search form") do
 end
 
 When("I submit the form") do
-  visit results_page
+  visit home_page
 end
 
 Then("I should see a list of available rooms") do
