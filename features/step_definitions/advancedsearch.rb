@@ -19,10 +19,10 @@ Then("I should see the Advanced Search form") do
 end
 
 When("I submit the form") do
-  visit home_page
+  visit ('/rooms')
 end
 
 Then("I should see a list of available rooms") do
-  expect(page).to have_content("Available Rooms")
+  expect(page).to have_content("Rooms")
 end
 
