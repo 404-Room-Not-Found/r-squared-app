@@ -16,7 +16,7 @@ class BookingsController < ApplicationController
   end
 
   def new
-    attr_accessor :room_id, :booker_id, :reason, :time_start, :time_end
+    #attr_accessor :room_id, :booker_id, :reason, :time_start, :time_end
     def initialize(attributes = {})
       @room_id  = attributes[:room_id]
       @booker_id = attributes[:booker_id]

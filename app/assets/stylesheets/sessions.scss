@@ -1,3 +1,14 @@
-// Place all the styles related to the Sessions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  border-radius: 12px;
+  transition: 0.5s;
+  outline: none;
+}
+
+input:focus {
+  border: 3px solid #555;
+}

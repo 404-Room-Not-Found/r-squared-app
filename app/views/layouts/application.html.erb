@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat|Comfortaa" rel="stylesheet"> 
     <title>RSquaredApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -8,6 +9,10 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  
+  <header>
+      <%= image_tag("logo.jpg", :alt => "logo") %>
+  </header>
 
   <body>
     <%= yield %>
