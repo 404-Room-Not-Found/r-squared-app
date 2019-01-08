@@ -13,11 +13,6 @@
 # it.
 #
 
-#kim: https://stackoverflow.com/questions/10121835/how-do-i-simulate-a-login-with-rspec
-RSpec.configure do |config|
-  config.include SpecTestHelper, :type => :controller
-end
-
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
