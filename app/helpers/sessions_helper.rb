@@ -17,7 +17,7 @@ module SessionsHelper
   
   def current_bookings
     if Booking.find_by(booker_id: session[:user_id]) != nil
-      @bookings = Booking.find_by(booker_id: session[:user_id])
+      @bookings = Booking.where(:booker_id => session[:user_id])
     end
   end
 end

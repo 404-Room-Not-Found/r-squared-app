@@ -22,12 +22,11 @@
         
         <main>
             <center>
-                <% if current_bookings!=nil %>
+                <% if current_bookings!= nil %>
                     <table class="bod" width= 90%>
                       <tr>
                         <th>Building</th>
                         <th>Room Type</th>
-                        <th>Booker</th>
                         <th>Reason</th>
                         <th>Operate Start</th>
                         <th>Operate End</th>
@@ -37,7 +36,6 @@
                           <td><%= Room.find(booking.room_id).building_name %></td>
                           <td><%= Room.find(booking.room_id).roomtype %></td>
                           <td><%= booking.reason %></td>
-                          <td><%= room.booked %></td>
                           <td><%= booking.time_start.strftime("%b %d %Y, %-l.%M%P") %></td>
                           <td><%= booking.time_end.strftime("%b %d %Y, %-l.%M%P") %></td>
                          </tr>
