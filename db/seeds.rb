@@ -18,10 +18,7 @@ rooms = [{:building_name => 'HRBB', :room_id => 126, :roomtype => 'Executive Roo
         :description=> 'Regular lecture hall', :booked=>true, :booker=> 'jordan', 
         :operate_start=> Time.parse("04-01-19 08:00"),
         :operate_end =>  Time.parse("04-01-19 19:00")},
-        {:building_name => 'HRBB', :room_id => 115, :roomtype => 'Lecture Hall',
-        :description=> 'Regular lecture hall', :booked=>true, :booker=> 'anthony', 
-        :operate_start=> Time.parse("04-01-19 08:00"),
-        :operate_end =>  Time.parse("04-01-19 19:00")},
+        
         
         ]
 
