@@ -10,15 +10,8 @@
     </head>
     
     <body>
-        <header>
-            <%= image_tag("logo.jpg", :alt => "logo") %>
-        </header>
         
-        <nav>
-            <%= link_to "Home", home_path %>
-            <%= link_to "Advanced Search", advancedsearch_path %>
-            <%= link_to "Browsing Search", browsingsearch_path %>
-        </nav>
+        <%= render './layouts/header.html.erb' %>
         
         <main>
             <fieldset>
