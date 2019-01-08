@@ -1,8 +1,8 @@
 module SessionsHelper
-    # Logs in the given user.
-    def log_in(user)
-        session[:user_id] = user.id
-    end
+  # Logs in the given user.
+  def log_in(user)
+      session[:user_id] = user.id
+  end
     
      # Returns the current logged-in user (if any).
   def current_user
@@ -13,5 +13,11 @@ module SessionsHelper
   
   def logged_in?
     !current_user.nil?
+  end
+  
+  def current_bookings
+    if Booking.find_by(booker_id: session[:user_id]) != nil
+      @bookings = Booking.where(:booker_id => session[:user_id])
+    end
   end
 end
