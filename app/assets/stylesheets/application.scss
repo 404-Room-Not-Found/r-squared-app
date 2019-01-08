@@ -1,0 +1,72 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ 
+ 
+html, body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+    color: 1c3738;
+    background: #ffffff;
+    padding:0;
+    margin:0;
+}
+
+header {
+    background-color: #5a0a25;
+    text-align:center;
+}
+
+nav {
+    background: #5a0a25;
+    font-size: 1.3rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+nav>a, nav>a.active {
+    display: inline-block;
+    padding: 0.5%;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+nav>a:hover {
+    background: #ffffff;
+    color: #5a0a25;
+}
+
+
+.btn {
+    display: block;
+    border-radius: 12px;
+    margin: 30px auto;
+    transition-duration: 0.4s;
+    border: 2px solid #5a0a25;
+    background-color: #870d36;
+    color: #5a0a25;
+    box-shadow: 0 9px #999;
+    color: white;
+    
+}
+
+.btn:hover {
+    background-color: #5a0a25;
+}
+
+.btn:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
