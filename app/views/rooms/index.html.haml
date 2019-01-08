@@ -4,20 +4,22 @@
 %table#rooms
   %thead
     %tr
-      %th Room Name
+      %th Building Name
+      %th Room Number
       %th Type
       %th Description
-      %th Occupied
+      %th Booker
       %th Booker
       %th Operating hours - start_hr
       %th Operating hours - end_hr
   %tbody
     - @rooms.each do |room|
       %tr
-        %td= room.name
+        %td= room.building_name
+        %td= room.room_id
         %td= room.roomtype
         %td= room.description
-        %td= room.occupied
+        %td= room.booked
         %td= room.booker
         %td= room.operate_start.strftime("%k:%M")
         %td= room.operate_end.strftime("%k:%M")

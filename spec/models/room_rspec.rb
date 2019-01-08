@@ -3,13 +3,11 @@ RSpec.describe Room, :type => :model do
   
   before(:all) do
     @test_room_complete = Room.new(
-      building_name: "Building 5", room_id => 2, roomtype => 'Executive Room',
-        description=> 'test desc', occupied=>true, booker=>'Testing User', 
-        operate_start=> Time.parse("01-01-19 08:00"),
-        operate_end =>  Time.parse("04-01-19 19:00"))
-    @test_room_basic = Room.new(room_id => 123, roomtype => 'Lecture Hall',
-        operate_start=> Time.parse("06-06-18 08:00"),
-        operate_end =>  Time.parse("09-09-18 19:00"))
+      building_name: "Building 5", room_id: 2, roomtype: 'Executive Room',
+        description: 'test desc', booked: true, booker:'Testing User', 
+        operate_start: Time.parse("01-01-19 08:00"),
+        operate_end:  Time.parse("04-01-19 19:00"))
+    @test_room_basic = Room.new( building_name: "HRBB", room_id: 123, booked: false)
     
   end
   
@@ -18,9 +16,10 @@ RSpec.describe Room, :type => :model do
   end
   
   it "can be created only with a unique room_id" do
-    duplicate_room = build(:user, room_id => 2, roomtype => 'Study room',
-        operate_start=> Time.parse("06-06-18 08:00"),
-        operate_end =>  Time.parse("09-09-18 19:00"))
+    duplicate_room = Room.new( building_name: "Building 5", room_id: 2, roomtype: 'Study room',
+        booked: true,
+        operate_start: Time.parse("06-06-18 08:00"),
+        operate_end:  Time.parse("09-09-18 19:00"))
     expect(duplicate_room).to_not be_valid
   end
   
@@ -30,23 +29,25 @@ RSpec.describe Room, :type => :model do
       expect(@test_room_basic).to be_valid
     end
     
-  it "fails to update with missing parameters" do
-    @test_room_basic.operate_start = nil
+  it "fails to be valid with missing building name" do
+    @test_room_basic.building_name = nil
     expect(@test_room_basic).to_not be_valid
   end
   
+  it "fails to be valid with missing room ID" do
+    @test_room_basic.building_name = "HRBB"
+    @test_room_basic.room_id = nil
+    expect(@test_room_basic).to_not be_valid
+  end
+  
+  it "fails to be valid with missing booking status" do
+    @test_room_basic.room_id = 333
+    @test_room_basic.booked = nil
+    expect(@test_room_basic).to_not be_valid
+  end
     
   it "can be created with both basic and optional attributes filled up" do
     expect(@test_room_complete).to be_valid
   end
   
-  it "is not valid without operating start hours" do 
-    @test_room_basic.operate_start = nil
-    expect(@test_room_basic).to_not be_valid
-  end
-  
-  it "is not valid without operating end hours" do
-    testroom = build(:user, email: nil)
-    expect(testroom).to_not be_valid
-  end
 end
