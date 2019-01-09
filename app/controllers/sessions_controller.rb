@@ -1,13 +1,16 @@
 class SessionsController < ApplicationController
-    #skip_before_action :validate_access
+
   def new
   end
+
   def create
-    @user = User.find_by(email: params[:session][:email].downcase)
+    @user = User.find_by(email: params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
-      log_in @user
-      current_user
-      redirect_to home_index_url
+      session[:user_id]= @user.id
+      @current_user = @user
+      if @current_user != nil
+        redirect_to home_index_url
+      end
     else
       flash.now[:alert] = "Email or password is invalid"
       render "new"
@@ -16,7 +19,8 @@ class SessionsController < ApplicationController
   
 
   def destroy
-    log_out
+    reset_session 
     redirect_to root_url, notice: "Logged out!"
   end
+
 end

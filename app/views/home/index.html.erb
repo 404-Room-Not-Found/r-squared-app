@@ -12,10 +12,14 @@
     <body>
         <%= render './layouts/nav.html.erb' %>
         
+        <h1>Welcome!</h1>
+        <%= current_user_name %>
+        
         <main>
             <center>
               <% if current_bookings != nil %>
                 <table class="bod" width= 90%>
+                  <h1>My Reservations</h1>
                   <tr>
                     <th>Building</th>
                     <th>Room Type</th>
@@ -23,7 +27,7 @@
                     <th>Operate Start</th>
                     <th>Operate End</th>
                   </tr>
-                  <% current_bookings.each do |booking| %>
+                  <% current_bookings.find_each do |booking| %>
                      <tr>
                       <td><%= Room.find(booking.room_id).building_name %></td>
                       <td><%= Room.find(booking.room_id).roomtype %></td>

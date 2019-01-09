@@ -1,11 +1,12 @@
 class CreateBookings < ActiveRecord::Migration[5.2]
   def change
     create_table :bookings do |t|
+      t.string :building_name
       t.integer :room_id
       t.integer :booker_id
       t.text :reason
-      t.time :time_start
-      t.time :time_end
+      t.datetime :time_start
+      t.datetime :time_end
       t.timestamps
     end
   end

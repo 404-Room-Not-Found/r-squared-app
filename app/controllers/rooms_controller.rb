@@ -17,17 +17,17 @@ before_action :validate_access
 
   def new
     #attr_accessor :building_name, :room_id, :roomtype, :description, :booked, :booker, :operate_start, :operate_end
-    def initialize(attributes = {})
-      @building_name  = attributes[:building_name]
-      @room_id = attributes[:room_id]
-      @roomtype = attributes[:roomtype]
-      @description = attributes[:description]
-      @booked = attributes[:booked]
-      @booker = attributes[:booker]
-      @operate_start = attributes[:operate_start]
-      @operate_end = attributes[:operate_end]
+    # def initialize(attributes = {})
+    #   @building_name  = attributes[:building_name]
+    #   @room_id = attributes[:room_id]
+    #   @roomtype = attributes[:roomtype]
+    #   @description = attributes[:description]
+    #   @booked = attributes[:booked]
+    #   @booker = attributes[:booker]
+    #   @operate_start = attributes[:operate_start]
+    #   @operate_end = attributes[:operate_end]
       
-    end
+    # end
   end
 
   def create
