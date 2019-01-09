@@ -16,12 +16,12 @@
             <fieldset>
             <legend>Browsing Search</legend>
 
-            <%= link_to "Show all rooms", "/rooms" %>
-            
-            <center><button class="btn" type="search">HRBB</button></center>
-            <center>Computer Science/Engineering Buildings</center> 
-            <center><button class="btn" type="search">RDMC</button></center>
+            <button class="btn"><%= link_to "HRBB", bright_path %></button>
+            <center>Computer Science/Engineering Buildings</center>
+            <button class="btn"><%= link_to "RDMC", rdmc_path %></button>
+            <center>                                  </center>
             <button class="btn"><%= link_to "All Rooms", rooms_path %></button>
+
             </fieldset>
            
         </main>

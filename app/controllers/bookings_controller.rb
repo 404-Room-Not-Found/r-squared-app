@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-
+before_action :validate_access 
   def booking_params
     params.require(:booking).permit(:room_id,:booker_id,:reason,
     :time_start,:time_end, :building_name)
@@ -61,5 +61,10 @@ class BookingsController < ApplicationController
     flash[:notice] = "Booking '#{@booking.id}' deleted."
     redirect_to bookings_path
   end
-
+private 
+  def validate_access 
+      unless logged_in?
+        redirect_to root_path
+      end 
+  end
 end
