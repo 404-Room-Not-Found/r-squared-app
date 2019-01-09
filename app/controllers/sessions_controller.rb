@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-    
+    #skip_before_action :validate_access
   def new
   end
   def create

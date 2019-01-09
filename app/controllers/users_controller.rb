@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+before_action :validate_access 
   def user_params
     params.require(:User).permit(:name, :email, :password, :usertype)
   end
@@ -45,5 +45,11 @@ class UsersController < ApplicationController
     flash[:notice] = "user '#{@user.name}' deleted."
     redirect_to users_path
   end
-
+  
+private 
+  def validate_access 
+      unless logged_in?
+        redirect_to root_path
+      end 
+  end
 end
