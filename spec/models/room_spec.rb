@@ -27,7 +27,7 @@ RSpec.describe Room, :type => :model do
       @test_room_basic.building_name = "THE NEW BUILDING"
       @test_room_basic.description = "test description"
       expect(@test_room_basic).to be_valid
-    end
+  end
     
   it "fails to be valid with missing building name" do
     @test_room_basic.building_name = nil
