@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 # For styled pages
-  root 'login#index'
+  root 'sessions#new'
 
   get 'sessions/new'
   get 'app/views/login/index.html.erb', to: 'login#index', as: 'login'
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get    '/rdmc',       to: 'rdmc#index'
   get    '/results',       to: 'results#index'
   get    '/login',   to: 'sessions#new'
-  post   '/login',   to: 'sessions#create'
+  post   '/login',   to: 'sessions#create', as: 'login_path'
   delete '/logout',  to: 'sessions#destroy'
 
    resources :home
@@ -23,4 +23,6 @@ Rails.application.routes.draw do
    resources :browsingsearch
    resources :user, :bookings, :rooms
    resources :sessions
+   
+   get "*path", to: redirect('/')
 end
