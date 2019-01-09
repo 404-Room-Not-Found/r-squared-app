@@ -30,9 +30,6 @@ class RoomsController < ApplicationController
   end
 
   def create
-    if room_params[:id][:booker] == nil
-      room_params[:id][:booked] = false
-    end
     @room = Room.create!(room_params)
     flash[:notice] = "#{@room.name} was successfully created."
     redirect_to rooms_path

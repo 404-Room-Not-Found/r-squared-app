@@ -1,8 +1,8 @@
 class BookingsController < ApplicationController
 
   def booking_params
-    params.require(:booking).permit(:building_name, :room_id,:booker_id,:reason,
-    :time_start,:time_end, :room_name, :booker_name)
+    params.require(:booking).permit(:room_id,:booker_id,:reason,
+    :time_start,:time_end, :building_name)
   end
 
   def show
@@ -16,7 +16,7 @@ class BookingsController < ApplicationController
   end
 
   def new
-    # @booking = Booking.new
+    @booking = Booking.new
     # attr_accessor :room_id, :booker_id, :reason, :time_start, :time_end
     # def initialize(attributes = {})
     #   @building_name = attributes[:building_name]
@@ -29,16 +29,17 @@ class BookingsController < ApplicationController
   end
 
   def create
-    # @building_name = params[:building_name]
-    # @room_id  = params[:room_name]
-    # @booker_id = params[:booker_id]
-    # @reason = params[:reason]
-    # @time_start = params[:time_start]
-    # @time_end = params[:time_end]
+  #   @building_name = params[:building_name]
+  #   @room_id  = params[:room_id]
+  #   @booker_id = User.where(:name => params[:id][:booker_name]).first.id
+  #   @reason = params[:reason]
+  #   @time_start = params[:time_start]
+  #   @time_end = params[:time_end]
     
+    # @booking = Booking.create!(:building_name => @building_name, :room_id => @room_id, :booker_id => @booker_id, :reason => @reason,
+    # :time_start => @time_start, :time_end => @time_end)
     
-    
-    @booking = Booking.create!(booking_params)
+    @booking = Booking.create!(booking_params) 
     flash[:notice] = "#{@booking.id} was successfully created."
     redirect_to home_index_path
   end

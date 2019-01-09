@@ -11,19 +11,16 @@
     <!-- Need to change the data structure of booking to work. requires to accomodate building. -->
     <body>
         <%= render './layouts/nav.html.erb' %>
-        <%= form_for Booking.new, :url => { :action => "create" }, 
+        <%= form_for @booking, :url => { :action => "create" }, 
         html: {class: "tobestyled"} do |f| %>
           <label>Booker</label>
-          <%= f.collection_select :booker_name, User.select('DISTINCT name'), :id, :name %>
+          <%= f.collection_select :booker_id, User.all, :id, :name %>
+          
           <label>Building</label>
-          <%= f.collection_select :building_name, Room.select('DISTINCT building_name'), :id, :building_name %>
-          <label>Room Type</label>
-          <%= select_tag @room_type, options_from_collection_for_select(Room.all, :id, :roomtype) %>
+          <%= f.collection_select :building_name, Room.select('DISTINCT building_name'), :building_name, :building_name %>
           
           <label>Room id</label>
-          <% if @room_type %>
-            <%= f.collection_select :room_id, Room.select('DISTINCT room_id').where(:room_type => @room_type), :id, :room_id %>
-          <% end %>
+          <%= f.collection_select :room_id, Room.all, :room_id, :room_id %>
           
           <label>Reason</label>
           <%= f.text_field :reason %>
@@ -31,6 +28,7 @@
           <%= f.datetime_select :time_start %>
           <label>End time & day</label>
           <%= f.datetime_select :time_end %>
+          
           <%= f.submit "Make Booking" %>
         <% end %>
     </body>

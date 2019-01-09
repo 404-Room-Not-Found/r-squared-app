@@ -7,5 +7,6 @@ class Room < ActiveRecord::Base
     
     def set_defaults
         self.booked  ||= false if self.booker.nil?
+        self.booker = "---" if self.booker.nil?
     end
 end
