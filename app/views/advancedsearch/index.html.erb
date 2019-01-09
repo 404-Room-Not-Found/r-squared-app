@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+!DOCTYPE HTML>
 
 <html lang="en">
     <head>
@@ -15,7 +15,7 @@
             <fieldset>
                 <legend>Advanced Search</legend>
 
-                
+                <%= form_tag("/search", method: "get") do %>
                 
                 <div class="heading">Room Preferences</div>
 
@@ -41,7 +41,7 @@
                 <%= select_tag(:tech, options_for_select([['Any', 1],['Computers', 2], ['Projector', 3], ['Computers and Projector', 4], ['None', 5]])) %>
 
                 <br>
-              
+                
 
                 <div class="heading">Reservation Period</div>
 
@@ -55,16 +55,15 @@
                 <%= time_field(:booking, :starttime, value: "11:00") %>
                 <%= label_tag(:endtime, "End Time") %>
                 <%= time_field(:booking, :endtime, value: "12:00") %>
-                
-                <button class="btn"><%= link_to "Search", results_path %></button>
+
+               <button class="btn"><%= link_to "Search", results_path %></button>
  
                <% end %>
             </fieldset>
         </main>
     </body>
-    
-   
     <div class="container">
         <%= debug(params) if Rails.env.development? %>
     </div>
 </html>
+

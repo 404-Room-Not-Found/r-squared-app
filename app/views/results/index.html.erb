@@ -14,7 +14,7 @@
         <main>
             
             <fieldset>
-            <legend>Rooms in Reed McDonald</legend>
+            <legend>Results</legend>
             
                 <table>
                   <tr>
@@ -26,21 +26,9 @@
                     <th>Operate End</th>
                   </tr>
                 
-                  <% @rooms.each do |room| %>
-                  <%if room.building_name == 'RDMC'%>
-                    <tr>
-                      <td><%= room.building_name %></td>
-                      <td><%= room.room_id %></td>
-                      <td><%= room.roomtype %></td>
-                      <td><%= room.description %></td>
-                      <td><%= room.operate_start %></td>
-                      <td><%= room.operate_end %></td>
-                    </tr>
-                  <% end %>
-                  <% end %>
+                  
                 </table>
                 
-                <% @building %>
                 
                 
                 

@@ -14,10 +14,7 @@ class ResultsController < ApplicationController
     @rooms = Room.all
   end
   
-  def building 
-    @building = params(:location)
-  end
-
+ 
   def new
     #attr_accessor :building_name, :room_id, :roomtype, :description, :booked, :booker, :operate_start, :operate_end
     def initialize(attributes = {})
