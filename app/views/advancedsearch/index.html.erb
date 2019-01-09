@@ -15,25 +15,33 @@
             <fieldset>
                 <legend>Advanced Search</legend>
 
-                <%= form_tag("/search", method: "get") do %>
+                
                 
                 <div class="heading">Room Preferences</div>
 
-                <%= label_tag(:location, "Location") %>
-                <%= select_tag(:location, options_for_select([['North', 1], ['East', 2], ['South', 3], ['West', 4], ['Central', 5]])) %>
+                <%= label_tag(:location, "Building") %>
+                <%= select_tag(:location, options_for_select([['Any', 1], ['HRBB', 2], ['RDMC', 3]])) %>
 
                 <br>
                 <%= label_tag(:roomtype, "Room Type") %>
-                <%= select_tag(:roomtype, options_for_select([['Executive Meeting Room', 1], ['Event Hall', 2], ['Workspace', 3]])) %>
+                <%= select_tag(:roomtype, options_for_select([['Any', 1],['Executive Meeting Room', 2], ['Event Hall', 3], ['Lecture Room', 4], ['Computer Lab', 5]])) %>
 
                 <br>
-                <%= label_tag(:facilities, "Facilities") %><br>
-                <%= check_box_tag(:furnishing) %>
-                <%= label_tag(:furnishing, "Basic Furnishing") %><br>
-                <%= check_box_tag(:airconditioner) %>
-                <%= label_tag(:airconditioner, "Air Conditioner") %><br>
-                <%= check_box_tag(:projector) %>
-                <%= label_tag(:projector, "Projector") %>
+                <%= label_tag(:NumPeople, "Number of People") %>
+                <%= select_tag(:NumPeople, options_for_select([['Any', 1],['1', 2], ['1-4', 3], ['5-25', 4], ['26-100', 5],['101-500', 5]])) %>
+
+                
+                <br>
+                <%= label_tag(:Arrangment, "Arrangment") %>
+                <%= select_tag(:Arrangment, options_for_select([['Any', 1],['Tables and Chairs', 2], ['Desks and Chairs', 3], ['Chairs', 4]])) %>
+
+               
+                <br>
+                <%= label_tag(:tech, "Tech") %>
+                <%= select_tag(:tech, options_for_select([['Any', 1],['Computers', 2], ['Projector', 3], ['Computers and Projector', 4], ['None', 5]])) %>
+
+                <br>
+              
 
                 <div class="heading">Reservation Period</div>
 
@@ -47,13 +55,15 @@
                 <%= time_field(:booking, :starttime, value: "11:00") %>
                 <%= label_tag(:endtime, "End Time") %>
                 <%= time_field(:booking, :endtime, value: "12:00") %>
-
-                <%= submit_tag("Search", class: "btn") %>
+                
+                <button class="btn"><%= link_to "Search", results_path %></button>
  
                <% end %>
             </fieldset>
         </main>
     </body>
+    
+   
     <div class="container">
         <%= debug(params) if Rails.env.development? %>
     </div>

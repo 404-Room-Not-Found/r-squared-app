@@ -1,4 +1,4 @@
-class RdmcController < ApplicationController
+class ResultsController < ApplicationController
 
   def room_params
     params.require(:Room).permit(:room_id, :roomtype, :operate_start, :operate_end)
@@ -12,6 +12,10 @@ class RdmcController < ApplicationController
 
   def index
     @rooms = Room.all
+  end
+  
+  def building 
+    @building = params(:location)
   end
 
   def new
@@ -52,7 +56,5 @@ class RdmcController < ApplicationController
     flash[:notice] = "Room '#{@room.name}' deleted."
     redirect_to rooms_path
   end
-  
-  
 
 end
