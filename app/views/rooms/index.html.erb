@@ -20,8 +20,8 @@
       <td><%= room.description %></td>
       <td><%= room.booked %></td>
       <td><%= room.booker %></td>
-      <td><%= room.operate_start %></td>
-      <td><%= room.operate_end %></td>
+      <td><%= room.operate_start.strftime("%k:%M") %></td>
+      <td><%= room.operate_end.strftime("%k:%M") %></td>
     </tr>
   <% end %>
 </table>

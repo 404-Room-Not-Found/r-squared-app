@@ -13,19 +13,21 @@
 ActiveRecord::Schema.define(version: 2019_01_04_012155) do
 
   create_table "bookings", force: :cascade do |t|
+    t.string "building_name"
     t.integer "room_id"
     t.integer "booker_id"
+    t.string "booker_name"
     t.text "reason"
-    t.time "time_start"
-    t.time "time_end"
+    t.datetime "time_start"
+    t.datetime "time_end"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "rooms", force: :cascade do |t|
     t.string "building_name"
-    t.integer "room_id"
     t.string "roomtype"
+    t.integer "room_id"
     t.text "description"
     t.boolean "booked"
     t.string "booker"

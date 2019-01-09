@@ -13,16 +13,24 @@
         <%= render './layouts/nav.html.erb' %>
         <%= form_for Booking.new, :url => { :action => "create" }, 
         html: {class: "tobestyled"} do |f| %>
+          <label>Booker</label>
+          <%= f.collection_select :booker_name, User.select('DISTINCT name'), :id, :name %>
           <label>Building</label>
           <%= f.collection_select :building_name, Room.select('DISTINCT building_name'), :id, :building_name %>
           <label>Room Type</label>
-          <%= f.collection_select :room_id, Room.select('DISTINCT roomtype'), :id, :roomtype %>
+          <%= select_tag @room_type, options_from_collection_for_select(Room.all, :id, :roomtype) %>
+          
+          <label>Room id</label>
+          <% if @room_type %>
+            <%= f.collection_select :room_id, Room.select('DISTINCT room_id').where(:room_type => @room_type), :id, :room_id %>
+          <% end %>
+          
           <label>Reason</label>
           <%= f.text_field :reason %>
-          <label>Start Time</label>
-          <%= f.time_field(:time_start) %>
-          <label>End Time</label>
-          <%= f.time_field(:time_end) %>
+          <label>Start time & day</label>
+          <%= f.datetime_select :time_start %>
+          <label>End time & day</label>
+          <%= f.datetime_select :time_end %>
           <%= f.submit "Make Booking" %>
         <% end %>
     </body>
