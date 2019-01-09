@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="R^2">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>R^2 browsing search</title>
+    </head>
+    
+    <body>
+        <%= render './layouts/nav.html.erb' %>
+        <main>
+            
+            <fieldset>
+            <legend>Rooms in Reed McDonald</legend>
+            
+                <table>
+                  <tr>
+                    <th>Building Name</th>
+                    <th>Room ID</th>
+                    <th>Room Type</th>
+                    <th>Description</th>
+                    <th>Operate Start</th>
+                    <th>Operate End</th>
+                  </tr>
+                
+                  <% @rooms.each do |room| %>
+                  <%if room.building_name == 'RDMC'%>
+                    <tr>
+                      <td><%= room.building_name %></td>
+                      <td><%= room.room_id %></td>
+                      <td><%= room.roomtype %></td>
+                      <td><%= room.description %></td>
+                      <td><%= room.operate_start %></td>
+                      <td><%= room.operate_end %></td>
+                    </tr>
+                  <% end %>
+                  <% end %>
+                </table>
+                
+                <%= link_to 'Back', :back, :class => "btn" %>
+
+           
+
+
+            </fieldset>
+           
+        </main>
+    </body>
+</html>
