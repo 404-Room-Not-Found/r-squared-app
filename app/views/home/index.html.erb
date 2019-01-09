@@ -17,19 +17,21 @@
         
         <main>
             <center>
-              <% if current_bookings != nil %>
+              <% if @current_bookings != nil %>
                 <table class="bod" width= 90%>
                   <h1>My Reservations</h1>
                   <tr>
                     <th>Building</th>
+                    <th>Room Number</th>
                     <th>Room Type</th>
                     <th>Reason</th>
                     <th>Operate Start</th>
                     <th>Operate End</th>
                   </tr>
-                  <% current_bookings.find_each do |booking| %>
+                  <% @current_bookings.each do |booking| %>
                      <tr>
                       <td><%= Room.find(booking.room_id).building_name %></td>
+                      <td><%= Room.find(booking.room_id).room_id %></td>
                       <td><%= Room.find(booking.room_id).roomtype %></td>
                       <td><%= booking.reason %></td>
                       <td><%= booking.time_start.strftime("%b %d %Y, %-l.%M%P") %></td>

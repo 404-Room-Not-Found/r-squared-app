@@ -4,6 +4,7 @@ class CreateBookings < ActiveRecord::Migration[5.2]
       t.string :building_name
       t.integer :room_id
       t.integer :booker_id
+      t.string :booker_name
       t.text :reason
       t.datetime :time_start
       t.datetime :time_end
