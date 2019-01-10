@@ -1,0 +1,43 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="R^2">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>R^2 browsing search</title>
+    </head>
+    <%= render './layouts/nav.html.erb' %>
+    <% params.inspect %>
+    <body>
+      
+        <div class ="room_title_container">
+          <legend>More details about <%= @room.building_name %> Room #<%= @room.room_id %></legend>
+        </div>
+        <div class="room_details_container">
+        <fieldset class="detail_area">
+          <legend>Room Type</legend>
+          <p><%= @room.roomtype %></p>
+          <p>Able to accomodate: <%= @room.numpeople%> people</p>
+        </fieldset>
+        
+        <fieldset class="detail_area">
+          <legend>Description</legend>
+          <p><%= @room.description %></p>
+        </fieldset>
+        
+        <fieldset class="detail_area">
+          <legend>Operating Hours</legend>
+          <p>Open at: <%= @room.operate_start.strftime("%k:%M") %></p>
+          <p>Close at: <%= @room.operate_end.strftime("%k:%M") %></p>
+        </fieldset>
+        
+        <fieldset class="detail_area">
+          <legend>Facilities available</legend>  
+          <p>Technology: <%= @room.tech %></p>
+          <p>Arrangement: <%= @room.arrangement%> </p>
+        </fieldset>
+      </div>
+    </body>
+    
+    <%= link_to 'Back', :back, :class => "btn" %>
+</html>

@@ -1,25 +1,11 @@
-input {
-  width: 100%;
-  padding: 12px 20px;
-  margin-bottom: 16px;
-  box-sizing: border-box;
-  border: 3px solid #ccc;
-  border-radius: 12px;
-  transition: 0.5s;
-  outline: none;
-}
+$primary: #5a0a25;
 
-input:focus {
-  border: 3px solid #555;
-}
-
+// general styles
 html, body {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 16px;
     color: 1c3738;
     background: #ffffff;
-    padding:0;
-    margin:0;
 }
 
 header {
@@ -45,34 +31,64 @@ nav>a:hover {
     background: #ffffff;
     color: #5a0a25;
 }
-
-img {
-    width: 180px;
-}
-
-.log-form{
-    margin-top: 30px;
-}
-
-.bor{
-    border: 1px solid black;
-    width: 50%; 
-}
-
-.btn {
-    display: block;
-    margin: 30px auto;
-}
-
-#welcome_page {
+    
+#welcome_page_container {
     display : flex;
-    padding: 24px;
 }
 
 #about {
     width : 60%
 }
 
-#login-form {
-    width : 40%;
+
+// feature image styles
+
+.feature_img {
+    width: 100%;
+    height: auto;
+}
+
+
+.feature_img_container {
+  position: relative;
+}
+
+.bottomleft {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+  font-size: 36px;
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+// login form styling
+
+#login_form_container{
+    padding: 16px;
+    text-align: center;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    border-color: 1px solid #5a0a25;
+}
+
+.bor{
+    border: 1px solid ;
+    width: 50%; 
+}
+
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  border-radius: 12px;
+  transition: 0.5s;
+  outline: none;
+}
+
+input:focus {
+  border: 3px solid #555;
 }

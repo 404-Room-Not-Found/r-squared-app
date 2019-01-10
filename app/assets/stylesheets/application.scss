@@ -56,17 +56,17 @@ nav>a.active {
     text-decoration: none;
 }
 
-
-
 .btn {
     display: block;
-    margin: 30px auto;
+    padding: 16px;
+    width: 50%;
     transition-duration: 0.4s;
     border: 2px solid #5a0a25;
     background-color: #870d36;
     color: #5a0a25;
     box-shadow: 0 9px #999;
     color: white;
+    border-radius: 12px;
     
 }
 
@@ -77,4 +77,8 @@ nav>a.active {
 .btn:active {
     box-shadow: 0 5px #666;
     transform: translateY(4px);
+}
+
+.nav_img {
+    width: 180px;
 }
