@@ -36,6 +36,8 @@
                       <td><%= booking.reason %></td>
                       <td><%= booking.time_start.strftime("%b %d %Y, %-l.%M%P") %></td>
                       <td><%= booking.time_end.strftime("%b %d %Y, %-l.%M%P") %></td>
+                      <td><%= link_to "Edit", edit_booking_path(booking) %></td>
+                      <td><%= link_to "Delete", booking , :method => :delete %></td>
                      </tr>
                   <% end %>
                 </table>
