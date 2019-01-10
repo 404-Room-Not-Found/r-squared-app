@@ -15,13 +15,13 @@
             
             <fieldset>
             <legend>Browsing Search</legend>
-
-            <button class="btn"><%= link_to "HRBB", bright_path %></button>
+             <%=link_to'<button class = "btn" title = "HRBB" type = "button"> HRBB </button> '.html_safe, bright_path%> 
+           
             <center>Computer Science/Engineering Buildings</center>
-            <button class="btn"><%= link_to "RDMC", rdmc_path %></button>
+            <%=link_to'<button class = "btn" title = "RDMC" type = "button"> RDMC </button> '.html_safe, rdmc_path%> 
             <center>                                  </center>
-            <button class="btn"><%= link_to "All Rooms", rooms_path %></button>
-
+            <%=link_to'<button class = "btn" title = "All Rooms" type = "button"> All Rooms </button> '.html_safe, rooms_path%> 
+           
             </fieldset>
            
         </main>

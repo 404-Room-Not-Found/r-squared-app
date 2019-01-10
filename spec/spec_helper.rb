@@ -12,7 +12,10 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 #
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 #require 'simplecov'
 #require 'simplecov-console'
 #SimpleCov.formatter = SimpleCov::Formatter::Console
