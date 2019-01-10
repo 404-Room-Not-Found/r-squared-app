@@ -1,13 +1,5 @@
 require 'user'
 
-########### login #############
-When(/^I click on the Login button$/) do
-  visit login_path
-end
-
-Then(/^I should see the Login view$/) do
-  expect(page).to have_content("Login")
-end
 
 
 ########### logout #############
@@ -18,10 +10,6 @@ end
 Then("I should see the Login page") do
     visit ('/login')
 end
-
-#########################################################################
-########### nav bar #####################################################
-#########################################################################
 
 
 ########### home page #############

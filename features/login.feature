@@ -1,17 +1,24 @@
 Feature: Login page
-  
+As a user
+I want to login correctly 
+So that I can avoid bypasser
+
 Scenario: User submits a valid username and password
-When I submit the valid username and password
-Then I should be logged in an shown the home screen
+Given a valid user 
+Given a logged in user
+Then I should go to home path
 
 Scenario: User submits an invalid username and password
-When I submit the invalid username and password
-Then I should be be rejected and stay on the login page
+Given an invalid user 
+Given a nonuser
+Then I should go to login path
 
 Scenario: User tries to bypass the login by using the path in the url
-When I type a path into the url while not logged in
+Given I am on the login page 
+And the url is incorrect 
 Then I should be redirected to the log in screen
 
 Scenario: User tries to redirect using the path in the url while logged in
-When I type a path into the url while logged in
-Then I should be redirected to the path if authorized
+Given I am on the home page 
+And the url is incorrect 
+Then I should go to that page
