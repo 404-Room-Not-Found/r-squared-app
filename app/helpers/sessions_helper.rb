@@ -1,5 +1,6 @@
 module SessionsHelper
   # Logs in the given user.
+  @room = nil
   def log_in(user)
       session[:user_id] = user.id
   end
@@ -22,6 +23,16 @@ module SessionsHelper
     end
   end
   
+  def current_room_id
+    params[:room_id]
+  end
+  
+  def current_room_building
+    params[:building_name]
+  end
+  
+  def book_room_options
+  end
   
   def logged_in?
     !current_user.nil?

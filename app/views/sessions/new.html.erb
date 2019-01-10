@@ -8,37 +8,31 @@
     </head>
         
     <body>
-        <table width="90%">
-            <tr>
-                <td>
-                    <div class="about">
-                        <h1>ABOUT R-Squared</h1>
-                        <p>We are a room reservation application that makes life eaiser.</p>
-                    </div>
-                </td>
-
-                <td>
-                    <div class="log-form">
-                    <center>
-                    <h2>Login to your account</h2>
-                   <form accept-charset="UTF-8" action="/login" method="post">
-                      <input name="utf8" type="hidden" value="&#x2713;" />
-                      <input name="authenticity_token" type="hidden"
-                             value="NNb6+J/j46LcrgYUC60wQ2titMuJQ5lLqyAbnbAUkdo=" />
-                      <label for="session_email">Email</label>
-                      <input class="form-control" id="session_email"
-                             name="session[email]" type="text" />
-                      <label for="session_password">Password</label>
-                      <input id="session_password" name="session[password]"
-                             type="password" />
-                      <input class="btn btn-primary" name="commit" type="submit"
-                           value="Log in" />
-                    </form>
-                    </center>
-                    </div>
-                </td>
-            </tr>
-        </table>
+        <div id="welcome_page">
+            <div id="about">
+              <h1>ABOUT R-Squared</h1>
+              <p>We are a room reservation application that makes life eaiser.</p>
+              <img src="https://12thman.com/images/2018/6/4/hoc5.jpg?width=600&height=360&mode=crop"></img>
+            </div>
+            <div id="login-form" width="50%">
+              <center>
+                <h2>Login to your account</h2>
+                <form accept-charset="UTF-8" action="/login" method="post">
+                  <input name="utf8" type="hidden" value="&#x2713;" />
+                  <input name="authenticity_token" type="hidden"
+                         value="NNb6+J/j46LcrgYUC60wQ2titMuJQ5lLqyAbnbAUkdo=" />
+                  <label for="session_email">Email</label>
+                  <input class="form-control" id="session_email"
+                         name="session[email]" type="text" />
+                  <label for="session_password">Password</label>
+                  <input id="session_password" name="session[password]"
+                         type="password" />
+                  <input class="btn btn-primary" name="commit" type="submit"
+                       value="Log in" />
+                </form>
+              </center>
+            </div>
+        </div>
     </body>
     <body>
     <div class="container">
