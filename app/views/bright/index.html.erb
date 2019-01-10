@@ -17,25 +17,32 @@
             <legend>Rooms in Bright</legend>
 <table>
                   <tr>
-                    <th>Building Name</th>
+                    
                     <th>Room ID</th>
                     <th>Room Type</th>
                     <th>Description</th>
                     <th>Operate Start</th>
                     <th>Operate End</th>
+                    <th>Technology</th>
+                    <th>Arrangment</th>
+                    <th>Number of People</th>
                   </tr>
                 
                   
                   <%@rooms.each do |room| %>
                    <%if room.building_name == 'HRBB'%>
                     <tr>
-                      <td><%= room.building_name %></td>
+                      
                       <td><%= room.room_id %></td>
                       <td><%= room.roomtype %></td>
                       <td><%= room.description %></td>
                       
-                      <td><%= room.operate_start %></td>
-                      <td><%= room.operate_end %></td>
+                      <td><%= room.operate_start.strftime("%k:%M") %></td>
+                      <td><%= room.operate_end.strftime("%k:%M") %></td>
+                      <td><%= room.tech %></td>
+                      <td><%= room.arrangment%> </td>
+                      <td><%= room.numpeople%> </td>
+                     
                     </tr>
                   <% end %>
                   <% end %>

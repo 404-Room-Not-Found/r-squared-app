@@ -9,6 +9,9 @@ class CreateRooms < ActiveRecord::Migration[5.2]
       t.string :booker
       t.time :operate_start
       t.time :operate_end
+      t.string :tech
+      t.string :numpeople
+      t.string :arrangment 
       t.timestamps
     end
   end

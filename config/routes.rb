@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get    '/rooms',   to: 'rooms#index'
   get    '/bright',   to: 'bright#index'
   get    '/rdmc',       to: 'rdmc#index'
+  get    '/results',       to: 'results#index'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create', as: 'login_path'
   delete '/logout',  to: 'sessions#destroy'
