@@ -1,5 +1,4 @@
-class RoomsController < ApplicationController
-before_action :validate_access 
+class RdmcController < ApplicationController
 
   def room_params
     params.require(:Room).permit(:room_id, :roomtype, :operate_start, :operate_end)
@@ -17,17 +16,17 @@ before_action :validate_access
 
   def new
     #attr_accessor :building_name, :room_id, :roomtype, :description, :booked, :booker, :operate_start, :operate_end
-    # def initialize(attributes = {})
-    #   @building_name  = attributes[:building_name]
-    #   @room_id = attributes[:room_id]
-    #   @roomtype = attributes[:roomtype]
-    #   @description = attributes[:description]
-    #   @booked = attributes[:booked]
-    #   @booker = attributes[:booker]
-    #   @operate_start = attributes[:operate_start]
-    #   @operate_end = attributes[:operate_end]
+    def initialize(attributes = {})
+      @building_name  = attributes[:building_name]
+      @room_id = attributes[:room_id]
+      @roomtype = attributes[:roomtype]
+      @description = attributes[:description]
+      @booked = attributes[:booked]
+      @booker = attributes[:booker]
+      @operate_start = attributes[:operate_start]
+      @operate_end = attributes[:operate_end]
       
-    # end
+    end
   end
 
   def create
@@ -54,11 +53,6 @@ before_action :validate_access
     redirect_to rooms_path
   end
   
-private 
-  def validate_access 
-      unless logged_in?
-        redirect_to root_path
-      end 
-  end
+  
 
 end
