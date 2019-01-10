@@ -7,6 +7,10 @@ Scenario: User accesses Login page
 When I click on the Login button
 Then I should see the Login view
 
+Scenario: User Logut
+When I click on the Logout button
+Then I should see the Login page
+
 Scenario: User accesses Home page
 When I click on the Home button
 Then I should see the Home view

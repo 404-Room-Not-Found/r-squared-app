@@ -37,7 +37,7 @@ nav {
     text-align: center;
 }
 
-nav>a, nav>a.active {
+nav>a{
     display: inline-block;
     padding: 0.5%;
     color: #ffffff;
@@ -48,6 +48,14 @@ nav>a:hover {
     background: #ffffff;
     color: #5a0a25;
 }
+
+nav>a.active {
+    display: inline-block;
+    padding: 0.5%;
+    color: #ffffff;
+    text-decoration: none;
+}
+
 
 
 .btn {
