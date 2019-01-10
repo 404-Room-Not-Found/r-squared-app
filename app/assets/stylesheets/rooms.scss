@@ -1,5 +1,25 @@
 p {
- color:black;
- font-size: 0.8rem;
+  color:black;
+  font-size: 1rem;
 }
 
+.room_details_container {
+  display:grid;
+  
+}
+
+.room_title_container {
+  padding: 16px;
+  text-align:center;
+}
+
+.room_title_container>legend {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+}
+
+.detail_area {
+    width: 200 px;
+    border-radius: 10px;
+    border: 1px solid #5a0a25;
+}

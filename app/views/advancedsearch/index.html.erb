@@ -11,7 +11,7 @@
   <body>
     <%= render './layouts/nav.html.erb' %>
     <main>
-      <fieldset>
+      <fieldset id="search_area">
         <legend>Advanced Search</legend>
           <%= form_tag({:controller => "results", :action => "index"}, method: :get) do %>
           <h1 class="heading">Room Preferences</h1>
