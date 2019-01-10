@@ -9,40 +9,42 @@
         
         <title>R^2 browsing search</title>
     </head>
-    
+    <%= render './layouts/nav.html.erb' %>
+    <!--<%= params.inspect %>-->
     <body>
-        <%= render './layouts/nav.html.erb' %>
         <main>
-            
             <fieldset>
             <legend>Search Results</legend>
+            <table>
+              <tr>
+                <th>Building Name</th>
+                <th>Room ID</th>
+                <th>Room Type</th>
+                <th>Description</th>
+                <th>Operate Start</th>
+                <th>Operate End</th>
+                <th>Technology</th>
+                <th>Arrangment</th>
+                <th>Number of People</th>
+                
+              </tr>
             
-                <table>
-                  <tr>
-                    <th>Building Name</th>
-                    <th>Room ID</th>
-                    <th>Room Type</th>
-                    <th>Description</th>
-                    <th>Operate Start</th>
-                    <th>Operate End</th>
-                    <th>Technology</th>
-                    <th>Arrangment</th>
-                    <th>Number of People</th>
-                  </tr>
-                
-                  
-                </table>
-                
-                
-                
-                
-                <%= link_to 'Back', :back, :class => "btn" %>
-
-           
-
-
+              <% @rooms.each do |room| %>
+                <tr>
+                  <td><%= room.building_name %></td>
+                  <td><%= room.room_id %></td>
+                  <td><%= room.roomtype %></td>
+                  <td><%= room.description %></td>
+                  <td><%= room.operate_start.strftime("%k:%M") %></td>
+                  <td><%= room.operate_end.strftime("%k:%M") %></td>
+                  <td><%= room.tech %></td>
+                  <td><%= room.arrangement%> </td>
+                  <td><%= room.numpeople%> </td>
+                </tr>
+              <% end %>
+            </table>
+            <%= link_to 'Back', :back, :class => "btn" %>
             </fieldset>
-           
         </main>
     </body>
 </html>
