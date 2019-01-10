@@ -1,21 +1,24 @@
+require 'user'
+
+
 Given("I am on the browse page") do
   visit ('/browsingsearch')
 end
 
 When("I click on HRBB") do
-  #visit the hrbb page
+  visit ('/bright')
 end
 
 Then("I shoud see HRBB") do
-  expect(page).to have_content("HRBB")
+  expect(page).to have_content("Bright")
 end
 
 When("I click on RDMC") do
-  #visit RDMC page
+  visit ('/rdmc')
 end
 
 Then("I shoud see RDMC") do
-  expect(page).to have_content("RDMC")
+  expect(page).to have_content("Reed McDonald")
 end
 
 When("I click on All Rooms") do

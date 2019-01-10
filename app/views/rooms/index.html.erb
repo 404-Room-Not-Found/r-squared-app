@@ -28,49 +28,53 @@
 
 <%= link_to 'Back', :back, :class => "btn" %>
 
-<h1>Add Rooms</h1>
-<%= form_with scope: :Room, local: true do |form| %>
-  <p>
-    <%= form.label :building_name %>
-    <%= form.text_field :building_name %>
-  </p>
+<%#  erb comment: to uncomment take away # in each erb line %>
+<!--  html comment take away the  <!--  -->
 
-  <p>
-    <%= form.label :room_id %>
-    <%= form.text_field :room_id %>
-  </p>
 
-  <p>
-    <%= form.label :roomtype %>
-    <%= form.text_field :roomtype %>
-  </p>
+<!--  <h1>Add Rooms</h1>    -->
+    <%#= form_with scope: :Room, local: true do |form| %>
+  <!--<p>-->
+    <%#= form.label :building_name %>
+    <%#= form.text_field :building_name %>
+  <!--</p>
 
-  <p>
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </p>
+  <p> -->
+    <%#= form.label :room_id %>
+    <%#= form.text_field :room_id %>
+  <!--</p>
 
-  <p>
-    <%= form.label :booked %>
-    <%= form.text_field :booked %>
-  </p>
+  <p> -->
+    <%#= form.label :roomtype %>
+    <%#= form.text_field :roomtype %>
+  <!--</p>
 
-  <p>
-    <%= form.label :booker %>
-    <%= form.text_field :booker %>
-  </p>
+  <p> -->
+    <%#= form.label :description %>
+    <%#= form.text_field :description %>
+  <!--</p>
 
-  <p>
-    <%= form.label :operate_start %>
-    <%= form.text_field :operate_start %>
-  </p>
+  <p> -->
+    <%#= form.label :booked %>
+    <%#= form.text_field :booked %>
+  <!--</p>
 
-  <p>
-    <%= form.label :operate_end %>
-    <%= form.text_field :operate_end %>
-  </p>
+  <p> -->
+    <%#= form.label :booker %>
+    <%#= form.text_field :booker %>
+  <!--</p>
 
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+  <p> -->
+    <%#= form.label :operate_start %>
+    <%#= form.text_field :operate_start %>
+  <!--</p>
+
+  <p> -->
+    <%#= form.label :operate_end %>
+    <%#= form.text_field :operate_end %>
+  <!--</p>
+
+  <p>-->
+    <%#= form.submit %>
+  <!--</p>-->
+<%# end %>
