@@ -71,10 +71,10 @@ group :production do
   # Use postgresql as the database for Active Record
   gem 'pg', '>= 0.18', '< 2.0'
 end
-group :test do
-  gem 'simplecov', require: false
-  gem 'simplecov-console'
-end
+#group :test do
+  #gem 'simplecov', require: false
+  #gem 'simplecov-console'
+#end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

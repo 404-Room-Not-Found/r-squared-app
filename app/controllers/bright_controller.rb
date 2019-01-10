@@ -1,5 +1,5 @@
 class BrightController < ApplicationController
-
+before_action :validate_access 
   def room_params
     params.require(:Room).permit(:room_id, :roomtype, :operate_start, :operate_end)
   end
@@ -52,5 +52,11 @@ class BrightController < ApplicationController
     flash[:notice] = "Room '#{@room.name}' deleted."
     redirect_to rooms_path
   end
-
+  
+private 
+  def validate_access 
+      unless logged_in?
+        redirect_to root_path
+      end 
+  end
 end
