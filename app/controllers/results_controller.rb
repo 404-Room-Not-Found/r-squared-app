@@ -1,4 +1,4 @@
-class RdmcController < ApplicationController
+class ResultsController < ApplicationController
 
   def room_params
     params.require(:Room).permit(:room_id, :roomtype, :operate_start, :operate_end)
@@ -13,7 +13,8 @@ class RdmcController < ApplicationController
   def index
     @rooms = Room.all
   end
-
+  
+ 
   def new
     #attr_accessor :building_name, :room_id, :roomtype, :description, :booked, :booker, :operate_start, :operate_end
     def initialize(attributes = {})
@@ -52,7 +53,5 @@ class RdmcController < ApplicationController
     flash[:notice] = "Room '#{@room.name}' deleted."
     redirect_to rooms_path
   end
-  
-  
 
 end

@@ -2,6 +2,7 @@
 
 <html lang="en">
     <head>
+      
         <meta charset="UTF-8">
         <meta name="description" content="R^2">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +15,7 @@
         <main>
             
             <fieldset>
-            <legend>Rooms in Reed McDonald</legend>
+            <legend>Search Results</legend>
             
                 <table>
                   <tr>
@@ -26,18 +27,7 @@
                     <th>Operate End</th>
                   </tr>
                 
-                  <% @rooms.each do |room| %>
-                  <%if room.building_name == 'RDMC'%>
-                    <tr>
-                      <td><%= room.building_name %></td>
-                      <td><%= room.room_id %></td>
-                      <td><%= room.roomtype %></td>
-                      <td><%= room.description %></td>
-                      <td><%= room.operate_start %></td>
-                      <td><%= room.operate_end %></td>
-                    </tr>
-                  <% end %>
-                  <% end %>
+                  
                 </table>
                 
                 
