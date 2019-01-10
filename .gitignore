@@ -28,4 +28,4 @@
 
 /*.sqlite3
 
-/coverage/*
+/coverage/*.sqlite3

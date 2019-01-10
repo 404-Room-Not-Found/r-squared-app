@@ -2,6 +2,7 @@
 
 <html lang="en">
     <head>
+      
         <meta charset="UTF-8">
         <meta name="description" content="R^2">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,11 +15,11 @@
         <main>
             
             <fieldset>
-            <legend>Rooms in Reed McDonald</legend>
+            <legend>Search Results</legend>
             
                 <table>
                   <tr>
-                    
+                    <th>Building Name</th>
                     <th>Room ID</th>
                     <th>Room Type</th>
                     <th>Description</th>
@@ -29,22 +30,7 @@
                     <th>Number of People</th>
                   </tr>
                 
-                  <% @rooms.each do |room| %>
-                  <%if room.building_name == 'RDMC'%>
-                    <tr>
-                      
-                      <td><%= room.room_id %></td>
-                      <td><%= room.roomtype %></td>
-                      <td><%= room.description %></td>
-                      <td><%= room.operate_start.strftime("%k:%M") %></td>
-                      <td><%= room.operate_end.strftime("%k:%M") %></td>
-                      <td><%= room.tech %></td>
-                      
-                      <td><%= room.arrangment%> </td>
-                      <td><%= room.numpeople%> </td>
-                    </tr>
-                  <% end %>
-                  <% end %>
+                  
                 </table>
                 
                 
