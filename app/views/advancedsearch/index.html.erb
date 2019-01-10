@@ -56,8 +56,9 @@
                 <%= label_tag(:endtime, "End Time") %>
                 <%= time_field(:booking, :endtime, value: "12:00") %>
 
-               <button class="btn"><%= link_to "Search", results_path %></button>
- 
+              
+ <%=link_to'<button class = "btn" title = "Search" type = "button"> Search </button> '.html_safe, results_path%> 
+           
                
             </fieldset>
         </main>
