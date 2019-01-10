@@ -12,12 +12,26 @@ legend {
 
 label {
     display: inline-block;
-    margin: 10px 5px;
+    margin: 16px 6px;
+    white-space:normal;
+}
+
+.radio_label {
 }
 
 input[type="checkbox"] {
     margin-left: 20px;
 }
+
+.radio_button {
+    
+}
+.radio_container {
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
 
 .heading {
     color: #5a0a25;

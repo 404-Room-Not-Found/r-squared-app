@@ -1,69 +1,65 @@
 <!DOCTYPE HTML>
 
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="description" content="R^2">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <title>R^2 advanced search</title>
-    </head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="R^2">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <body>
-      <%= render './layouts/nav.html.erb' %>
-      <main>
+    <title>R^2 advanced search</title>
+  </head>
+  <body>
+    <%= render './layouts/nav.html.erb' %>
+    <main>
+      <fieldset>
+        <legend>Advanced Search</legend>
+          <%= form_tag({:controller => "results", :action => "index"}, method: :get) do %>
+          <h1 class="heading">Room Preferences</h1>
+
+          <%= label_tag(:building_name, "Building") %>
+          <%= collection_select :room, :building_name,
+          Room.select('DISTINCT building_name'),
+          :building_name, :building_name, {include_blank: 'Any'} %>
+
+          <%= label_tag(:roomtype, "Room Type") %>
+          <%= collection_select :room, :roomtype,
+          Room.select('DISTINCT roomtype'),
+          :roomtype, :roomtype, {include_blank: 'Any'} %>
+
+
+          <br>
+          <%= label_tag(:numpeople, "Number of People") %>
+          <%= collection_select :room, :numpeople,
+          Room.select('DISTINCT numpeople'),
+          :numpeople, :numpeople, {include_blank: 'Any'} %>
           
-        <fieldset>
-          <legend>Advanced Search</legend>
-            <%= form_tag({:controller => "results", :action => "index"}, method: :get) do %>
-              <div class="heading">Room Preferences</div>
+          <br>
+          <%= label_tag(:arrangement, "Furniture") %>
+          <%= collection_select :room, :arrangement,
+          Room.select('DISTINCT arrangement'),
+          :arrangement, :arrangement, {include_blank: 'Any'} %>  
+            
+          <br>
+          <%= label_tag(:tech, "Technology") %>
+          <%= collection_select :room, :tech,
+          Room.select('DISTINCT tech'),
+          :tech, :tech, {include_blank: 'Any'} %>
+          
+          <!-- to implement later on, idk how to merge the data together -->
+          <!--<div class="heading">Reservation Period</div>-->
 
-              <%= label_tag(:building_name, "Building") %>
-              <%= collection_select :room, :building_name,
-              Room.select('DISTINCT building_name'),
-              :building_name, :building_name, {include_blank: 'Any'} %>
-
-              <br>
-              <%= label_tag(:roomtype, "Room Type") %>
-              <%= collection_select :room, :roomtype,
-              Room.select('DISTINCT roomtype'),
-              :roomtype, :roomtype, {include_blank: 'Any'} %>
-
-
-              <br>
-              <%= label_tag(:numpeople, "Number of People") %>
-              <%= collection_select :room, :numpeople,
-              Room.select('DISTINCT numpeople'),
-              :numpeople, :numpeople, {include_blank: 'Any'} %>
-
-              
-              <br>
-              <%= label_tag(:arrangement, "Arrangment") %>
-              <%= collection_select :room, :arrangement,
-              Room.select('DISTINCT arrangement'),
-              :arrangement, :arrangement, {include_blank: 'Any'} %>
-
-              <br>
-              <%= label_tag(:tech, "Tech") %>
-              <%= collection_select :room, :tech,
-              Room.select('DISTINCT tech'),
-              :tech, :tech, {include_blank: 'Any'} %>
-              
-              <!-- to implement later on, idk how to merge the data together -->
-              <!--<div class="heading">Reservation Period</div>-->
-
-              <!--<%= label_tag(:startdate, "Start Date") %>-->
-              <!--<%= date_field(:booking, :startdate) %>-->
-              <!--<%= label_tag(:enddate, "End Date") %>-->
-              <!--<%= date_field(:booking, :enddate) %>-->
+          <!--<%= label_tag(:startdate, "Start Date") %>-->
+          <!--<%= date_field(:booking, :startdate) %>-->
+          <!--<%= label_tag(:enddate, "End Date") %>-->
+          <!--<%= date_field(:booking, :enddate) %>-->
 
 
-              <!--<%= label_tag(:starttime, "Start Time") %>-->
-              <!--<%= time_field(:booking, :starttime, value: "11:00") %>-->
-              <!--<%= label_tag(:endtime, "End Time") %>-->
-              <!--<%= time_field(:booking, :endtime, value: "12:00") %>-->
-            <%= submit_tag 'Search' %>
-          <% end %>
+          <!--<%= label_tag(:starttime, "Start Time") %>-->
+          <!--<%= time_field(:booking, :starttime, value: "11:00") %>-->
+          <!--<%= label_tag(:endtime, "End Time") %>-->
+          <!--<%= time_field(:booking, :endtime, value: "12:00") %>-->
+          <%= submit_tag 'Search' %>
+        <% end %>
       </fieldset>
     </main>
   </body>

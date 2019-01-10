@@ -1,6 +1,10 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body>h2 {
+  margin: 16px;
+}
 table {
   max-width: 100%;
   padding: 24px;
@@ -23,4 +27,3 @@ td {
   text-align: center;
   padding: 16px;
 }
-
