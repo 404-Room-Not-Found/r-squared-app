@@ -1,55 +1,26 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-html, body {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 16px;
-    color: 1c3738;
-    background: #ffffff;
-    padding:0;
-    margin:0;
+table {
+  max-width: 100%;
+  padding: 24px;
+  table-layout: fixed;
 }
 
-header {
-    background-color: #5a0a25;
-    text-align:center;
+tr:hover {
+  background-color: #f5f5f5;
+  border-radius: 16px;
+  
 }
 
-nav {
-    background: #5a0a25;
-    font-size: 1.3rem;
-    margin: 0 auto;
-    text-align: center;
+th {
+  height: 24px;    
+  text-align: center;
+  border-bottom: 1px solid #ddd;
 }
 
-nav>a {
-    display: inline-block;
-    padding: 0.5%;
-    color: #ffffff;
-    text-decoration: none;
-}
-
-nav>a:hover {
-    background: #ffffff;
-    color: #5a0a25;
-}
-
-img {
-    width: 180px;
-}
-
-.log-form{
-    margin-top: 30px;
-}
-
-.bor{
-    border: 1px solid black;
-    width: 50%; 
-}
-
-.btn {
-    display: block;
-    margin: 30px auto;
+td {
+  text-align: center;
+  padding: 16px;
 }
 
