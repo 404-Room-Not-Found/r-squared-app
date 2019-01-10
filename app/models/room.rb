@@ -1,6 +1,7 @@
 class Room < ActiveRecord::Base
     validates :building_name, presence: true
-    validates :room_id, presence: true, uniqueness: true #{ scope: :building_name }
+    validates_uniqueness_of :room_id, :scope => :building_name
+    validates :room_id, presence: true
     
     after_initialize :set_defaults, unless: :persisted?
     # The set_defaults will only work if the object is new
