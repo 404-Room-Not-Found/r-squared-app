@@ -52,14 +52,14 @@ before_action :validate_access
     @booking = Booking.find params[:id]
     @booking.update_attributes!(booking_params)
     flash[:notice] = "#{@booking.id} was successfully updated."
-    redirect_to booking_path(@booking)
+    redirect_to home_index_path
   end
 
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy
     flash[:notice] = "Booking '#{@booking.id}' deleted."
-    redirect_to bookings_path
+    redirect_to home_index_path
   end
 private 
   def validate_access 
