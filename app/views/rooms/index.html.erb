@@ -6,10 +6,12 @@
     <th>Room ID</th>
     <th>Room Type</th>
     <th>Description</th>
-    <th>Booked</th>
-    <th>Booker</th>
     <th>Operate Start</th>
     <th>Operate End</th>
+    <th>Technology</th>
+    <th>Arrangment</th>
+    <th>Number of People</th>
+    
   </tr>
 
   <% @rooms.each do |room| %>
@@ -18,10 +20,11 @@
       <td><%= room.room_id %></td>
       <td><%= room.roomtype %></td>
       <td><%= room.description %></td>
-      <td><%= room.booked %></td>
-      <td><%= room.booker %></td>
       <td><%= room.operate_start.strftime("%k:%M") %></td>
       <td><%= room.operate_end.strftime("%k:%M") %></td>
+      <td><%= room.tech %></td>
+      <td><%= room.arrangment%> </td>
+      <td><%= room.numpeople%> </td>
     </tr>
   <% end %>
 </table>
