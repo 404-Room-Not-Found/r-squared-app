@@ -63,12 +63,17 @@ group :test do
   gem 'chromedriver-helper'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
   gem 'faker'
 end
 
 group :production do 
   # Use postgresql as the database for Active Record
   gem 'pg', '>= 0.18', '< 2.0'
+end
+group :test do
+  gem 'simplecov', require: false
+  gem 'simplecov-console'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
