@@ -24,7 +24,7 @@ before_action :validate_access
     # flash[:notice] = "#{@booking.id} was successfully created."
     # redirect_to home_index_path
     bookings = Booking.where(:room_id => booking_params[:room_id])
-    if nil.bookings? == false
+    if bookings.nil? == false
       bookings.each do |booking|
         if booking.time_start <= booking_params[:time_end] && booking_params[:time_start] <= booking.time_end
           flash[:error] = "Current Slot Time is already taken!"
