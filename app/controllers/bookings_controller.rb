@@ -31,6 +31,7 @@ before_action :validate_access
         redirect_to booking_new_path
         return
       end
+    end
   end
 
   def edit
