@@ -24,22 +24,16 @@ before_action :validate_access
     # flash[:notice] = "#{@booking.id} was successfully created."
     # redirect_to home_index_path
     bookings = Booking.where(:room_id => booking_params[:room_id])
-    if bookings.nil? == false
-      bookings.each do |booking|
-        if booking.time_start <= booking_params[:time_end] && booking_params[:time_start] <= booking.time_end
-          flash[:error] = "Current Slot Time is already taken!"
-          redirect_to booking_new_path
-          return
-        else
-          @booking = Booking.create!(booking_params)
-          flash[:notice] = "#{@booking.id} was successfully created."
-          redirect_to home_index_path
-        end
+    bookings.each do |booking|
+      if booking_params[:time_end].between?(booking.time_end, booking.time_start) || booking_params[:time_start].between?(booking.time_end, booking.time_start)
+        flash[:error] = "Current Slot Time is already taken!"
+        redirect_to booking_new_path
+        return
+      else
+        @booking = Booking.create!(booking_params)
+        flash[:notice] = "#{@booking.id} was successfully created."
+        redirect_to home_index_path
       end
-    else
-      @booking = Booking.create!(booking_params)
-      flash[:notice] = "#{@booking.id} was successfully created."
-      redirect_to home_index_path
     end
   end
 
