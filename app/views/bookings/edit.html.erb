@@ -13,7 +13,7 @@
         <%= render './layouts/nav.html.erb' %>
         <%= form_for @booking, :url => {:action => "update", :id => @booking}, 
         html:{method:'put'} do |f| %>
-          <label>Booker</label>
+          <label>Bookerf</label>
           <%= f.collection_select :booker_id, User.all, :id, :name %>
           
           <label>Building</label>

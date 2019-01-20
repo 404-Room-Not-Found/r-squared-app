@@ -19,7 +19,7 @@
         
         <h1>Making a new booking</h1>
         <%= form_for @booking, :url => { :action => "create" }, html: {class: "tobestyled"} do |f| %>
-         <label>Booker</label>
+         <label>Bookerf</label>
          <%= f.collection_select :booker_id, User.all, :id, :name, :selected => current_user.id %>
          
          <label>Building</label>
