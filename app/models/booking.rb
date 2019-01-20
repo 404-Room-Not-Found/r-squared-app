@@ -6,8 +6,19 @@ class Booking < ActiveRecord::Base
     validates :time_end, presence: true
     validate :time_overlaps
     
-    def time_overlaps(other)
-        time_start <= other.time_end && other.time_start <= time_end
+    scope :in_range, -> range {
+      where('(\'from\' BETWEEN ? AND ?)', range.first, range.last)
+    }
+    scope :exclude_self, -> id { where.not(id: id) }
+    
+    def time_overlaps
+        range = Range.new time_start, time_end
+        overlaps = Booking.exclude_self(room_id).in_range(range)
+        overlap_error unless overlaps.empty?
+    end
+    
+    def overlap_error
+      errors.add(:overlap_error, 'There is already an event scheduled in this hour!')
     end
     
     # scope :overlap, -> { |booking|
