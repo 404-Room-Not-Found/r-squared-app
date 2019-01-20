@@ -20,9 +20,17 @@ before_action :validate_access
   end
 
   def create
-    @booking = Booking.create!(booking_params)
-    flash[:notice] = "#{@booking.id} was successfully created."
-    redirect_to home_index_path
+    # @booking = Booking.create!(booking_params)
+    # flash[:notice] = "#{@booking.id} was successfully created."
+    # redirect_to home_index_path
+    bookings = Booking.create!(booking_params)
+    bookings.each do |booking|
+      if booking_params[:time_end].between?(booking.time_end, booking.tinme_start) || booking_params[:time_start].between?(booking.time_end, booking.time_start)
+        flash[:error] = "Current Slot Time is already taken!"
+        @booking.destroy
+        redirect_to booking_new_path
+        return
+      end
   end
 
   def edit
