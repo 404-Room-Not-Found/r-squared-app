@@ -12,8 +12,7 @@
     <body>
         <%= render './layouts/nav.html.erb' %>
         
-        <h1>Welcome!</h1>
-        <%= current_user_name %>
+        <h2>Welcome back <%= current_user_name %>!</h2>
         
         <main>
             <center>
@@ -36,6 +35,8 @@
                       <td><%= booking.reason %></td>
                       <td><%= booking.time_start.strftime("%b %d %Y, %-l.%M%P") %></td>
                       <td><%= booking.time_end.strftime("%b %d %Y, %-l.%M%P") %></td>
+                      <td><%= link_to "Edit", edit_booking_path(booking) %></td>
+                      <td><%= link_to "Delete", booking , :method => :delete, data: { confirm: 'Are you sure you want to cancel your booking?' } %></td>
                      </tr>
                   <% end %>
                 </table>
@@ -43,7 +44,7 @@
                 <p>No reservations.</p>
               <% end %>
                 
-              <%= link_to "Make New Booking", new_booking_path %>
+              <%= link_to "Make New Booking", new_booking_path, :class => "btn" %>
             </center>
         </main>
         <div class="container">

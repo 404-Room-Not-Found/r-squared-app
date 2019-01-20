@@ -1,3 +1,83 @@
+$primary: #5a0a25;
+
+// general styles
+html, body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+    color: 1c3738;
+    background: #ffffff;
+}
+
+header {
+    background-color: #5a0a25;
+    text-align:center;
+}
+
+nav {
+    background: #5a0a25;
+    font-size: 1.3rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+nav>a {
+    display: inline-block;
+    padding: 0.5%;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+nav>a:hover {
+    background: #ffffff;
+    color: #5a0a25;
+}
+    
+#welcome_page_container {
+    display : flex;
+}
+
+#about {
+    width : 60%
+}
+
+
+// feature image styles
+
+.feature_img {
+    width: 100%;
+    height: auto;
+}
+
+
+.feature_img_container {
+  position: relative;
+}
+
+.bottomleft {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+  font-size: 36px;
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+// login form styling
+
+#login_form_container{
+    padding: 16px;
+    text-align: center;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    border-color: 1px solid #5a0a25;
+}
+
+.bor{
+    border: 1px solid ;
+    width: 50%; 
+}
+
 input {
   width: 100%;
   padding: 12px 20px;

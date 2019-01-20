@@ -1,70 +1,70 @@
 <!DOCTYPE HTML>
 
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="description" content="R^2">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <title>R^2 advanced search</title>
-    </head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="R^2">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <body>
-        <%= render './layouts/nav.html.erb' %>
-        <main>
-            <fieldset>
-                <legend>Advanced Search</legend>
+    <title>R^2 advanced search</title>
+  </head>
+  <body>
+    <%= render './layouts/nav.html.erb' %>
+    <main>
+      <fieldset id="search_area">
+        <legend>Advanced Search</legend>
+          <%= form_tag({:controller => "results", :action => "index"}, method: :get) do %>
+          <h1 class="heading">Room Preferences</h1>
 
-                
-                
-                <div class="heading">Room Preferences</div>
+          <%= label_tag(:building_name, "Building") %>
+          <%= collection_select :room, :building_name,
+          Room.select('DISTINCT building_name'),
+          :building_name, :building_name, {include_blank: 'Any'} %>
 
-                <%= label_tag(:location, "Building") %>
-                <%= select_tag(:location, options_for_select([['Any', 1], ['HRBB', 2], ['RDMC', 3]])) %>
-
-                <br>
-                <%= label_tag(:roomtype, "Room Type") %>
-                <%= select_tag(:roomtype, options_for_select([['Any', 1],['Executive Meeting Room', 2], ['Event Hall', 3], ['Lecture Room', 4], ['Computer Lab', 5]])) %>
-
-                <br>
-                <%= label_tag(:NumPeople, "Number of People") %>
-                <%= select_tag(:NumPeople, options_for_select([['Any', 1],['1', 2], ['1-4', 3], ['5-25', 4], ['26-100', 5],['101-500', 5]])) %>
-
-                
-                <br>
-                <%= label_tag(:Arrangment, "Arrangment") %>
-                <%= select_tag(:Arrangment, options_for_select([['Any', 1],['Tables and Chairs', 2], ['Desks and Chairs', 3], ['Chairs', 4]])) %>
-
-               
-                <br>
-                <%= label_tag(:tech, "Tech") %>
-                <%= select_tag(:tech, options_for_select([['Any', 1],['Computers', 2], ['Projector', 3], ['Computers and Projector', 4], ['None', 5]])) %>
-
-                <br>
-                
-
-                <div class="heading">Reservation Period</div>
-
-                <%= label_tag(:startdate, "Start Date") %>
-                <%= date_field(:booking, :startdate) %>
-                <%= label_tag(:enddate, "End Date") %>
-                <%= date_field(:booking, :enddate) %>
+          <%= label_tag(:roomtype, "Room Type") %>
+          <%= collection_select :room, :roomtype,
+          Room.select('DISTINCT roomtype'),
+          :roomtype, :roomtype, {include_blank: 'Any'} %>
 
 
-                <%= label_tag(:starttime, "Start Time") %>
-                <%= time_field(:booking, :starttime, value: "11:00") %>
-                <%= label_tag(:endtime, "End Time") %>
-                <%= time_field(:booking, :endtime, value: "12:00") %>
+          <br>
+          <%= label_tag(:numpeople, "Number of People") %>
+          <%= collection_select :room, :numpeople,
+          Room.select('DISTINCT numpeople'),
+          :numpeople, :numpeople, {include_blank: 'Any'} %>
+          
+          <br>
+          <%= label_tag(:arrangement, "Furniture") %>
+          <%= collection_select :room, :arrangement,
+          Room.select('DISTINCT arrangement'),
+          :arrangement, :arrangement, {include_blank: 'Any'} %>  
+            
+          <br>
+          <%= label_tag(:tech, "Technology") %>
+          <%= collection_select :room, :tech,
+          Room.select('DISTINCT tech'),
+          :tech, :tech, {include_blank: 'Any'} %>
+          
+          <!-- to implement later on, idk how to merge the data together -->
+          <!--<div class="heading">Reservation Period</div>-->
 
-              
- <%=link_to'<button class = "btn" title = "Search" type = "button"> Search </button> '.html_safe, results_path%> 
-           
-               
-            </fieldset>
-        </main>
-    </body>
-    <div class="container">
-        <%= debug(params) if Rails.env.development? %>
-    </div>
+          <!--<%= label_tag(:startdate, "Start Date") %>-->
+          <!--<%= date_field(:booking, :startdate) %>-->
+          <!--<%= label_tag(:enddate, "End Date") %>-->
+          <!--<%= date_field(:booking, :enddate) %>-->
+
+
+          <!--<%= label_tag(:starttime, "Start Time") %>-->
+          <!--<%= time_field(:booking, :starttime, value: "11:00") %>-->
+          <!--<%= label_tag(:endtime, "End Time") %>-->
+          <!--<%= time_field(:booking, :endtime, value: "12:00") %>-->
+          <%= submit_tag 'Search' %>
+        <% end %>
+      </fieldset>
+    </main>
+  </body>
+  <div class="container">
+      <%= debug(params) if Rails.env.development? %>
+  </div>
 </html>
 

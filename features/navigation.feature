@@ -3,9 +3,10 @@ As a user
 I want to access common links
 So that I can have convenience
 
-Scenario: User accesses Login page
-When I click on the Login button
-Then I should see the Login view
+
+Scenario: User Logout
+When I click on the Logout button
+Then I should see the Login page
 
 Scenario: User accesses Home page
 When I click on the Home button
