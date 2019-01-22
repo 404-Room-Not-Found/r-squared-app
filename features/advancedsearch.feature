@@ -8,5 +8,5 @@ Scenario: User views Advanced Search form
   Then I should see the Advanced Search form
 
 Scenario: User submits Advanced Search form
-  When I submit the form
+  Given I submit the form
   Then I should see a list of available rooms
