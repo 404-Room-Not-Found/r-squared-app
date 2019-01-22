@@ -36,6 +36,6 @@ When(/^I click on the Browsing Search button$/) do
 end
 
 Then(/^I should see the Browsing Search view$/) do
-  expect(page).to have_content("Browsing Search")
+  page.has_content?("Browsing Search")
 end
 
