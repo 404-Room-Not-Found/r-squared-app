@@ -6,11 +6,13 @@ Rails.application.routes.draw do
   get 'sessions/new'
   get 'app/views/login/index.html.erb', to: 'login#index', as: 'login'
   get 'app/views/home/index.html.erb', to: 'home#index', as: 'home'
+  get 'app/views/results/index.html.erb', to: 'results#index', as: 'results'
   get 'app/views/advancedsearch/index.html.erb', to: 'advancedsearch#index', as: 'advancedsearch'
   get 'app/views/browsingsearch/index.html.erb', to: 'browsingsearch#index', as: 'browsingsearch'
 
   get    '/bright',  to: 'bright#index'
   get    '/rdmc',    to: 'rdmc#index'
+  get    '/results',    to: 'results#index'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create', as: 'login_path'
   delete '/logout',  to: 'sessions#destroy'

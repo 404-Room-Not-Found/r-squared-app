@@ -15,11 +15,3 @@ Then("I should see the Advanced Search form") do
 
 end
 
-Given("I submit the form") do
-  visit ('/results?')
-end
-
-Then("I should see a list of available rooms") do
-  page.has_content?("Search Results")
-end
-
