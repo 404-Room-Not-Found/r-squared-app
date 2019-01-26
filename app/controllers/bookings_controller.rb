@@ -1,7 +1,11 @@
 class BookingsController < ApplicationController
-include Comparable
-
 before_action :validate_access 
+  include Comparable
+  attr :str
+  def <=>(other)
+    str.size <=> other.str.size
+  end
+  
   def booking_params
     params.require(:booking).permit(:room_id,:booker_id,
     :time_start,:time_end, :building_name)
