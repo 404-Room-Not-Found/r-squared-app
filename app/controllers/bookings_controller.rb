@@ -1,4 +1,6 @@
 class BookingsController < ApplicationController
+include Comparable
+
 before_action :validate_access 
   def booking_params
     params.require(:booking).permit(:room_id,:booker_id,
