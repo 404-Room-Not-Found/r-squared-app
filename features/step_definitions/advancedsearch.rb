@@ -15,7 +15,3 @@ Then("I should see the Advanced Search form") do
 
 end
 
-<<<<<<< HEAD
-=======
-
->>>>>>> b8056af58e1802573fa4ca180de3c5bc616702d0
