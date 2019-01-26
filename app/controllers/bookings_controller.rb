@@ -31,7 +31,7 @@ before_action :validate_access
     # redirect_to home_index_path
     bookings = Booking.where(:room_id => booking_params[:room_id])
     bookings.each do |booking|
-      if params[:time_end].between?(booking.time_end, booking.time_start) || params[:time_start].between?(booking.time_end, booking.time_start)
+      if attributes[:time_end].between?(booking.time_end, booking.time_start) || attributes[:time_start].between?(booking.time_end, booking.time_start)
         flash[:error] = "Current Slot Time is already taken!"
         redirect_to bookings_path
         return
