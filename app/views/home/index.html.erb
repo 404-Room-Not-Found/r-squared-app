@@ -45,6 +45,8 @@
               <% end %>
                 
               <%= link_to "Make New Booking", new_booking_path, :class => "btn" %>
+              <%=link_to'<button class = "btn" title = "Add Room" type = "button"> Add Room </button> '.html_safe, add_path%>
+              <%=link_to'<button class = "btn" title = "Delete Room" type = "button"> Delete Room </button> '.html_safe, delete_path%>
             </center>
         </main>
         <div class="container">

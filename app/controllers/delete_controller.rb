@@ -1,4 +1,4 @@
-class RoomsController < ApplicationController
+class DeleteController < ApplicationController
 before_action :validate_access 
 
   def room_params
@@ -12,7 +12,7 @@ before_action :validate_access
   end
 
   def index
-    @rooms = Room.all
+    @rooms = Room.order(:room_id)
   end
 
   def new
@@ -50,7 +50,7 @@ before_action :validate_access
   def destroy
     @Room = Room.find(params[:id])
     @Room.destroy
-    
+    @rooms = Room.order(:room_id)
     redirect_to delete_path
   end
   

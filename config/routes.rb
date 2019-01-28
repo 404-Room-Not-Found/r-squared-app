@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   get 'app/views/browsingsearch/index.html.erb', to: 'browsingsearch#index', as: 'browsingsearch'
 
   get    '/bright',   to: 'bright#index'
-  get    '/rdmc',       to: 'rdmc#index'
+  get    '/rdmc',   to: 'rdmc#index'
+  get    '/add',    to: 'add#index'
+  get    '/delete',       to: 'delete#index'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create', as: 'login_path'
   delete '/logout',  to: 'sessions#destroy'
