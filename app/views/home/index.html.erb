@@ -46,6 +46,8 @@
                 
               <%= link_to "Make New Booking", new_booking_path, :class => "btn" %>
             </center>
+            <br><br>
+            <%= render './layouts/footer.html.erb' %>
         </main>
         <div class="container">
           <%= debug(params) if Rails.env.development? %>

@@ -82,3 +82,18 @@ nav>a.active {
 .nav_img {
     width: 180px;
 }
+
+.footer_btn {
+    display: inline;
+    bottom: 0;
+    color: #5a0a25;
+    text-align: center;
+    padding: 16px;
+    width: 50%;
+    transition-duration: 0.4s;
+    border: 2px solid #5a0a25;
+    background-color: #870d36;
+    color: white;
+    box-shadow: 0 9px #999;
+    border-radius: 12px;
+}

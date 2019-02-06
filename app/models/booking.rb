@@ -12,7 +12,7 @@ class Booking < ActiveRecord::Base
     scope :exclude_self, -> id { where.not(id: id) }
     
     def time_overlaps
-        range = Range.new time_start, time_end
+        range = Range.new time_start, time_end 
         overlaps = Booking.exclude_self(room_id).in_range(range)
         overlap_error unless overlaps.empty?
     end
