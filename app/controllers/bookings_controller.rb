@@ -20,9 +20,6 @@ before_action :validate_access
   end
 
   def create
-    # @booking = Booking.create!(booking_params)
-    # flash[:notice] = "#{@booking.id} was successfully created."
-    # redirect_to home_index_path
     book_status = false
     start_time = DateTime.new(booking_params["time_start(1i)"].to_i, booking_params["time_start(2i)"].to_i, booking_params["time_start(3i)"].to_i, booking_params["time_start(4i)"].to_i, booking_params["time_start(5i)"].to_i)
     end_time = DateTime.new(booking_params["time_end(1i)"].to_i, booking_params["time_end(2i)"].to_i, booking_params["time_end(3i)"].to_i, booking_params["time_end(4i)"].to_i, booking_params["time_end(5i)"].to_i)
@@ -30,7 +27,7 @@ before_action :validate_access
     if !room.nil?
       room.each do |row|
          if start_time.between?(row.time_start, row.time_end) || end_time.between?(row.time_start, row.time_end) || row.time_start.between?(start_time, end_time) || row.time_end.between?(start_time, end_time)
-            flash[:notice] = "Time Overlap"
+            flash[:notice] = "Booking has time conflict. Please adjust reservation time."
             book_status = false
             break
           else
