@@ -8,17 +8,21 @@
         
         <title>R^2 home</title>
     </head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     
     <body>
         <%= render './layouts/nav.html.erb' %>
         
+  <!----------------------Make_booking BUTTON -------------------------------------------->
         <h2>Welcome back <%= current_user_name %>!</h2>
         
         <main>
             <center>
-              <% if @current_bookings != nil %>
-                <table class="bod" width= 90%>
+              <% if @currents_bookings != nil %>
+                <table width= 90%>
                   <h1>My Reservations</h1>
+                  <%= link_to "Make New Booking", new_booking_path, :class => "btn" %>
                   <tr>
                     <th>Building</th>
                     <th>Room Number</th>
@@ -27,7 +31,7 @@
                     <th>Operate Start</th>
                     <th>Operate End</th>
                   </tr>
-                  <% @current_bookings.each do |booking| %>
+                  <% @currents_bookings.each do |booking| %>
                      <tr>
                       <td><%= Room.find(booking.room_id).building_name %></td>
                       <td><%= Room.find(booking.room_id).room_id %></td>
@@ -43,14 +47,70 @@
               <% else %>
                 <p>No reservations.</p>
               <% end %>
-                
-              <%= link_to "Make New Booking", new_booking_path, :class => "btn" %>
             </center>
-            <br><br>
-            <%= render './layouts/footer.html.erb' %>
+          <!----------------------HISTORY BUTTON -------------------------------------------->
+          <center>
+            <button class ="btn" onclick ="myFunction()">Show History</button>
+              
+               <th><% @current_date.to_s %></th>
+          
+               <% if @history_bookings != nil %>
+                  <table id="history" width= 90% style ="display: none;">
+                    <h1 id= "history1" style ="display: none;">My History</h1>
+                    <tr>
+                      <th>Building</th>
+                      <th>Room Number</th>
+                      <th>Room Type</th>
+                      <th>Reason</th>
+                      <th>Operate Start</th>
+                      <th>Operate End</th>
+                    </tr>
+                    <% @history_bookings.each do |booking| %>
+                       <tr>
+                        <td><%= Room.find(booking.room_id).building_name %></td>
+                        <td><%= Room.find(booking.room_id).room_id %></td>
+                        <td><%= Room.find(booking.room_id).roomtype %></td>
+                        <td><%= booking.reason %></td>
+                        <td><%= booking.time_start.strftime("%b %d %Y, %-l.%M%P") %></td>
+                        <td><%= booking.time_end.strftime("%b %d %Y, %-l.%M%P") %></td>
+                        
+                       </tr>
+                    <% end %>
+                </table>               
+               
+               <% else %>
+                <h1 style = "display: none;">No reservations.</h1>
+              <% end %>
+          </center>
+      
+          
         </main>
         <div class="container">
           <%= debug(params) if Rails.env.development? %>
         </div>
+        
+         <br><br>
+         <%= render './layouts/footer.html.erb' %>
     </body>
+    
+    
+    
+<!-----------------------------------------JAVASCRIPT -------------------------------------> 
+<script>
+function myFunction() {
+  var x = document.getElementById("history");
+  var y = document.getElementById("history1");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+  if (y.style.display === "none") {
+    y.style.display = "block";
+  } else {
+    y.style.display = "none";
+  }
+};
+</script>
+   
 </html>

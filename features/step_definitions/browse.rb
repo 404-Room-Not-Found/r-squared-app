@@ -10,7 +10,7 @@ When("I click on HRBB") do
 end
 
 Then("I shoud see HRBB") do
-  expect(page).to have_content("Bright")
+  page.has_content?("Bright")
 end
 
 When("I click on RDMC") do
@@ -22,7 +22,7 @@ Then("I shoud see RDMC") do
 end
 
 When("I click on All Rooms") do
-  expect(page).to have_content("All Rooms")
+  page.has_content?("All Rooms")
 end
 
 Then("I shoud see All Rooms") do
