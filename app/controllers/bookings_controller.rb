@@ -55,30 +55,29 @@ before_action :validate_access
 
   def update
     @book_status = false
+    @total_conflicts = 0
     room = Booking.where(:room_id => booking_params[:room_id])
     start_time = DateTime.new(booking_params["time_start(1i)"].to_i, booking_params["time_start(2i)"].to_i, booking_params["time_start(3i)"].to_i, booking_params["time_start(4i)"].to_i, booking_params["time_start(5i)"].to_i)
     end_time = DateTime.new(booking_params["time_end(1i)"].to_i, booking_params["time_end(2i)"].to_i, booking_params["time_end(3i)"].to_i, booking_params["time_end(4i)"].to_i, booking_params["time_end(5i)"].to_i)
     if !room.nil?
       room.each do |row|
          if start_time.between?(row.time_start, row.time_end) || end_time.between?(row.time_start, row.time_end) || row.time_start.between?(start_time, end_time) || row.time_end.between?(start_time, end_time)
-            flash[:notice] = "Booking has time conflict. Please adjust reservation time."
-            @book_status = false
-            break
-          else
-              @book_status = true
+            @total_conflicts += 1
         end
       end
-      if @book_status == false
+      if @total_conflicts > 1
+        flash[:notice] = "Booking has time conflict. Please adjust reservation time."
         redirect_to edit_booking_path and return
-      elsif @book_status == true
+      else
         @booking = Booking.find params[:id]
-        @booking = Booking.update_attributes!(booking_params)
-        flash[:notice] = "#{booking.id} was successfully updated."
+        @booking = @booking.update_attributes(booking_params)
+        # flash[:notice] = "#{@booking.id} was successfully updated."
         redirect_to home_index_path and return
       end
     end
     if room.nil?
-      @booking = Booking.update_attributes!(booking_params)
+      @booking = Booking.find params[:id]
+      @booking = @booking.update_attributes(booking_params)
       flash[:notice] = "#{@booking.id} was successfully updated."
       redirect_to home_index_path and return
     end

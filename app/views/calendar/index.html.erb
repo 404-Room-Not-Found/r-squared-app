@@ -22,11 +22,11 @@
               <%= link_to "Previous", start_date: date_range.first - 1.day %>
               <%= link_to "Next", start_date: date_range.last + 1.day %>
               
-                <table width= 90%>
+                <table class="calendar" width= 90%>
                     <thead>
                         <tr>
                             <% date_range.slice(0, 7).each do |day| %>
-                                <th><%= I18n.t("date.abbr_day_names")[day.wday] %></th>
+                                <th id="calendar_th"><%= I18n.t("date.abbr_day_names")[day.wday] %></th>
                             <% end %> 
                         </tr>
                     </thead>
@@ -35,12 +35,12 @@
                         <% date_range.each_slice(7) do |week| %>
                             <tr>
                                 <% week.each do |day| %>
-                                    <td>
+                                    <td id="calendar_td">
                                         <%= day %>
                                         <% @current_bookings.each do |booking| %>
                                             <% if booking.time_start.to_date == day.to_date %>
                                                 <% details = booking.building_name.to_s + " " + Room.find(booking.room_id).room_id.to_s %>
-                                                <%= link_to details %>
+                                                <%= link_to details, calendar_bookings_path(booking) %>
                                             <% end %>
                                         <% end %> 
                                     </td>

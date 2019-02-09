@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'app/views/advancedsearch/index.html.erb', to: 'advancedsearch#index', as: 'advancedsearch'
   get 'app/views/browsingsearch/index.html.erb', to: 'browsingsearch#index', as: 'browsingsearch'
   get 'app/views/calendar/index.html.erb', to: 'calendar#index', as: 'calendar'
+  get 'app/views/calendar_bookings/index.html.erb', to: 'calendar_bookings#index', as: 'calendar_bookings'
 
   get    '/bright',   to: 'bright#index'
   get    '/rdmc',       to: 'rdmc#index'
