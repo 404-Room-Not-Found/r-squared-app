@@ -1,9 +1,19 @@
 class HomeController < ApplicationController
     def index
-      @current_bookings = Booking.where(:booker_id => session[:user_id])
+      @currents_bookings = Booking.where(:booker_id => session[:user_id])
       @current_user = User.find(session[:user_id])
+      @current_time = DateTime.now
+      @current_bookings = Booking.where(:booker_id => session[:user_id]).
+                          where("time_end  > ?", DateTime.now)
+      @history_bookings = Booking.where(:booker_id => session[:user_id]).
+                          where("time_end  < ?", DateTime.now)
+    
     end
     
+    def params
+      @params
+    end
+     
     before_action :validate_access 
 
 private 

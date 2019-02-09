@@ -17,6 +17,7 @@ before_action :validate_access
 
   def new
     @booking = Booking.new
+    @user = User.where(:id => session[:user_id])
   end
 
   def create
