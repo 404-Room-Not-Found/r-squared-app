@@ -15,4 +15,3 @@ Then("I should see the Advanced Search form") do
 
 end
 
-
