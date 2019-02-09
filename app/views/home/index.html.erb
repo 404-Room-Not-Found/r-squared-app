@@ -8,6 +8,14 @@
         
         <title>R^2 home</title>
     </head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+      $("button").click(function(){
+        $("p").toggle();
+      });
+    });
+    </script>
     
     <body>
         <%= render './layouts/nav.html.erb' %>
@@ -46,9 +54,21 @@
                 
               <%= link_to "Make New Booking", new_booking_path, :class => "btn" %>
             </center>
+          
+            <button class ="btn">Show History</button>
+            <p style = "display: none;">
+              
+                <p>No Previous Booking</p>
+          
+                <p>
+                  Booking
+                </p>
+              
+            </p>
         </main>
         <div class="container">
           <%= debug(params) if Rails.env.development? %>
         </div>
     </body>
+   
 </html>

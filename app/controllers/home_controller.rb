@@ -4,6 +4,10 @@ class HomeController < ApplicationController
       @current_user = User.find(session[:user_id])
     end
     
+    def params
+      @params
+    end
+     
     before_action :validate_access 
 
 private 
