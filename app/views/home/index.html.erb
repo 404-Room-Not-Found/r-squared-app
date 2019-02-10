@@ -27,6 +27,8 @@
                     <th>Operate Start</th>
                     <th>Operate End</th>
                   </tr>
+                   <%@current_bookings = Booking.where(:booker_id => session[:user_id])%>
+    
                   <% @current_bookings.each do |booking| %>
                      <tr>
                       <td><%= Room.find(booking.room_id).building_name %></td>

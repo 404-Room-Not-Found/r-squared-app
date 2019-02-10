@@ -42,15 +42,23 @@ before_action :validate_access
 
   def update
     @room = Room.find params[:id]
+    @booking.update_attributes!(Booking_params)
     @room.update_attributes!(Room_params)
     flash[:notice] = "#{@room.name} was successfully updated."
     redirect_to room_path(@room)
   end
 
   def destroy
+    
+    @Booking = Booking.find(params[:id])
+    @Booking.destroy
+    @current_bookings = Booking.where(:booker_id => session[:user_id])
+    
+    
     @Room = Room.find(params[:id])
     @Room.destroy
     @rooms = Room.order(:room_id)
+    
     redirect_to delete_path
   end
   
