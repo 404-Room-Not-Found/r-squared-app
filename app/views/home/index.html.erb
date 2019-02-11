@@ -19,7 +19,7 @@
         
         <main>
             <center>
-              <% if @currents_bookings != nil %>
+              <% if @current_bookings != nil %>
                 <table width= 90%>
                   <h1>My Reservations</h1>
                   <%= link_to "Make New Booking", new_booking_path, :class => "btn" %>
@@ -31,7 +31,7 @@
                     <th>Operate Start</th>
                     <th>Operate End</th>
                   </tr>
-                  <% @currents_bookings.each do |booking| %>
+                  <% @current_bookings.each do |booking| %>
                      <tr>
                       <td><%= Room.find(booking.room_id).building_name %></td>
                       <td><%= Room.find(booking.room_id).room_id %></td>
