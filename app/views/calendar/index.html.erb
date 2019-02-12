@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="R^2">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>R^2 home</title>
+    </head>
+    
+    <body>
+        <%= render './layouts/nav.html.erb' %>
+        
+        <h2>Calendar Outlook</h2>
+        
+        <main>
+            <center>
+              <% start_date = params.fetch(:start_date, Date.today).to_date %>
+              <% date_range = (start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week).to_a %>
+              
+              <%= link_to "Previous", start_date: date_range.first - 1.day %>
+              <%= link_to "Next", start_date: date_range.last + 1.day %>
+              
+                <table width= 90%>
+                    <thead>
+                        <tr>
+                            <% date_range.slice(0, 7).each do |day| %>
+                                <th><%= I18n.t("date.abbr_day_names")[day.wday] %></th>
+                            <% end %> 
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <% date_range.each_slice(7) do |week| %>
+                            <tr>
+                                <% week.each do |day| %>
+                                    <td>
+                                        <%= day %>
+                                        <% @current_bookings.each do |booking| %>
+                                            <% if booking.time_start.to_date == day.to_date %>
+                                                <% details = booking.building_name.to_s + " " + Room.find(booking.room_id).room_id.to_s %>
+                                                <%= link_to details %>
+                                            <% end %>
+                                        <% end %> 
+                                    </td>
+                                <% end %>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+                
+            </center>
+            <br> <br>
+            <%= render './layouts/footer.html.erb' %>
+        </main>
+        <div class="container">
+          <%= debug(params) if Rails.env.development? %>
+        </div>
+    </body>
+</html>

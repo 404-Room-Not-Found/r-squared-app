@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+ 
+  get 'booking/index'
 # For styled pages
   root 'sessions#new'
 
@@ -9,6 +11,7 @@ Rails.application.routes.draw do
   get 'app/views/results/index.html.erb', to: 'results#index', as: 'results'
   get 'app/views/advancedsearch/index.html.erb', to: 'advancedsearch#index', as: 'advancedsearch'
   get 'app/views/browsingsearch/index.html.erb', to: 'browsingsearch#index', as: 'browsingsearch'
+  get 'app/views/calendar/index.html.erb', to: 'calendar#index', as: 'calendar'
 
   get    '/bright',  to: 'bright#index'
   get    '/rdmc',    to: 'rdmc#index'
