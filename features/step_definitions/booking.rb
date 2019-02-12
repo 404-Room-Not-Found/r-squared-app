@@ -30,3 +30,26 @@ When("I click Delete") do
   visit ('/home')
 end
 
+When("I click Calander View") do
+  visit ('/calander')
+end
+
+Then("I shoud see a list of Calander View") do
+  page.has_content?('Calander')
+end
+
+When("I click List View") do
+  visit ('/home')
+end
+
+Then("I shoud see a list of My Reservation") do
+  page.has_content?("My Reservations")
+end
+
+When("I click Show History View") do
+  visit ('/home')
+end
+
+Then("I shoud see a list of My History") do
+  page.has_content?("My History")
+end
