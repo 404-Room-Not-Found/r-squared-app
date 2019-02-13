@@ -19,3 +19,4 @@ class Room < ActiveRecord::Base
     scope :tech, -> (tech) { where tech: tech }
 #   scope :starts_with, -> (name) { where("name like ?", "#{name}%")}
 end
+

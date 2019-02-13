@@ -2,7 +2,9 @@ class RoomsController < ApplicationController
 before_action :validate_access 
 
   def room_params
-    params.require(:Room).permit(:room_id, :roomtype, :operate_start, :operate_end)
+    # todo: fix
+    params[:Room]='wtf'
+    params.permit(:room_id, :roomtype, :building_name)
   end
 
   def show
@@ -31,8 +33,8 @@ before_action :validate_access
   end
 
   def create
-    @room = Room.create!(room_params)
-    flash[:notice] = "#{@room.name} was successfully created."
+    @room = Room.create!(building_name: params[:room][:building_name], room_id: params[:Roomid])
+    flash[:notice] = "#{@room.building_name} #{@room.room_id} was successfully created."
     redirect_to rooms_path
   end
 

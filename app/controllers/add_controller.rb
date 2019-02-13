@@ -12,22 +12,28 @@ before_action :validate_access
   end
 
   def index
-    @rooms = Room.order(:room_id)
+    #@room = Rooms.all
+    #params.require(:Room).permit(:room_id, :roomtype, :operate_start, :operate_end)
+   # @room = Room.new(:building_name)
+    #@rooms = Room.filter_from_params(filtering_params)
+    
+    @rooms = Room.new(:id => "id")
+    #@rooms.save
   end
 
   def new
-    #attr_accessor :building_name, :room_id, :roomtype, :description, :booked, :booker, :operate_start, :operate_end
-    # def initialize(attributes = {})
-    #   @building_name  = attributes[:building_name]
-    #   @room_id = attributes[:room_id]
-    #   @roomtype = attributes[:roomtype]
-    #   @description = attributes[:description]
+    attr_accessor :building_name, :room_id, :roomtype, :description
+     def initialize(attributes = {})
+      @building_name  = attributes[:building_name]
+       @room_id = attributes[:room_id]
+       @roomtype = attributes[:roomtype]
+       #@description = attributes[:description]
     #   @booked = attributes[:booked]
     #   @booker = attributes[:booker]
     #   @operate_start = attributes[:operate_start]
     #   @operate_end = attributes[:operate_end]
       
-    # end
+     end
   end
 
   def create
@@ -48,10 +54,8 @@ before_action :validate_access
   end
 
   def destroy
-    
     @Room = Room.find(params[:id])
     @Room.destroy
-    @rooms = Room.order(:room_id)
     
     redirect_to delete_path
   end
@@ -62,4 +66,5 @@ private
         redirect_to root_path
       end 
   end
+
 end

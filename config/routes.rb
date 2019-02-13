@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get    '/bright',   to: 'bright#index'
   get    '/rdmc',   to: 'rdmc#index'
   get    '/add',    to: 'add#index'
+  post   '/add',     to: 'rooms#create'
   get    '/delete',       to: 'delete#index'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create', as: 'login_path'

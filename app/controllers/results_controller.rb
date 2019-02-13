@@ -11,11 +11,11 @@ class ResultsController < ApplicationController
   end
   
   private
-  # A list of the param names that can be used for filtering the Product list
+   #A list of the param names that can be used for filtering the Product list
   def filtering_params
     params[:room].slice(:building_name, :roomtype, :numpeople, :arrangement,
     :tech)
-  end
+end
   
   
   

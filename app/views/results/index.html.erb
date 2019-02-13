@@ -26,7 +26,7 @@
                 <th>Technology</th>
                 <th>Arrangment</th>
                 <th>Number of People</th>
-                <th>Booked</th>
+                
                 
               </tr>
             
@@ -41,7 +41,7 @@
                   <td><%= room.tech %></td>
                   <td><%= room.arrangement%> </td>
                   <td><%= room.numpeople%> </td>
-                  <td><%= room.booked%></td>
+                 
                   <% if room.booked == false %>
                     <td><%= link_to "Book", new_booking_path(
                     :building_name => room.building_name,

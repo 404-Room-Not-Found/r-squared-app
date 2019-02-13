@@ -12,12 +12,10 @@
     <body>
       <%= render './layouts/nav.html.erb' %>
       <main>
-        <fieldset>
+        <fieldset id="addroom">
           
-          <%#  erb comment: to uncomment take away # in each erb line %>
-<!--  html comment take away the  <!--  -->
-
-<%= form_tag({:controller => "add", :action => "index"}, method: :get) do %>
+<legend>Add Room</legend>
+<%= form_tag({:controller => "rooms", :action => "create"}, method: :post) do %>
           <h1 class="heading">Add Room</h1>
 
           <%= label_tag(:building_name, "Building") %>
@@ -28,8 +26,6 @@
           Room Number:
           <input type="text" name=Roomid><br>
        
-          
-
           <%= label_tag(:roomtype, "Room Type") %>
           <%= collection_select :room, :roomtype,
           Room.select('DISTINCT roomtype'),
@@ -62,4 +58,7 @@
         </fieldset>
       </main>
     </body>
+    <div class="container">
+      <%= debug(params) if Rails.env.development? %>
+  </div>
 </html>
