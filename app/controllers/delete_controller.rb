@@ -1,10 +1,8 @@
-class RoomsController < ApplicationController
+class DeleteController < ApplicationController
 before_action :validate_access 
 
   def room_params
-    # todo: fix
-    params[:Room]='wtf'
-    params.permit(:room_id, :roomtype, :building_name)
+    params.require(:Room).permit(:room_id, :roomtype, :operate_start, :operate_end)
   end
 
   def show
@@ -14,7 +12,7 @@ before_action :validate_access
   end
 
   def index
-    @rooms = Room.all
+    @rooms = Room.order(:room_id)
   end
 
   def new
@@ -33,13 +31,8 @@ before_action :validate_access
   end
 
   def create
-    @room = Room.create!(building_name: params[:room][:building_name], 
-    room_id: params[:Roomid], tech: params[:room][:tech],
-    roomtype: params[:room][:roomtype], numpeople: params[:room][:numpeople],
-    arrangement: params[:room][:arrangement], operate_start: params[:room][:operate_start],
-    operate_end: params[:room][:operate_end], description: params[:room][:description])
-    
-    flash[:notice] = "#{@room.building_name} #{@room.room_id} was successfully created."
+    @room = Room.create!(room_params)
+    flash[:notice] = "#{@room.name} was successfully created."
     redirect_to rooms_path
   end
 
@@ -49,22 +42,25 @@ before_action :validate_access
 
   def update
     @room = Room.find params[:id]
+    @booking.update_attributes!(Booking_params)
     @room.update_attributes!(Room_params)
     flash[:notice] = "#{@room.name} was successfully updated."
     redirect_to room_path(@room)
   end
 
   def destroy
-
-      @Booking = Booking.find(params[:id])
-      @Booking.destroy
-      @current_bookings = Booking.where(:booker_id => session[:user_id])
-      flash[:notice] = "Reservation are influenced"
     
-      @Room = Room.find(params[:id])
-      @Room.destroy
-      flash[:notice] = "No reservation are influenced"
-  
+    
+        @Booking = Booking.find(params[:id])
+        @Booking.destroy
+        @current_bookings = Booking.where(:booker_id => session[:user_id])
+    
+    
+    
+    @Room = Room.find(params[:id])
+    @Room.destroy
+    @rooms = Room.order(:room_id)
+    
     redirect_to delete_path
   end
   

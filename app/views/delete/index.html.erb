@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="R^2">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>R^2 browsing search</title>
+    </head>
+    <h1>Delete Rooms</h1>
+    <body>
+      <%= render './layouts/nav.html.erb' %>
+      <main>
+        <fieldset>
+          <table>
+  <tr>
+    <th>Building Name</th>
+    <th>Room ID</th>
+  </tr>
+
+  <% @rooms.each do |room| %>
+    <tr>
+      <td><%= room.building_name %></td>
+      <td><%= room.room_id %></td>
+      <td><%= link_to "Delete", room , :method => :delete, data: { confirm: 'Are you sure you want to delete the room?' } %></td>
+      
+    </tr>
+  <% end %>
+</table>
+          
+        </fieldset>
+      </main>
+    </body>
+</html>

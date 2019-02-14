@@ -19,7 +19,7 @@
         
         <main>
             <center>
-              <% if @currents_bookings != nil %>
+              <% if @current_bookings != nil %>
                 <table width= 90%>
                   <h1>My Reservations</h1>
                   <%= link_to "Make New Booking", new_booking_path, :class => "btn" %>
@@ -31,7 +31,9 @@
                     <th>Operate Start</th>
                     <th>Operate End</th>
                   </tr>
-                  <% @currents_bookings.each do |booking| %>
+                   <%@current_bookings = Booking.where(:booker_id => session[:user_id])%>
+    
+                  <% @current_bookings.each do |booking| %>
                      <tr>
                       <td><%= Room.find(booking.room_id).building_name %></td>
                       <td><%= Room.find(booking.room_id).room_id %></td>
@@ -47,11 +49,17 @@
               <% else %>
                 <p>No reservations.</p>
               <% end %>
+
+                
+            
+             
+
             </center>
           <!----------------------HISTORY BUTTON -------------------------------------------->
           <center>
             <button class ="btn" onclick ="myFunction()">Show History</button>
-              
+            
+            
                <th><% @current_date.to_s %></th>
           
                <% if @history_bookings != nil %>
@@ -81,6 +89,11 @@
                <% else %>
                 <h1 style = "display: none;">No reservations.</h1>
               <% end %>
+              <%if current_user_name == "Admin"%>
+             <%=link_to'<button class = "btn" title = "Add Room" type = "button"> Add Room </button> '.html_safe, add_path%>
+             <%=link_to'<button class = "btn" title = "Delete Room" type = "button"> Delete Room </button> '.html_safe, delete_path%>
+             <% end %>
+             
           </center>
       
           
@@ -93,7 +106,7 @@
          <%= render './layouts/footer.html.erb' %>
     </body>
     
-    
+     
     
 <!-----------------------------------------JAVASCRIPT -------------------------------------> 
 <script>

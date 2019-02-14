@@ -14,9 +14,17 @@ Rails.application.routes.draw do
   get 'app/views/calendar/index.html.erb', to: 'calendar#index', as: 'calendar'
   get 'app/views/calendar_bookings/index.html.erb', to: 'calendar_bookings#index', as: 'calendar_bookings'
 
+
   get    '/bright',  to: 'bright#index'
   get    '/rdmc',    to: 'rdmc#index'
   get    '/results',    to: 'results#index'
+
+  get    '/bright',   to: 'bright#index'
+  get    '/rdmc',   to: 'rdmc#index'
+  get    '/add',    to: 'add#index'
+  post   '/add',     to: 'rooms#create'
+  get    '/delete',       to: 'delete#index'
+
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create', as: 'login_path'
   delete '/logout',  to: 'sessions#destroy'

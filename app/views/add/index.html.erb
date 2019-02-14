@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="R^2">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>R^2 browsing search</title>
+    </head>
+    
+    <body>
+      <%= render './layouts/nav.html.erb' %>
+      <main>
+        <fieldset id="addroom">
+          
+<legend>Add Room</legend>
+<%= form_tag({:controller => "rooms", :action => "create"}, method: :post) do %>
+          <h1 class="heading">Add Room</h1>
+
+          <%= label_tag(:building_name, "Building") %>
+          <%= collection_select :room, :building_name,
+          Room.select('DISTINCT building_name'),
+          :building_name, :building_name, {include_blank: '-'},:required => true  %>
+          <br>
+          Room Number:
+          <input type="text" name=Roomid required>
+          <br>
+       
+          <%= label_tag(:roomtype, "Room Type") %>
+          <%= collection_select :room, :roomtype,
+          Room.select('DISTINCT roomtype'),
+          :roomtype, :roomtype, {include_blank: '-'},:required => true  %>
+
+          <br>
+          <%= label_tag(:numpeople, "Number of People") %>
+          <%= collection_select :room, :numpeople,
+          Room.select('DISTINCT numpeople'),
+          :numpeople, :numpeople, {include_blank: '-'},:required => true  %>
+          
+          <br>
+          <%= label_tag(:arrangement, "Furniture") %>
+          <%= collection_select :room, :arrangement,
+          Room.select('DISTINCT arrangement'),
+          :arrangement, :arrangement, {include_blank: '-'},:required => true  %>  
+            
+          <br>
+          <%= label_tag(:tech, "Technology") %>
+          <%= collection_select :room, :tech,
+          Room.select('DISTINCT tech'),
+          :tech, :tech, {include_blank: '-'},:required => true  %>
+         
+          <br>
+          
+          <%= label_tag(:operate_start, "Start Time") %>
+          <%= time_field(:room, :operate_start, value: "08:00") %>
+          
+          <%= label_tag(:operate_end, "End Time") %>
+          <%= time_field(:room, :operate_end, value: "19:00") %>
+          <br>
+          
+          
+          
+          
+          
+          
+          
+          <%= submit_tag 'Add Room' %>
+        <% end %>
+          
+          <%= link_to 'Back', :back, :class => "btn" %>
+        </fieldset>
+      </main>
+    </body>
+    <div class="container">
+      <%= debug(params) if Rails.env.development? %>
+  </div>
+</html>
