@@ -31,7 +31,7 @@
                     
                     <th>Room ID</th>
                     <th>Room Type</th>
-                    <th>Description</th>
+                    
                     <th>Operate Start</th>
                     <th>Operate End</th>
                     <th>Technology</th>
@@ -45,11 +45,9 @@
                       
                       <td><%= room.room_id %></td>
                       <td><%= room.roomtype %></td>
-                      <td><%= room.description %></td>
                       <td><%= room.operate_start.strftime("%k:%M") %></td>
                       <td><%= room.operate_end.strftime("%k:%M") %></td>
                       <td><%= room.tech %></td>
-                      
                       <td><%= room.arrangement%> </td>
                       <td><%= room.numpeople%> </td>
                     </tr>
