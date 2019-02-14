@@ -21,6 +21,9 @@
               
               <%= link_to "Previous", start_date: date_range.first - 1.day %>
               <%= link_to "Next", start_date: date_range.last + 1.day %>
+              <br><br>
+              
+              <center><h2><%= start_date.strftime("%B") %> <%= start_date.year%></h2> </center>
               
                 <table class="calendar" width= 90%>
                     <thead>
@@ -36,11 +39,12 @@
                             <tr>
                                 <% week.each do |day| %>
                                     <td id="calendar_td">
-                                        <%= day %>
+                                        <h4><%= day.strftime("%d") %></h4>
                                         <% @current_bookings.each do |booking| %>
                                             <% if booking.time_start.to_date == day.to_date %>
                                                 <% details = booking.building_name.to_s + " " + Room.find(booking.room_id).room_id.to_s %>
                                                 <%= link_to details, calendar_bookings_path(booking) %>
+                                                <br>
                                             <% end %>
                                         <% end %> 
                                     </td>

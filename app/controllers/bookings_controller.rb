@@ -3,7 +3,7 @@ before_action :validate_access
   def booking_params
     params.require(:booking).permit(:room_id,:booker_id,
     :time_start,:time_end, :building_name, :reason)
-  end
+  end 
 
   def show
     id = params[:id] # retrieve booking ID from URI route
@@ -39,13 +39,13 @@ before_action :validate_access
         redirect_to new_booking_path and return
       elsif @book_status == true
         @booking = Booking.create!(booking_params)
-        flash[:notice] = "#{@booking.id} was successfully created."
+        # flash[:notice] = "#{@booking.id} was successfully created."
         redirect_to home_index_path and return
       end
     end
     if room.nil?
       @booking = Booking.create!(booking_params)
-      flash[:notice] = "#{booking.id} was successfully created."
+      # flash[:notice] = "#{booking.id} was successfully created."
       redirect_to home_index_path and return
     end
   end
@@ -79,7 +79,7 @@ before_action :validate_access
     if room.nil?
       @booking = Booking.find params[:id]
       @booking = @booking.update_attributes(booking_params)
-      flash[:notice] = "#{@booking.id} was successfully updated."
+      # flash[:notice] = "#{@booking.id} was successfully updated."
       redirect_to home_index_path and return
     end
   end
@@ -87,7 +87,7 @@ before_action :validate_access
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy
-    flash[:notice] = "Booking '#{@booking.id}' deleted."
+    # flash[:notice] = "Booking '#{@booking.id}' deleted."
     redirect_to home_index_path
   end
 private 
