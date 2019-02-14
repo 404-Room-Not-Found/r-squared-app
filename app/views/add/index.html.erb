@@ -29,26 +29,38 @@
           <%= label_tag(:roomtype, "Room Type") %>
           <%= collection_select :room, :roomtype,
           Room.select('DISTINCT roomtype'),
-          :roomtype, :roomtype, {include_blank: 'Any'} %>
+          :roomtype, :roomtype, {include_blank: '-'} %>
 
 
           <br>
           <%= label_tag(:numpeople, "Number of People") %>
           <%= collection_select :room, :numpeople,
           Room.select('DISTINCT numpeople'),
-          :numpeople, :numpeople, {include_blank: 'Any'} %>
+          :numpeople, :numpeople, {include_blank: '-'} %>
           
           <br>
           <%= label_tag(:arrangement, "Furniture") %>
           <%= collection_select :room, :arrangement,
           Room.select('DISTINCT arrangement'),
-          :arrangement, :arrangement, {include_blank: 'Any'} %>  
+          :arrangement, :arrangement, {include_blank: '-'} %>  
             
           <br>
           <%= label_tag(:tech, "Technology") %>
           <%= collection_select :room, :tech,
           Room.select('DISTINCT tech'),
-          :tech, :tech, {include_blank: 'Any'} %>
+          :tech, :tech, {include_blank: '-'} %>
+         
+          <br>
+          
+          <%= label_tag(:operate_start, "Open Start") %>
+          <br>
+        <%= time_select :room, :operate_start, :ignore_date => true %>
+        <br>
+        <%= label_tag(:operate_end, "Closing Time") %>
+        <br>
+        <%= time_select :room, :operate_end, :ignore_date => true %>
+          
+          
           
           
           <%= submit_tag 'Add Room' %>

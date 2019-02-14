@@ -50,9 +50,11 @@ before_action :validate_access
 
   def destroy
     
-    @Booking = Booking.find(params[:id])
-    @Booking.destroy
-    @current_bookings = Booking.where(:booker_id => session[:user_id])
+    
+        @Booking = Booking.find(params[:id])
+        @Booking.destroy
+        @current_bookings = Booking.where(:booker_id => session[:user_id])
+    
     
     
     @Room = Room.find(params[:id])

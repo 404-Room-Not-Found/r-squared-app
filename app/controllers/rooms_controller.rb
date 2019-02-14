@@ -33,7 +33,11 @@ before_action :validate_access
   end
 
   def create
-    @room = Room.create!(building_name: params[:room][:building_name], room_id: params[:Roomid])
+    @room = Room.create!(building_name: params[:room][:building_name], 
+    room_id: params[:Roomid], tech: params[:room][:tech],
+    roomtype: params[:room][:roomtype], numpeople: params[:room][:numpeople],
+    arrangement: params[:room][:arrangement])
+    
     flash[:notice] = "#{@room.building_name} #{@room.room_id} was successfully created."
     redirect_to rooms_path
   end
@@ -50,9 +54,19 @@ before_action :validate_access
   end
 
   def destroy
+    
+    if Booking.find(params[:id]) == true
+      @Booking = Booking.find(params[:id])
+      @Booking.destroy
+      @current_bookings = Booking.where(:booker_id => session[:user_id])
+      flash[:notice] = "Reservation are influenced"
+  end
+
+    
     @Room = Room.find(params[:id])
     @Room.destroy
-    
+    flash[:notice] = "No reservation are influenced"
+  
     redirect_to delete_path
   end
   

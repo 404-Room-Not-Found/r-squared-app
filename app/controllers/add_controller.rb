@@ -30,8 +30,8 @@ before_action :validate_access
        #@description = attributes[:description]
     #   @booked = attributes[:booked]
     #   @booker = attributes[:booker]
-    #   @operate_start = attributes[:operate_start]
-    #   @operate_end = attributes[:operate_end]
+       @operate_start = attributes[:operate_start]
+      @operate_end = attributes[:operate_end]
       
      end
   end

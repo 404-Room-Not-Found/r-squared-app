@@ -17,6 +17,8 @@ class Room < ActiveRecord::Base
     scope :numpeople, -> (numpeople) { where numpeople: numpeople }
     scope :arrangement, -> (arrangement) { where arrangement: arrangement }
     scope :tech, -> (tech) { where tech: tech }
+    
+    
 #   scope :starts_with, -> (name) { where("name like ?", "#{name}%")}
 end
-
+### make delete in here 
