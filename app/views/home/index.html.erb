@@ -31,6 +31,8 @@
                     <th>Operate Start</th>
                     <th>Operate End</th>
                   </tr>
+                   <%@current_bookings = Booking.where(:booker_id => session[:user_id])%>
+    
                   <% @current_bookings.each do |booking| %>
                      <tr>
                       <td><%= Room.find(booking.room_id).building_name %></td>
@@ -47,6 +49,12 @@
               <% else %>
                 <p>No reservations.</p>
               <% end %>
+
+                
+              <%= link_to "Make New Booking", new_booking_path, :class => "btn" %>
+              <%=link_to'<button class = "btn" title = "Add Room" type = "button"> Add Room </button> '.html_safe, add_path%>
+              <%=link_to'<button class = "btn" title = "Delete Room" type = "button"> Delete Room </button> '.html_safe, delete_path%>
+
             </center>
           <!----------------------HISTORY BUTTON -------------------------------------------->
           <center>
