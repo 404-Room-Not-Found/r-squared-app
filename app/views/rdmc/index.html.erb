@@ -15,7 +15,18 @@
             
             <fieldset>
             <legend>Rooms in Reed McDonald</legend>
-            
+             <div id = "map">
+                  <img src="/assets/RDMC-1.jpg" width="850" height="750" alt="RDMC_Floor_1" usemap="#RDMC_Floor_One">
+                <map name="RDMC_Floor_One">
+                  <% room = Room.where(["building_name ? and room_id = ?", "RDMC", 113]) %>
+                  <area shape="rect" coords="260,200,445,325" href= "<%= url_for room_path(6) %>" alt="111A">
+                  <area shape="rect" coords="449,169,532,384" href= "<%= url_for room_path(7) %>" alt="111B">
+                  <area shape="rect" coords="329,427,467,563" href= "<%= url_for room_path(8) %>" alt="111H">
+                  <area shape="rect" coords="77,455,296,564" href= "<%= url_for room_path(9) %>" alt="111J">
+                </map>
+                
+              </div>
+              <div id = "table">
                 <table>
                   <tr>
                     
@@ -46,17 +57,33 @@
                   <% end %>
                   <% end %>
                 </table>
-                
-                
-                
-                
+                </div>
+                <button class ="btn" onclick="mapFunction()">Toggle Map View</button>
+                <button class ="btn" onclick="tableFunction()">Toggle Table View</button>
                 <%= link_to 'Back', :back, :class => "btn" %>
-
-           
-
-
             </fieldset>
            
         </main>
     </body>
 </html>
+
+
+<script>
+function mapFunction() {
+  var x = document.getElementById("map");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+function tableFunction() {
+  var x = document.getElementById("table");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>

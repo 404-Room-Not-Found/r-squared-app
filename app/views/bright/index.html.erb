@@ -14,17 +14,75 @@
       <main>
         <fieldset>
           <legend>Rooms in Bright</legend>
-          <img src="/assets/BrightFloorPlans_Floor1-1.jpg" width="850" height="750" alt="HRBB_Floor_1" usemap="#HRBB_Floor_One">
-          <map name="HRBB_Floor_One">
-            <% room = Room.where(["building_name ? and room_id = ?", "HRBB", 124]) %>
-            <area shape="rect" coords="328,178,447,274" href= "<%= url_for room_path(1) %>" alt="126">
-            <area shape="rect" coords="222,33,542,175" href= "<%= url_for room_path(2) %>" alt="124">
-            <area shape="rect" coords="454,178,551,274" href= "<%= url_for room_path(3) %>" alt="129">
-            <area shape="rect" coords="287,427,448,565" href= "<%= url_for room_path(4) %>" alt="113">
-            <area shape="rect" coords="691,427,821,519" href= "<%= url_for room_path(5) %>" alt="104">
-          </map>
+          <div id = "map">
+            <img src="/assets/BrightFloorPlans_Floor1-1.jpg" width="850" height="750" alt="HRBB_Floor_1" usemap="#HRBB_Floor_One">
+            <map name="HRBB_Floor_One">
+              <% room = Room.where(["building_name ? and room_id = ?", "HRBB", 124]) %>
+              <area shape="rect" coords="328,178,447,274" href= "<%= url_for room_path(1) %>" alt="126">
+              <area shape="rect" coords="222,33,542,175" href= "<%= url_for room_path(2) %>" alt="124">
+              <area shape="rect" coords="454,178,551,274" href= "<%= url_for room_path(3) %>" alt="129">
+              <area shape="rect" coords="287,427,448,565" href= "<%= url_for room_path(4) %>" alt="113">
+              <area shape="rect" coords="691,427,821,519" href= "<%= url_for room_path(5) %>" alt="104">
+            </map>
+          </div>
+           <div id = "table">
+           <table>
+                  <tr>
+                    
+                    <th>Room ID</th>
+                    <th>Room Type</th>
+                    <th>Description</th>
+                    <th>Operate Start</th>
+                    <th>Operate End</th>
+                    <th>Technology</th>
+                    <th>Arrangement</th>
+                    <th>Number of People</th>
+                  </tr>
+                
+                  <% @rooms.each do |room| %>
+                  <%if room.building_name == 'HRBB'%>
+                    <tr>
+                      
+                      <td><%= room.room_id %></td>
+                      <td><%= room.roomtype %></td>
+                      <td><%= room.description %></td>
+                      <td><%= room.operate_start.strftime("%k:%M") %></td>
+                      <td><%= room.operate_end.strftime("%k:%M") %></td>
+                      <td><%= room.tech %></td>
+                      
+                      <td><%= room.arrangement%> </td>
+                      <td><%= room.numpeople%> </td>
+                    </tr>
+                  <% end %>
+                  <% end %>
+                </table>
+                </div>
+                <button class ="btn" onclick="mapFunction()">Toggle Map View</button>
+                <button class ="btn" onclick="tableFunction()">Toggle Table View</button>
           <%= link_to 'Back', :back, :class => "btn" %>
         </fieldset>
       </main>
     </body>
 </html>
+
+
+
+<script>
+function mapFunction() {
+  var x = document.getElementById("map");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+function tableFunction() {
+  var x = document.getElementById("table");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
