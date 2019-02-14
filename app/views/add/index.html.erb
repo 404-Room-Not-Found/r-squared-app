@@ -31,7 +31,6 @@
           Room.select('DISTINCT roomtype'),
           :roomtype, :roomtype, {include_blank: '-'} %>
 
-
           <br>
           <%= label_tag(:numpeople, "Number of People") %>
           <%= collection_select :room, :numpeople,
@@ -52,13 +51,14 @@
          
           <br>
           
-          <%= label_tag(:operate_start, "Open Start") %>
+          <%= label_tag(:operate_start, "Start Time") %>
+          <%= time_field(:room, :operate_start, value: "8:00") %>
+          <%= label_tag(:operate_end, "End Time") %>
+          <%= time_field(:room, :operate_end, value: "19:00") %>
           <br>
-        <%= time_select :room, :operate_start, :ignore_date => true %>
-        <br>
-        <%= label_tag(:operate_end, "Closing Time") %>
-        <br>
-        <%= time_select :room, :operate_end, :ignore_date => true %>
+          
+          
+          
           
           
           

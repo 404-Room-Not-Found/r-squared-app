@@ -6,7 +6,7 @@ class Room < ActiveRecord::Base
     
     after_initialize :set_defaults, unless: :persisted?
     # The set_defaults will only work if the object is new
-    
+   
     def set_defaults
         self.booked  ||= false if self.booker.nil?
         self.booker = "---" if self.booker.nil?
