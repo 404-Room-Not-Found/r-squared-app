@@ -21,38 +21,40 @@
           <%= label_tag(:building_name, "Building") %>
           <%= collection_select :room, :building_name,
           Room.select('DISTINCT building_name'),
-          :building_name, :building_name, {include_blank: 'Any'} %>
+          :building_name, :building_name, {include_blank: '-'},:required => true  %>
           <br>
           Room Number:
-          <input type="text" name=Roomid><br>
+          <input type="text" name=Roomid required>
+          <br>
        
           <%= label_tag(:roomtype, "Room Type") %>
           <%= collection_select :room, :roomtype,
           Room.select('DISTINCT roomtype'),
-          :roomtype, :roomtype, {include_blank: '-'} %>
+          :roomtype, :roomtype, {include_blank: '-'},:required => true  %>
 
           <br>
           <%= label_tag(:numpeople, "Number of People") %>
           <%= collection_select :room, :numpeople,
           Room.select('DISTINCT numpeople'),
-          :numpeople, :numpeople, {include_blank: '-'} %>
+          :numpeople, :numpeople, {include_blank: '-'},:required => true  %>
           
           <br>
           <%= label_tag(:arrangement, "Furniture") %>
           <%= collection_select :room, :arrangement,
           Room.select('DISTINCT arrangement'),
-          :arrangement, :arrangement, {include_blank: '-'} %>  
+          :arrangement, :arrangement, {include_blank: '-'},:required => true  %>  
             
           <br>
           <%= label_tag(:tech, "Technology") %>
           <%= collection_select :room, :tech,
           Room.select('DISTINCT tech'),
-          :tech, :tech, {include_blank: '-'} %>
+          :tech, :tech, {include_blank: '-'},:required => true  %>
          
           <br>
           
           <%= label_tag(:operate_start, "Start Time") %>
-          <%= time_field(:room, :operate_start, value: "8:00") %>
+          <%= time_field(:room, :operate_start, value: "08:00") %>
+          
           <%= label_tag(:operate_end, "End Time") %>
           <%= time_field(:room, :operate_end, value: "19:00") %>
           <br>
