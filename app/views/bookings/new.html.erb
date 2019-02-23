@@ -33,8 +33,11 @@
          <label>Room id</label>
          <%= f.collection_select :room_id, Room.order(:room_id), :id, :room_id %>
          
+         <div>
          <label>Reason</label>
          <%= f.text_field :reason %>
+         Private: <input type="checkbox" id="myCheck"  onclick="myFunction()">
+         </div>
          
          <label>Start time & day</label>
          <%= f.datetime_select :time_start %>
@@ -84,4 +87,20 @@
        
        <%= link_to 'Back', :back, :class => "btn" %>
     </body>
+    
+    
+    
+    <!-- ---------------------------------------------------------------------- -->
+    <script>
+        function myFunction() {
+          var checkBox = document.getElementById("myCheck");
+          var text = document.getElementById("text");
+          if (checkBox.checked == true){
+            text.style.display = "block";
+          } else {
+             text.style.display = "none";
+          }
+        }
+    </script>
+    
 </html>
