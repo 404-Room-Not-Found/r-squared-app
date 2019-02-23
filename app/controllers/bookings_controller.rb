@@ -3,7 +3,7 @@ before_action :validate_access
   def booking_params
     params.require(:booking).permit(:room_id,:booker_id,
     :time_start,:time_end, :building_name, :reason)
-  end
+  end 
 
   def show
     id = params[:id] # retrieve booking ID from URI route
@@ -39,13 +39,13 @@ before_action :validate_access
         redirect_to new_booking_path and return
       elsif @book_status == true
         @booking = Booking.create!(booking_params)
-        flash[:notice] = "#{@booking.id} was successfully created."
+        # flash[:notice] = "#{@booking.id} was successfully created."
         redirect_to home_index_path and return
       end
     end
     if room.nil?
       @booking = Booking.create!(booking_params)
-      flash[:notice] = "#{booking.id} was successfully created."
+      # flash[:notice] = "#{booking.id} was successfully created."
       redirect_to home_index_path and return
     end
   end
@@ -56,31 +56,30 @@ before_action :validate_access
 
   def update
     @book_status = false
+    @total_conflicts = 0
     room = Booking.where(:room_id => booking_params[:room_id])
     start_time = DateTime.new(booking_params["time_start(1i)"].to_i, booking_params["time_start(2i)"].to_i, booking_params["time_start(3i)"].to_i, booking_params["time_start(4i)"].to_i, booking_params["time_start(5i)"].to_i)
     end_time = DateTime.new(booking_params["time_end(1i)"].to_i, booking_params["time_end(2i)"].to_i, booking_params["time_end(3i)"].to_i, booking_params["time_end(4i)"].to_i, booking_params["time_end(5i)"].to_i)
     if !room.nil?
       room.each do |row|
          if start_time.between?(row.time_start, row.time_end) || end_time.between?(row.time_start, row.time_end) || row.time_start.between?(start_time, end_time) || row.time_end.between?(start_time, end_time)
-            flash[:notice] = "Booking has time conflict. Please adjust reservation time."
-            @book_status = false
-            break
-          else
-              @book_status = true
+            @total_conflicts += 1
         end
       end
-      if @book_status == false
+      if @total_conflicts > 1
+        flash[:notice] = "Booking has time conflict. Please adjust reservation time."
         redirect_to edit_booking_path and return
-      elsif @book_status == true
+      else
         @booking = Booking.find params[:id]
-        @booking = Booking.update_attributes!(booking_params)
-        flash[:notice] = "#{booking.id} was successfully updated."
+        @booking = @booking.update_attributes(booking_params)
+        # flash[:notice] = "#{@booking.id} was successfully updated."
         redirect_to home_index_path and return
       end
     end
     if room.nil?
-      @booking = Booking.update_attributes!(booking_params)
-      flash[:notice] = "#{@booking.id} was successfully updated."
+      @booking = Booking.find params[:id]
+      @booking = @booking.update_attributes(booking_params)
+      # flash[:notice] = "#{@booking.id} was successfully updated."
       redirect_to home_index_path and return
     end
   end
@@ -88,7 +87,7 @@ before_action :validate_access
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy
-    flash[:notice] = "Booking '#{@booking.id}' deleted."
+    # flash[:notice] = "Booking '#{@booking.id}' deleted."
     redirect_to home_index_path
   end
 private 

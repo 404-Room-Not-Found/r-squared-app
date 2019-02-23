@@ -97,3 +97,24 @@ nav>a.active {
     box-shadow: 0 9px #999;
     border-radius: 12px;
 }
+
+#calendar {
+    border: 1px solid #999;
+    border-collapse: collapse;
+    font-family: Georgia, Times, serif;
+}
+
+ #calendar_th {
+   border: 1px solid #999;
+   font-size: 70%;
+   text-transform: uppercase;
+ }
+ 
+ #calendar_td {
+   border: 1px solid #999;
+   height: 5em;
+   width:5em;
+   padding: 5px;
+   vertical-align: top;
+   }
+ 

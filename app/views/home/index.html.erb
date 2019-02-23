@@ -31,6 +31,7 @@
                     <th>Operate Start</th>
                     <th>Operate End</th>
                   </tr>
+    
                   <% @current_bookings.each do |booking| %>
                      <tr>
                       <td><%= Room.find(booking.room_id).building_name %></td>
@@ -47,11 +48,17 @@
               <% else %>
                 <p>No reservations.</p>
               <% end %>
+
+                
+            
+             
+
             </center>
           <!----------------------HISTORY BUTTON -------------------------------------------->
           <center>
             <button class ="btn" onclick ="myFunction()">Show History</button>
-              
+            
+            
                <th><% @current_date.to_s %></th>
           
                <% if @history_bookings != nil %>
@@ -81,6 +88,11 @@
                <% else %>
                 <h1 style = "display: none;">No reservations.</h1>
               <% end %>
+              <%if current_user_name == "Admin"%>
+             <%=link_to'<button class = "btn" title = "Add Room" type = "button"> Add Room </button> '.html_safe, add_path%>
+             <%=link_to'<button class = "btn" title = "Delete Room" type = "button"> Delete Room </button> '.html_safe, delete_path%>
+             <% end %>
+             
           </center>
       
           
@@ -93,7 +105,7 @@
          <%= render './layouts/footer.html.erb' %>
     </body>
     
-    
+     
     
 <!-----------------------------------------JAVASCRIPT -------------------------------------> 
 <script>

@@ -15,7 +15,7 @@
     <!-- Need to change the data structure of booking to work. requires to accomodate building. -->
     <body>
       <%= render './layouts/nav.html.erb' %>
-       <% if current_room_id == nil %>
+       <% if current_room_id == nil %> 
         
         <h1>Making a new booking</h1>
         <%= form_for @booking, :url => { :action => "create" }, html: {class: "tobestyled"} do |f| %>
@@ -74,5 +74,14 @@
         <%= f.submit "Make Booking" %>
         <% end %>
        <% end %>
+       
+       <div class="container" style="background-color: red">
+          <% flash.each do |key, value| %>
+            <div class="alert alert-<%= key %>"><%= value %></div>
+          <% end %>
+          <%= yield %>
+        </div>
+       
+       <%= link_to 'Back', :back, :class => "btn" %>
     </body>
 </html>

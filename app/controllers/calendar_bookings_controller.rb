@@ -5,12 +5,14 @@ class CalendarBookingsController < ApplicationController
    end
    
    def index
-       id = params[:id] # retrieve Room ID from URI route
-       @booking = Booking.find(id) # look up Room by unique ID
+       @booking = Booking.find params[:format]
+       @start_time = @booking.time_start.strftime("%d/%m/%Y %H:%M")
+       @end_time = @booking.time_end.strftime("%d/%m/%Y %H:%M")
    end
    
    def show
-       
+       id = params[:id] # retrieve Room ID from URI route
+       @booking = Booking.find(id) # look up Room by unique ID
    end
    
    def new
@@ -29,7 +31,7 @@ class CalendarBookingsController < ApplicationController
    end
    
    private 
-  def validate_access 
+   def validate_access 
       unless logged_in?
         redirect_to root_path
       end 

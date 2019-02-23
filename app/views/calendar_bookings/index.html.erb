@@ -8,10 +8,46 @@
     </head>
     <%= render './layouts/nav.html.erb' %>
     <% params.inspect %>
-    
     <body>
-      <div class ="room_title_container">
-          <legend>More details about <%= @booking.building_name %> <%= @booking.room_id %></legend>
+      
+        <div class ="room_title_container">
+          <legend>Booking Details</legend>
         </div>
+        <div class="room_details_container">
+        <fieldset class="detail_area">
+          <legend>Location</legend>
+          <p><%= @booking.building_name %> <%= Room.find(@booking.room_id).room_id.to_s %></p>
+          <p></p>
+        </fieldset>
+        
+        <fieldset class="detail_area">
+          <legend>Date & Time</legend>
+          <p>Date: <%= Date.parse(@booking.time_start.to_s) %></p>
+          <p>Start Time: <%= @booking.time_start.to_s(:time) %></p>
+          <p>End Time: <%= @booking.time_end.to_s(:time) %></p>
+        </fieldset>
+          
+        <fieldset class="detail_area">
+          <legend>Reason</legend>
+          <p><%= @booking.reason %></p>
+        </fieldset>
+        
+        <fieldset class="detail_area">
+          <legend>Room Details</legend>
+          <p>Room Type: <%= Room.find(@booking.room_id).roomtype %></p>
+          <p>Capacity: <%= Room.find(@booking.room_id).numpeople %></p>
+          <p>Technology: <%= Room.find(@booking.room_id).tech %></p>
+          <p>Arrangement: <%= Room.find(@booking.room_id).arrangement %></p>
+          <p>Description: <%= Room.find(@booking.room_id).description %></p>
+        </fieldset>
+        
+      </div>
     </body>
+    
+    <center>
+    <%= link_to 'Edit', edit_booking_path(@booking), :class => "footer_btn" %>
+    <%= link_to "Delete", @booking , :class => "footer_btn", :method => :delete, data: { confirm: 'Are you sure you want to cancel your booking?' } %>
+    </center>
+    
+    <%= link_to 'Back', :back, :class => "btn" %>
 </html>
