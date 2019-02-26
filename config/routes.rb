@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
- 
+
   get 'booking/index'
 # For styled pages
   root 'sessions#new'
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'app/views/browsingsearch/index.html.erb', to: 'browsingsearch#index', as: 'browsingsearch'
   get 'app/views/calendar/index.html.erb', to: 'calendar#index', as: 'calendar'
   get 'app/views/calendar_bookings/index.html.erb', to: 'calendar_bookings#index', as: 'calendar_bookings'
-
+  get 'app/views/calendar/show.html.erb', to: 'calendar#show', as: 'show_calendar'
 
   get    '/bright',  to: 'bright#index'
   get    '/rdmc',    to: 'rdmc#index'
@@ -36,6 +36,9 @@ Rails.application.routes.draw do
    resources :browsingsearch
    resources :user, :bookings, :rooms
    resources :sessions
+   resources :dailyreservations
+   resources :calendar
+   resources :calendar_bookings
    
    get "*path", to: redirect('/')
 end

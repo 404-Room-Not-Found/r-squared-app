@@ -40,13 +40,10 @@
                                 <% week.each do |day| %>
                                     <td id="calendar_td">
                                         <h4><%= day.strftime("%d") %></h4>
-                                        <% @current_bookings.each do |booking| %>
-                                            <% if booking.time_start.to_date == day.to_date %>
-                                                <% details = booking.building_name.to_s + " " + Room.find(booking.room_id).room_id.to_s %>
-                                                <%= link_to details, calendar_bookings_path(booking) %>
-                                                <br>
-                                            <% end %>
-                                        <% end %> 
+                                        <% bookings_by_day = daily_bookings(@current_bookings, day) %>
+                                        <% if bookings_by_day.count > 0 %>
+                                            <%= link_to "View Reservations", :action => 'show' %>
+                                        <% end %>
                                     </td>
                                 <% end %>
                             </tr>
