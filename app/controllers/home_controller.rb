@@ -3,11 +3,13 @@ class HomeController < ApplicationController
       @currents_bookings = Booking.where(:booker_id => session[:user_id])
       @current_user = User.find(session[:user_id])
       @current_time = DateTime.now
-      @current_bookings = Booking.where(:booker_id => session[:user_id]).
-                          where("time_end  > ?", DateTime.now)
-      @history_bookings = Booking.where(:booker_id => session[:user_id]).
-                          where("time_end  < ?", DateTime.now)
-    
+      if @current_user[:usertype] == "Admin"
+        @current_bookings = Booking.where("time_end  > ?", DateTime.now)
+        @history_bookings = Booking.where("time_end  < ?", DateTime.now)
+      else
+        @current_bookings = Booking.where(:booker_id => session[:user_id]).where("time_end  > ?", DateTime.now)
+        @history_bookings = Booking.where(:booker_id => session[:user_id]).where("time_end  < ?", DateTime.now)
+      end
     end
     
     def params
