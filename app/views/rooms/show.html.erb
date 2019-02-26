@@ -21,11 +21,6 @@
         </fieldset>
         
         <fieldset class="detail_area">
-          <legend>Description</legend>
-          <p><%= @room.description %></p>
-        </fieldset>
-        
-        <fieldset class="detail_area">
           <legend>Operating Hours</legend>
           <p>Open at: <%= @room.operate_start %></p>
           <p>Close at: <%= @room.operate_end %></p>
@@ -36,6 +31,8 @@
           <p>Technology: <%= @room.tech %></p>
           <p>Arrangement: <%= @room.arrangement%> </p>
         </fieldset>
+        
+       
       </div>
     </body>
     
