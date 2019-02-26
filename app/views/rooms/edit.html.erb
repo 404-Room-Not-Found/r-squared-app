@@ -18,10 +18,10 @@
 <%= form_tag({:controller => "rooms", :action => "update"}, method: :get) do %>
           <h1 class="heading">Edit Room</h1>
 
+          <br>
           <%= label_tag(:building_name, "Building") %>
-          <%= collection_select :room, :building_name,
-          Room.select('DISTINCT building_name'),
-          :building_name, :building_name, {include_blank: '-'},:required => true  %>
+          <%= text_field :room, :building_name %>
+          <br>
           
           <br>
           <%= label_tag(:room_id, "Room Number") %>
