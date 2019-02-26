@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root 'sessions#new'
 
   get 'sessions/new'
+  get 'app/views/users/new.html.erb', to: 'users#new', as: 'user'
   get 'app/views/login/index.html.erb', to: 'login#index', as: 'login'
   get 'app/views/home/index.html.erb', to: 'home#index', as: 'home'
   get 'app/views/results/index.html.erb', to: 'results#index', as: 'results'
@@ -35,9 +36,8 @@ Rails.application.routes.draw do
    resources :advancedsearch
    resources :results
    resources :browsingsearch
-   resources :user, :bookings, :rooms
+   resources :users, :bookings, :rooms
    resources :sessions
-   resources :dailyreservations
    resources :calendar
    resources :calendar_bookings
    

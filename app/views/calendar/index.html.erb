@@ -54,7 +54,11 @@
                 
             </center>
             <br> <br>
-            <%= render './layouts/footer.html.erb' %>
+            <center>
+             <div>
+                  <%= link_to "List View", home_path, :class => "footer_btn" %>
+             </div>
+          </center>
         </main>
         <div class="container">
           <%= debug(params) if Rails.env.development? %>
