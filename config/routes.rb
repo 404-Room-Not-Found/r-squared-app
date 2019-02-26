@@ -23,7 +23,9 @@ Rails.application.routes.draw do
   get    '/add',    to: 'add#index'
   post   '/add',     to: 'rooms#create'
   get    '/delete',       to: 'delete#index'
-
+    
+    
+    
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create', as: 'login_path'
   delete '/logout',  to: 'sessions#destroy'

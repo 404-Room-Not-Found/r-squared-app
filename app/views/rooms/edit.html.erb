@@ -10,28 +10,63 @@
     </head>
     
     <body>
-     <body>
-        <%= render './layouts/nav.html.erb' %>
-        <%= form_for @room, :url => {:action => "update", :id => @room_id}, 
-        html:{method:'put'} do |f| %>
-          <label>Edit room</label>
-          <%= f.collection_select :room_id, User.all, :id, :name %>
+      <%= render './layouts/nav.html.erb' %>
+      <main>
+        <fieldset id="editroom">
           
-          <label>Building</label>
-          <%= f.collection_select :building_name, Room.select('DISTINCT building_name'), :building_name, :building_name %>
+<legend>Add Room</legend>
+<%= form_tag({:controller => "rooms", :action => "update"}, method: :get) do %>
+          <h1 class="heading">Edit Room</h1>
+
+          <%= label_tag(:building_name, "Building") %>
+          <%= collection_select :room, :building_name,
+          Room.select('DISTINCT building_name'),
+          :building_name, :building_name, {include_blank: '-'},:required => true  %>
           
-          <label>Room id</label>
-          <%= f.collection_select :room_id, Room.all, :id, :room_id %>
+          <br>
+          <%= label_tag(:room_id, "Room Number") %>
+          <%= text_field :room, :room_id %>
+          <br>
+       
+          <%= label_tag(:roomtype, "Room Type") %>
+          <%= collection_select :room, :roomtype,
+          Room.select('DISTINCT roomtype'),
+          :roomtype, :roomtype, {include_blank: '-'},:required => true  %>
+
+          <br>
+          <%= label_tag(:numpeople, "Number of People") %>
+          <%= collection_select :room, :numpeople,
+          Room.select('DISTINCT numpeople'),
+          :numpeople, :numpeople, {include_blank: '-'},:required => true  %>
+          
+          <br>
+          <%= label_tag(:arrangement, "Furniture") %>
+          <%= collection_select :room, :arrangement,
+          Room.select('DISTINCT arrangement'),
+          :arrangement, :arrangement, {include_blank: '-'},:required => true  %>  
+            
+          <br>
+          <%= label_tag(:tech, "Technology") %>
+          <%= collection_select :room, :tech,
+          Room.select('DISTINCT tech'),
+          :tech, :tech, {include_blank: '-'},:required => true  %>
+         
+          <br>
+          
+          <%= label_tag(:operate_start, "Start Time") %>
+          <%= time_field(:room, :operate_start, value: "08:00") %>
+          
+          <%= label_tag(:operate_end, "End Time") %>
+          <%= time_field(:room, :operate_end, value: "19:00") %>
+          <br>
           
           
-          <label>Start time </label>
-          <%= f.datetime_select :operate_start %>
-          <label>End time </label>
-          <%= f.datetime_select :operate_end%>
-          
-          <%= submit_tag "Edit" %>
+          <%= submit_tag 'Edit Room' %>
         <% end %>
-    
+          
+          <%= link_to 'Back', :back, :class => "btn" %>
+        </fieldset>
+      </main>
     </body>
     <div class="container">
       <%= debug(params) if Rails.env.development? %>
