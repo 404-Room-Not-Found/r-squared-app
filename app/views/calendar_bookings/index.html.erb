@@ -51,7 +51,7 @@
     </body>
     
     <center>
-    <% if User.find(@booking.booker_id) == User.find(session[:user_id]) %>
+    <% if User.find(@booking.booker_id) == User.find(session[:user_id]) && Date.parse(@booking.time_start.to_s) >= Date.today %>
     <%= link_to 'Edit', edit_booking_path(@booking), :class => "footer_btn" %>
     <%= link_to "Delete", @booking , :class => "footer_btn", :method => :delete, data: { confirm: 'Are you sure you want to cancel your booking?' } %>
     <% end %>
