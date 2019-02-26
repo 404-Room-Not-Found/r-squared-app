@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'app/views/browsingsearch/index.html.erb', to: 'browsingsearch#index', as: 'browsingsearch'
   get 'app/views/calendar/index.html.erb', to: 'calendar#index', as: 'calendar'
   get 'app/views/calendar_bookings/index.html.erb', to: 'calendar_bookings#index', as: 'calendar_bookings'
+  get 'app/views/dailyreservations/index.html.erb', to: 'dailyreservations#index', as: 'dailyreservations'
   get 'app/views/calendar/show.html.erb', to: 'calendar#show', as: 'show_calendar'
 
   get    '/bright',  to: 'bright#index'

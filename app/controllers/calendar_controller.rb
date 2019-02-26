@@ -1,11 +1,12 @@
 class CalendarController < ApplicationController
   def index
-      @current_bookings = Booking.where(:booker_id => session[:user_id])
+      @current_bookings = Booking.all
       @current_user = User.find(session[:user_id])
   end
   
   def show
-    redirect_to show_calendar_path
+     @day = params[:day]
+     @totalbookings = params[:booking]
   end
   
   def daily_bookings (all_bookings, date)
