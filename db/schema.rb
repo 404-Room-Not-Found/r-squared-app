@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(version: 2019_01_04_012155) do
     t.integer "room_id"
     t.integer "booker_id"
     t.string "booker_name"
-    t.text "reason"
     t.datetime "time_start"
     t.datetime "time_end"
+    t.boolean "privatereason"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

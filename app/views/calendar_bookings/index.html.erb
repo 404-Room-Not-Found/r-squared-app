@@ -15,6 +15,12 @@
         </div>
         <div class="room_details_container">
         <fieldset class="detail_area">
+          <legend>Booked By</legend>
+          <p><%= User.find(@booking.booker_id).name %></p>
+          <p></p>
+        </fieldset>
+        
+        <fieldset class="detail_area">
           <legend>Location</legend>
           <p><%= @booking.building_name %> <%= Room.find(@booking.room_id).room_id.to_s %></p>
           <p></p>
@@ -45,8 +51,10 @@
     </body>
     
     <center>
+    <% if User.find(@booking.booker_id) == User.find(session[:user_id]) && Date.parse(@booking.time_start.to_s) >= Date.today %>
     <%= link_to 'Edit', edit_booking_path(@booking), :class => "footer_btn" %>
     <%= link_to "Delete", @booking , :class => "footer_btn", :method => :delete, data: { confirm: 'Are you sure you want to cancel your booking?' } %>
+    <% end %>
     </center>
     
     <%= link_to 'Back', :back, :class => "btn" %>

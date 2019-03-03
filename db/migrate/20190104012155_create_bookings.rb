@@ -8,6 +8,7 @@ class CreateBookings < ActiveRecord::Migration[5.2]
       t.text :reason
       t.datetime :time_start
       t.datetime :time_end
+      t.boolean :privatereason
       t.timestamps
     end
   end

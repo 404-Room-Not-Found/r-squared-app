@@ -1,3 +1,4 @@
+<%= render './layouts/nav.html.erb' %>
 <h1>All Rooms</h1>
 <table>
   <tr>
@@ -22,6 +23,7 @@
       <td><%= room.tech %></td>
       <td><%= room.arrangement%> </td>
       <td><%= room.numpeople%> </td>
+      <td><%= link_to "Edit",edit_room_path(room)  %></td>
     </tr>
   <% end %>
 </table>

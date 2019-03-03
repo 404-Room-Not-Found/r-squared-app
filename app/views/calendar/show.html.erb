@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="R^2">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>R^2 home</title>
+    </head>
+    
+     <div class="container">
+        <%= debug(params) if Rails.env.development? %>
+    </div>
+    
+    <body>
+        <%= render './layouts/nav.html.erb' %>
+        <center>
+        <h2>Bookings for <%= @day %> </h2>
+        <table>
+          <tr>
+            <th>Booker</th>
+            <th>Building Name</th>
+            <th>Room Number</th>
+            <th>Room Type</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th> Full Details </th>
+            
+          </tr>
+        
+          <% @totalbookings.each do |booking| %>
+           <% current_booking = Booking.find(booking) %>
+           <% current_user = User.find(current_booking.booker_id) %>
+            <tr>
+              <td><%= current_user.name %></td>
+              <td><%= current_booking.building_name %></td>
+              <td><%= Room.find(current_booking.room_id).room_id %></td>
+              <td><%= Room.find(current_booking.room_id).roomtype %></td>
+              <td><%= current_booking.time_start %></td>
+              <td><%= current_booking.time_end %></td>
+              <% if (current_booking.privatereason.nil? || current_booking.privatereason == false) %>  
+                 <td><%= link_to "View Details", calendar_bookings_path(booking) %></td>
+              <% elsif (current_booking.privatereason == true)  %>
+                <td>Private</td>
+              <% end %>
+            </tr>
+          <% end %>
+        </table>
+        </center>
+        
+        <center>
+            <%= link_to 'Back', calendar_path, :class => "btn" %>
+        </center>
+    </body>
+</html>
