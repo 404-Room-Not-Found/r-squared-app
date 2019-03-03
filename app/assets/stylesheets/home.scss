@@ -9,6 +9,7 @@ table {
   max-width: 100%;
   padding: 24px;
   table-layout: fixed;
+  overflow-y: auto;
 }
 
 tr:hover {
@@ -38,4 +39,10 @@ div.hidden { display: none; }
 
 #myCheck{
   width: 20px;
+}
+
+#tableID{
+
+  height:1000px;
+  overflow-y:auto;
 }
