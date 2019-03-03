@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
-before_action :validate_access 
   def user_params
-    params.require(:User).permit(:name, :email, :password, :usertype)
+    params.require(:user).permit(:name, :email, :password, :usertype)
   end
 
   def show
@@ -13,19 +12,12 @@ before_action :validate_access
   end
 
   def new
-    attr_accessor :name, :email, :password, :usertype
-    def initialize(attributes = {})
-      @name  = attributes[:name]
-      @email = attributes[:email]
-      @password = attributes[:password]
-      @usertype = attributes[:usertype]
-    end
+    @user = User.new
   end
 
   def create
-    @user = User.create!(user_params)
-    flash[:notice] = "#{@user.name} was successfully created."
-    redirect_to @user
+      @user = User.create!(user_params)
+      redirect_to root_path and return
   end
 
   def edit

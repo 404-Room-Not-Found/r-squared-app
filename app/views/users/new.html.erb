@@ -1,0 +1,53 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="R^2">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>R^2 login</title>
+    </head>
+        
+    <body>
+        <div id="welcome_page_container">
+            <div id="about">
+              <div class="feature_img_container">
+                <img class="feature_img" src="https://ace.fsu.edu/sites/g/files/upcbnu296/files/Study%20Room%20w%20Interactive%20White%20Board.JPG"></img>
+                <p class="bottomleft">We are a room reservation application that makes life eaiser.</p>
+              </div>
+            </div>
+            <div id="login_form_container" width="50%">
+              <center>
+                <h2>Create New Account</h2>
+                 <%= form_for @user, :url => { :action => "create" }, html: {class: "tobestyled"} do |f| %>
+         
+                     <label>Name</label>
+                     <%= f.text_field :name %>
+                     
+                     <br>
+                     <label>Email</label>
+                     <%= f.text_field :email %>
+                     
+                     <label>Create Password</label>
+                     <%= f.password_field :password %>
+                     
+                    <label>Classification</label>
+                     <fieldset>
+                     <label>I am a</label> <br>
+                     Student <%= f.radio_button :usertype, 'Student', checked: true %> 
+                     Admin <%= f.radio_button :usertype, 'Admin'%>
+                     </fieldset>
+                      
+                    <%= f.submit "Create Account" %>
+                    <%= link_to "Cancel", root_path, :class => "btn" %>
+                 <% end %>
+              </center>
+            </div>
+        </div>
+        
+    </body>
+    <body>
+    <div class="container">
+      <%= debug(params) if Rails.env.development? %>
+    </div>
+  </body>
+</html>

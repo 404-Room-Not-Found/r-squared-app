@@ -15,10 +15,12 @@
     <!-- Need to change the data structure of booking to work. requires to accomodate building. -->
     <body>
       <%= render './layouts/nav.html.erb' %>
-       <% if current_room_id == nil %>
-        
+       <% if current_room_id == nil %> 
+        <center>
         <h1>Making a new booking</h1>
+        </center>
         <%= form_for @booking, :url => { :action => "create" }, html: {class: "tobestyled"} do |f| %>
+         <center>
          <label>Booker</label>
          
          <% if current_user.usertype == "Student" %>
@@ -33,9 +35,14 @@
          <label>Room id</label>
          <%= f.collection_select :room_id, Room.order(:room_id), :id, :room_id %>
          
+         <div>
          <label>Reason</label>
          <%= f.text_field :reason %>
-         
+        
+      
+        <label>Make Reason Private <%= f.check_box :privatereason, class: "checkbox" %></label>
+        <br>
+        
          <label>Start time & day</label>
          <%= f.datetime_select :time_start %>
          
@@ -45,8 +52,11 @@
         <%= f.submit "Make Booking" %>
         <% end %>
        <% else %>
+         <center>
         <h1>Making a booking from Search</h1>
+        </center>
         <%= form_for @booking, :url => { :action => "create" }, html: {class: "tobestyled"} do |f| %>
+         <center>
          <label>Booker</label>
          <%= f.collection_select :booker_id,
          User.all,
@@ -65,6 +75,9 @@
          <label>Reason</label>
          <%= f.text_field :reason %>
          
+         <label>Make Reason Private</label>
+         <%= f.check_box :privatereason %>
+         
          <label>Start time & day</label>
          <%= f.datetime_select :time_start %>
          
@@ -72,7 +85,33 @@
          <%= f.datetime_select :time_end %>
           
         <%= f.submit "Make Booking" %>
+        </center>
         <% end %>
        <% end %>
+       
+       <div class="container" style="background-color: red">
+          <% flash.each do |key, value| %>
+            <div class="alert alert-<%= key %>"><%= value %></div>
+          <% end %>
+          <%= yield %>
+        </div>
+       
+       <%= link_to 'Back', :back, :class => "btn" %>
     </body>
+    
+    
+    
+    <!-- ---------------------------------------------------------------------- -->
+    <script>
+        function myFunction() {
+          var checkBox = document.getElementById("myCheck");
+          var text = document.getElementById("text");
+          if (checkBox.checked == true){
+            text.style.display = "block";
+          } else {
+             text.style.display = "none";
+          }
+        }
+    </script>
+    
 </html>

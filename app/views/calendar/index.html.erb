@@ -21,12 +21,15 @@
               
               <%= link_to "Previous", start_date: date_range.first - 1.day %>
               <%= link_to "Next", start_date: date_range.last + 1.day %>
+              <br><br>
               
-                <table width= 90%>
+              <center><h2><%= start_date.strftime("%B") %> <%= start_date.year%></h2> </center>
+              
+                <table class="calendar" width= 90%>
                     <thead>
                         <tr>
                             <% date_range.slice(0, 7).each do |day| %>
-                                <th><%= I18n.t("date.abbr_day_names")[day.wday] %></th>
+                                <th id="calendar_th"><%= I18n.t("date.abbr_day_names")[day.wday] %></th>
                             <% end %> 
                         </tr>
                     </thead>
@@ -35,14 +38,13 @@
                         <% date_range.each_slice(7) do |week| %>
                             <tr>
                                 <% week.each do |day| %>
-                                    <td>
-                                        <%= day %>
-                                        <% @current_bookings.each do |booking| %>
-                                            <% if booking.time_start.to_date == day.to_date %>
-                                                <% details = booking.building_name.to_s + " " + Room.find(booking.room_id).room_id.to_s %>
-                                                <%= link_to details %>
-                                            <% end %>
-                                        <% end %> 
+                                    <td id="calendar_td">
+                                        <h4><%= day.strftime("%d") %></h4>
+                                        <% bookings_by_day = daily_bookings(@current_bookings, day) %>
+                                        <% if bookings_by_day.count > 0 %>
+                                            <% @book_per_day = bookings_by_day %>
+                                            <%= link_to "View Reservations", show_calendar_path(:booking => bookings_by_day, :day => day) %>
+                                        <% end %>
                                     </td>
                                 <% end %>
                             </tr>
@@ -52,7 +54,11 @@
                 
             </center>
             <br> <br>
-            <%= render './layouts/footer.html.erb' %>
+            <center>
+             <div>
+                  <%= link_to "List View", home_path, :class => "footer_btn" %>
+             </div>
+          </center>
         </main>
         <div class="container">
           <%= debug(params) if Rails.env.development? %>

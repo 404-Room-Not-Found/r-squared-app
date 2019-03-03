@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_04_012155) do
+ActiveRecord::Schema.define(version: 2019_02_26_062756) do
 
   create_table "bookings", force: :cascade do |t|
     t.string "building_name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2019_01_04_012155) do
     t.text "reason"
     t.datetime "time_start"
     t.datetime "time_end"
+    t.boolean "privatereason"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

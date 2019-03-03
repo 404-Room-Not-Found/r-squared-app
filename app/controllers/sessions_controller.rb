@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
         redirect_to home_index_url
       end
     else
-      flash.now[:alert] = "Email or password is invalid"
+      #flash.now[:alert] = "Email or password is invalid"
       render "new"
     end
   end
@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session 
-    redirect_to root_url, notice: "Logged out!"
+    redirect_to root_url
   end
 
 end

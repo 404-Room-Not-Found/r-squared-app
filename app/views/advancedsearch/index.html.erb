@@ -47,17 +47,22 @@
           
           <!-- to implement later on, idk how to merge the data together -->
           <!--<div class="heading">Reservation Period</div>-->
-
-          <!--<%= label_tag(:startdate, "Start Date") %>-->
-          <!--<%= date_field(:booking, :startdate) %>-->
-          <!--<%= label_tag(:enddate, "End Date") %>-->
-          <!--<%= date_field(:booking, :enddate) %>-->
-
-
-          <!--<%= label_tag(:starttime, "Start Time") %>-->
-          <!--<%= time_field(:booking, :starttime, value: "11:00") %>-->
-          <!--<%= label_tag(:endtime, "End Time") %>-->
-          <!--<%= time_field(:booking, :endtime, value: "12:00") %>-->
+          
+          <br>
+          <%= label_tag(:startdate, "Start Date") %>
+          <%= date_field(:booking, :startdate, value: Date.today) %>
+          
+          <br>
+          <%= label_tag(:starttime, "Start Time") %>
+          <%= time_field(:booking, :starttime, value: "00:00") %>
+          
+          <br>
+          <%= label_tag(:enddate, "End Date") %>
+          <%= date_field(:booking, :enddate, value: Date.today) %>
+          
+          <br>
+          <%= label_tag(:endtime, "End Time") %>
+          <%= time_field(:booking, :endtime, value: "23:59") %>
           <%= submit_tag 'Search' %>
         <% end %>
       </fieldset>

@@ -20,31 +20,25 @@
                 <th>Building Name</th>
                 <th>Room ID</th>
                 <th>Room Type</th>
-                <th>Operate Start</th>
-                <th>Operate End</th>
+                <th>Description</th>
                 <th>Technology</th>
                 <th>Arrangment</th>
                 <th>Number of People</th>
                 
-                
               </tr>
             
-              <% @rooms.each do |room| %>
+              <% @rooms_time.each do |room| %>
                 <tr>
                   <td><%= room.building_name %></td>
                   <td><%= room.room_id %></td>
                   <td><%= room.roomtype %></td>
-                  <td><%= room.operate_start.strftime("%k:%M") %></td>
-                  <td><%= room.operate_end.strftime("%k:%M") %></td>
+                  <td><%= room.description %></td>
                   <td><%= room.tech %></td>
                   <td><%= room.arrangement%> </td>
                   <td><%= room.numpeople%> </td>
-                 
-                  <% if room.booked == false %>
-                    <td><%= link_to "Book", new_booking_path(
+                  <td><%= link_to "Book", new_booking_path(
                     :building_name => room.building_name,
                     :room_id => room.id) %></td>
-                  <% end %>
                 </tr>
               <% end %>
             </table>

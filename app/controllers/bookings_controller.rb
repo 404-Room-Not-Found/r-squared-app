@@ -2,12 +2,13 @@ class BookingsController < ApplicationController
 before_action :validate_access 
   def booking_params
     params.require(:booking).permit(:room_id,:booker_id,
-    :time_start,:time_end, :building_name, :reason)
+    :time_start,:time_end, :building_name, :reason, :privatereason)
   end 
 
   def show
     id = params[:id] # retrieve booking ID from URI route
     @booking = Booking.find(id) # look up booking by unique ID
+    @user = User.where(:id => session[:user_id])
     # will render app/views/bookings/show.<extension> by default
   end
 
