@@ -39,7 +39,7 @@
                      <tr>
                       <% if @current_user[:usertype] == "Admin" %>
                           <td><%= User.find(booking.booker_id).name %></td>
-                      <% end %>  
+                      <% end %>
                       <td><%= Room.find(booking.room_id).building_name %></td>
                       <td><%= Room.find(booking.room_id).room_id %></td>
                       <td><%= Room.find(booking.room_id).roomtype %></td>

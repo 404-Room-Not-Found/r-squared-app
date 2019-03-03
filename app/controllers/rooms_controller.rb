@@ -2,9 +2,7 @@ class RoomsController < ApplicationController
 before_action :validate_access 
 
   def room_params
-    # todo: fix
-    params[:Room]='wtf'
-    params.permit(:room_id, :roomtype, :building_name)
+    params.require(:room).permit(:room_id, :roomtype, :building_name, :tech, :arrangement, :numpeople, :operate_start, :operate_end)
   end
 
   def show
@@ -49,16 +47,17 @@ before_action :validate_access
 
   def update
     @room = Room.find params[:id]
-    @room.update_attributes!(Room_params)
-    flash[:notice] = "#{@room.name} was successfully updated."
-    redirect_to room_path(@room)
+    @room.update_attributes!(room_params)
+    redirect_to rooms_path
   end
 
   def destroy
 
-      @Booking = Booking.find(params[:id])
-      @Booking.destroy
-      @current_bookings = Booking.where(:booker_id => session[:user_id])
+      while Booking.find_by_id(params[:id]) do
+        @Booking = Booking.find_by_id(params[:id])
+        @Booking.destroy
+      end
+      
       flash[:notice] = "Reservation are influenced"
     
       @Room = Room.find(params[:id])
