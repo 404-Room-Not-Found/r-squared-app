@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
     def index
-      @currents_bookings = Booking.where(:booker_id => session[:user_id])
       @current_user = User.find(session[:user_id])
       @current_time = DateTime.now
       if @current_user[:usertype] == "Admin"

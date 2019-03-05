@@ -65,7 +65,7 @@ before_action :validate_access
       room.each do |row|
          if start_time.between?(row.time_start, row.time_end) || end_time.between?(row.time_start, row.time_end) || row.time_start.between?(start_time, end_time) || row.time_end.between?(start_time, end_time)
             @total_conflicts += 1
-        end
+         end
       end
       if @total_conflicts > 1
         flash[:notice] = "Booking has time conflict. Please adjust reservation time."
