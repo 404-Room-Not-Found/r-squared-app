@@ -11,13 +11,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     
-    <body>
+    <body class = "thebody">
         <%= render './layouts/nav.html.erb' %>
         
   <!----------------------Make_booking BUTTON -------------------------------------------->
         <h2>Welcome back <%= current_user_name %>!</h2>
         
         <main>
+
             <center>
               <%= link_to "Make New Booking", new_booking_path, :class => "btn" %>
               <h1>My Reservations</h1>
@@ -59,54 +60,57 @@
              
             
             </center>
+
+
+            
           <!----------------------HISTORY BUTTON -------------------------------------------->
-          <center>
-            <button class ="btn" onclick ="myFunction()">Show History</button>
-            
-            
-               <th><% @current_date.to_s %></th>
-          
-               <% if @history_bookings != nil %>
-                  <h1 id= "history1" style ="display: none;">My History</h1>
-                  <table id="history" width= 90% style ="display: none;" height=300px>
-                    <tr>
-                      <% if @current_user[:usertype] == "Admin" %>
-                      <th>Booker</th>
-                      <% end %> 
-                      <th>Building</th>
-                      <th>Room Number</th>
-                      <th>Room Type</th>
-                      <th>Reason</th>
-                      <th>Operate Start</th>
-                      <th>Operate End</th>
-                    </tr>
-                    
-                    <% @history_bookings.each do |booking| %>
-                       <tr>
-                        <% if @current_user[:usertype] == "Admin" %>
-                          <td><%= User.find(booking.booker_id).name %></td>
-                        <% end %>  
-                        <td><%= Room.find(booking.room_id).building_name %></td>
-                        <td><%= Room.find(booking.room_id).room_id %></td>
-                        <td><%= Room.find(booking.room_id).roomtype %></td>
-                        <td><%= booking.reason %></td>
-                        <td><%= booking.time_start.strftime("%b %d %Y, %-l.%M%P") %></td>
-                        <td><%= booking.time_end.strftime("%b %d %Y, %-l.%M%P") %></td>
-                        
-                       </tr>
-                    <% end %>
-                </table>               
+          <section class = "colom">
+            <center>
+              <button class ="btn" onclick ="myFunction()">Show History</button>
               
-               <% else %>
-                <h1 style = "display: none;">No reservations.</h1>
-              <% end %>
-              <%if current_user_name == "Admin"%>
-             <%=link_to'<button class = "btn" title = "Add Room" type = "button"> Add Room </button> '.html_safe, add_path%>
-             <%=link_to'<button class = "btn" title = "Delete Room" type = "button"> Delete Room </button> '.html_safe, delete_path%>
-             <% end %>
-             
-          </center>
-      
+              
+                 <th><% @current_date.to_s %></th>
+            
+                 <% if @history_bookings != nil %>
+                    <table id="history" width= 90% style ="display: none;">
+                      <h1 id= "history1" style ="display: none;">My History</h1>
+                      <tr>
+                        <% if @current_user[:usertype] == "Admin" %>
+                        <th>Booker</th>
+                        <% end %> 
+                        <th>Building</th>
+                        <th>Room Number</th>
+                        <th>Room Type</th>
+                        <th>Reason</th>
+                        <th>Operate Start</th>
+                        <th>Operate End</th>
+                      </tr>
+                      <% @history_bookings.each do |booking| %>
+                         <tr>
+                          <% if @current_user[:usertype] == "Admin" %>
+                            <td><%= User.find(booking.booker_id).name %></td>
+                          <% end %>  
+                          <td><%= Room.find(booking.room_id).building_name %></td>
+                          <td><%= Room.find(booking.room_id).room_id %></td>
+                          <td><%= Room.find(booking.room_id).roomtype %></td>
+                          <td><%= booking.reason %></td>
+                          <td><%= booking.time_start.strftime("%b %d %Y, %-l.%M%P") %></td>
+                          <td><%= booking.time_end.strftime("%b %d %Y, %-l.%M%P") %></td>
+                          
+                         </tr>
+                      <% end %>
+                  </table>               
+                 
+                 <% else %>
+                  <h1 style = "display: none;">No reservations.</h1>
+                <% end %>
+                <%if current_user_name == "Admin"%>
+               <%=link_to'<button class = "btn" title = "Add Room" type = "button"> Add Room </button> '.html_safe, add_path%>
+               <%=link_to'<button class = "btn" title = "Delete Room" type = "button"> Delete Room </button> '.html_safe, delete_path%>
+               <% end %>
+               
+            </center>
+      </section>
           
         </main>
         <div class="container">
