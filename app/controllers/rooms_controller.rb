@@ -6,9 +6,21 @@ before_action :validate_access
   end
 
   def show
+    url = params[:current_page]
+    puts "URL"
+    puts url
     id = params[:id] # retrieve Room ID from URI route
-    @room = Room.find(id) # look up Room by unique ID
-    # will render app/views/Rooms/show.<extension> by default
+    @room_exist = Room.where(:id => params[:id]).count
+    if @room_exist > 0
+      @room = Room.find(id) # look up Room by unique ID
+      # will render app/views/Rooms/show.<extension> by default
+    elsif url.include?('bright')
+      redirect_to bright_path
+    elsif url.include?('rdmc')
+      redirect_to rdmc_path
+    else
+      redirect_to rooms_path
+    end
   end
 
   def index
@@ -52,17 +64,42 @@ before_action :validate_access
   end
 
   def destroy
-
-      while Booking.find_by_id(params[:id]) do
-        @Booking = Booking.find_by_id(params[:id])
-        @Booking.destroy
-      end
+    @HasBookings = Booking.where(:id => params[:id]).count
+    if(@HasBookings > 0)
+    if Booking.find(params[:id])
+      @booking = Booking.find(params[:id])
+      @building_name = @booking.building_name
+      @room_number = Room.find(Booking.find(params[:id]).room_id).room_id
+      @room_id = Booking.find(params[:id]).room_id
       
-      flash[:notice] = "Reservation are influenced"
+      puts "TRYING TO DESTROY"
+      puts @building_name
+      puts @room_number
+      puts "END"
+      
+      @Initial_Bookings = Booking.where(:building_name => @building_name, :room_id => @room_id).count
+      puts "PRE DELETE"
+      puts @Initial_Bookings
+      
+      @Bookings = Booking.where(:building_name => @building_name, :room_id => @room_id)
+      puts "TOTAL RECORDS"
+      puts @Bookings
+      
+      @Bookings.each do |booking|
+        booking.destroy
+      end
+    end 
+  end
+    
+    @Updated_Bookings = Booking.where(:building_name => @building_name, :room_id => @room_id).count
+    puts "POST DELETE"
+    puts @Updated_Bookings
+    
+      #flash[:notice] = "Reservation are influenced"
     
       @Room = Room.find(params[:id])
       @Room.destroy
-      flash[:notice] = "No reservation are influenced"
+      #flash[:notice] = "No reservation are influenced"
   
     redirect_to delete_path
   end

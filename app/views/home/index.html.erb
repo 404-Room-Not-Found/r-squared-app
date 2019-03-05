@@ -15,6 +15,14 @@
         <%= render './layouts/nav.html.erb' %>
         
   <!----------------------Make_booking BUTTON -------------------------------------------->
+   <center>
+   <div class="container" style="background-color: green">
+          <% flash.each do |key, value| %>
+            <div class="alert alert-<%= key %>"><%= value %></div>
+          <% end %>
+          <%= yield %>
+    </div>
+    </center>
         <h2>Welcome back <%= current_user_name %>!</h2>
         
         <main>
@@ -31,8 +39,8 @@
                     <th>Room Number</th>
                     <th>Room Type</th>
                     <th>Reason</th>
-                    <th>Operate Start</th>
-                    <th>Operate End</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
                   </tr>
     
                   <% @current_bookings.each do |booking| %>
@@ -78,8 +86,8 @@
                       <th>Room Number</th>
                       <th>Room Type</th>
                       <th>Reason</th>
-                      <th>Operate Start</th>
-                      <th>Operate End</th>
+                      <th>Start Time</th>
+                      <th>End Time</th>
                     </tr>
                     <% @history_bookings.each do |booking| %>
                        <tr>

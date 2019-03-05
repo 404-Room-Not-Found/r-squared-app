@@ -23,7 +23,9 @@
       <td><%= room.tech %></td>
       <td><%= room.arrangement%> </td>
       <td><%= room.numpeople%> </td>
+      <% if @current_user = User.find(session[:user_id]).usertype == "Admin" %>
       <td><%= link_to "Edit",edit_room_path(room)  %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>
