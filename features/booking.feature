@@ -33,7 +33,7 @@ Scenario: User delete booking
   When I click Delete 
   Then I shoud see a list of My Reservations
   
-Scenario: User views Calander 
+Scenario: User views History
   Given I am on the home page
   When I click Show History View
   Then I shoud see a list of My History
