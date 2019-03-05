@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+    <head>
+      
+        <meta charset="UTF-8">
+        <meta name="description" content="R^2">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>R^2 browsing search</title>
+    </head>
+    <%= render './layouts/nav.html.erb' %>
+    <!--<%= params.inspect %>-->
+    <body>
+        <main>
+            <fieldset>
+            <legend>Users</legend>
+            <table>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>User Type</th>
+                <th>Give Admin Privileges</th>
+                <th>Remove User</th>
+                
+              </tr>
+            
+              <% @users.each do |user| %>
+                <tr>
+                  <td><%= user.name %></td>
+                  <td><%= user.email %></td>
+                  <td><%= user.usertype %></td>
+                  <td><%= %></td>
+                </tr>
+              <% end %>
+            </table>
+            <%= link_to 'Back', :back, :class => "btn" %>
+            </fieldset>
+        </main>
+    </body>
+</html>

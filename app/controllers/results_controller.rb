@@ -9,7 +9,15 @@ class ResultsController < ApplicationController
   def index
     @bookings = Booking.all
     @rooms = Room.filter_from_params(filtering_params)
+    if(params[:booking][:enddate].to_s < params[:booking][:startdate].to_s )
+      flash[:notice] = "End Date must be after Start Date. Please adjust date ranges."
+      redirect_to advancedsearch_path and return
+    elsif params[:booking][:enddate].to_s == params[:booking][:startdate].to_s && params[:booking][:endtime].to_s <= params[:booking][:starttime].to_s
+      flash[:notice] = "End Time must be after Start Time. Please adjust time ranges."
+      redirect_to advancedsearch_path and return
+    else
     @rooms_time = filter_with_time(@rooms, @bookings)
+    end
   end
   
   private

@@ -24,6 +24,9 @@
     </div>
     </center>
         <h2>Welcome back <%= current_user_name %>!</h2>
+          <% if @current_user[:usertype] == "Admin" %>
+              <%=link_to'<button class = "btn" title = "View Users" type = "button"> View Users </button> '.html_safe, show_users_path%>
+          <% end %>
         
         <main>
             <center>
