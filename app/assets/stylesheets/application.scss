@@ -13,7 +13,9 @@
  *= require_tree .
  *= require_self
  */
- 
+* {
+  box-sizing: border-box;
+}
  
 html, body {
     font-family: 'Comfortaa', cursive;
@@ -70,6 +72,15 @@ nav>a.active {
     
 }
 
+.back_btn{
+    width: 30%;
+}
+
+#new_btn{
+    width: 40%;
+}
+
+
 .btn:hover {
     background-color: #5a0a25;
 }
@@ -121,4 +132,3 @@ nav>a.active {
  .checkbox {
      display: inline;
  }
- 
