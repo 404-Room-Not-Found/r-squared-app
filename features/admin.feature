@@ -13,4 +13,9 @@ Scenario: Admin delete rooms
   Given I am on home page 
   When I click on Delete Room
   Then I should see Delete
+  
+Scenario: Admin View User List
+  Given I am on the home page 
+  When I click on View User
+  Then I should see Users
 

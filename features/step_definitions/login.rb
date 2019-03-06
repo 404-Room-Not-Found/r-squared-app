@@ -55,3 +55,11 @@ end
 Then("I should go to that page") do
   visit ('/home')
 end
+
+Given("I click on New User") do
+  visit ('/new_user')
+end
+
+Then("I should be directed to create an account") do
+  page.has_content?("Create New Account")
+end
