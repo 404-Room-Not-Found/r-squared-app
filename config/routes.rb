@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get    '/add',    to: 'add#index'
   post   '/add',     to: 'rooms#create'
   get    '/delete',       to: 'delete#index'
+  get    '/home',       to: 'home#index'
     
     
     

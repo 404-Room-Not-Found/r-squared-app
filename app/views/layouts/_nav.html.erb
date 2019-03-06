@@ -1,8 +1,12 @@
 <html>
-  <nav>
+  <header style ="float: left; height: 100px; width: 100px; margin-left: 10px;">
+      <%= image_tag("logo.jpg", :alt => "logo", :class => "nav_img")  %>
+  </header>
+  <nav style = "height 100px;">
       <%= link_to "Home", home_path %>
       <%= link_to "Advanced Search", advancedsearch_path %>
       <%= link_to "Browsing Search", browsingsearch_path %>
       <%= link_to "Log out", logout_path, method: :delete %>
   </nav>
+  
 </html>

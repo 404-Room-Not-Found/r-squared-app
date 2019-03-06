@@ -10,6 +10,12 @@ require 'rails_helper'
 #     end
 #   end
 # end
-RSpec.describe HomeHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe HomeHelper, type: :helper do
+  
+      describe "Home" do
+        it "shows My Reservation" do
+            expect("My Reservation")
+        end
+      end
+
 end

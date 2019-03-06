@@ -13,7 +13,9 @@
  *= require_tree .
  *= require_self
  */
- 
+* {
+  box-sizing: border-box;
+}
  
 html, body {
     font-family: 'Comfortaa', cursive;
@@ -35,13 +37,19 @@ nav {
     font-size: 1.3rem;
     margin: 0 auto;
     text-align: center;
+    height: 100px;
 }
 
+.nav_img{
+    height: 100px;
+    width: 100px!important ;
+}
 nav>a{
     display: inline-block;
     padding: 0.5%;
     color: #ffffff;
     text-decoration: none;
+    margin-top: 50px;
 }
 
 nav>a:hover {
@@ -59,7 +67,7 @@ nav>a.active {
 .btn {
     display: block;
     padding: 16px;
-    width: 50%;
+    width: 70%;
     transition-duration: 0.4s;
     border: 2px solid #5a0a25;
     background-color: #870d36;
@@ -69,6 +77,15 @@ nav>a.active {
     border-radius: 12px;
     
 }
+
+.back_btn{
+    width: 30%;
+}
+
+#new_btn{
+    width: 40%;
+}
+
 
 .btn:hover {
     background-color: #5a0a25;
@@ -121,4 +138,4 @@ nav>a.active {
  .checkbox {
      display: inline;
  }
- 
+

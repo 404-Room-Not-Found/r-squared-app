@@ -17,10 +17,11 @@
       <%= render './layouts/nav.html.erb' %>
        <% if current_room_id == nil %> 
         <center>
+        
         <h1>Making a new booking</h1>
         </center>
         <%= form_for @booking, :url => { :action => "create" }, html: {class: "tobestyled"} do |f| %>
-         <center>
+         <center style="max-width: 90%;margin-left: 5%;"> 
          <label>Booker</label>
          
          <% if current_user.usertype == "Student" %>
@@ -44,19 +45,30 @@
         <br>
         
          <label>Start time & day</label>
-         <%= f.datetime_select :time_start %>
+         <%= f.datetime_select :time_start %><br>
          
          <label>End time & day</label>
          <%= f.datetime_select :time_end %>
           
-        <%= f.submit "Make Booking" %>
+        <div >
+            <div  id= "new_btn">
+                <%= f.submit "Make Booking" %>
+            <div>
+            <%= link_to 'Back', :back, :class => "btn" %></div>
+        </div>
+
         <% end %>
        <% else %>
+       
+       
+       
+       
+       <!-- ----------------------------------------------------------------------------- -->
          <center>
         <h1>Making a booking from Search</h1>
         </center>
         <%= form_for @booking, :url => { :action => "create" }, html: {class: "tobestyled"} do |f| %>
-         <center>
+         <center  style="max-width: 90%;margin-left: 5%;">
          <label>Booker</label>
          <%= f.collection_select :booker_id,
          User.all,
@@ -72,17 +84,25 @@
          Room.order(:room_id),
          :id, :room_id, :selected => params[:room_id].to_i %>
          
+         <div>
+         <label>Reason</label>
+         <%= f.text_field :reason %>
+        
+         <label>Make Reason Private <%= f.check_box :privatereason, class: "checkbox" %></label>
+        <br>
          
-         <label>Make Reason Private</label>
-         <%= f.check_box :privatereason %>
          
          <label>Start time & day</label>
-         <%= f.datetime_select :time_start %>
+         <%= f.datetime_select :time_start %><br>
+         
          
          <label>End time & day</label>
          <%= f.datetime_select :time_end %>
           
-        <%= f.submit "Make Booking" %>
+        <div id= "new_btn">
+            <%= f.submit "Make Booking" %>
+            <%= link_to 'Back', :back, :class => "btn" %>
+        </div>
         </center>
         <% end %>
        <% end %>
@@ -94,22 +114,11 @@
           <%= yield %>
         </div>
        
-       <%= link_to 'Back', :back, :class => "btn" %>
+       
     </body>
     
     
     
-    <!-- ---------------------------------------------------------------------- -->
-    <script>
-        function myFunction() {
-          var checkBox = document.getElementById("myCheck");
-          var text = document.getElementById("text");
-          if (checkBox.checked == true){
-            text.style.display = "block";
-          } else {
-             text.style.display = "none";
-          }
-        }
-    </script>
+
     
 </html>
