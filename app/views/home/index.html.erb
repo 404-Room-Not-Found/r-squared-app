@@ -51,7 +51,11 @@
                       <td><%= Room.find(booking.room_id).building_name %></td>
                       <td><%= Room.find(booking.room_id).room_id %></td>
                       <td><%= Room.find(booking.room_id).roomtype %></td>
+                      <% if booking.reason == "" %>
+                      <td> NONE </td>
+                      <% else %>
                       <td><%= booking.reason %></td>
+                      <% end %>
                       <td><%= booking.time_start.strftime("%b %d %Y, %-l.%M%P") %></td>
                       <td><%= booking.time_end.strftime("%b %d %Y, %-l.%M%P") %></td>
                       <td><%= link_to "Edit", edit_booking_path(booking) %></td>
@@ -101,7 +105,11 @@
                           <td><%= Room.find(booking.room_id).building_name %></td>
                           <td><%= Room.find(booking.room_id).room_id %></td>
                           <td><%= Room.find(booking.room_id).roomtype %></td>
-                          <td><%= booking.reason %></td>
+                           <% if booking.reason == "" %>
+                              <td> NONE </td>
+                              <% else %>
+                              <td><%= booking.reason %></td>
+                           <% end %>
                           <td><%= booking.time_start.strftime("%b %d %Y, %-l.%M%P") %></td>
                           <td><%= booking.time_end.strftime("%b %d %Y, %-l.%M%P") %></td>
                           

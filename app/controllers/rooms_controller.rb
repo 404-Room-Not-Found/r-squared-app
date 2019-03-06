@@ -46,8 +46,8 @@ before_action :validate_access
     @room = Room.create!(building_name: params[:room][:building_name], 
     room_id: params[:Roomid], tech: params[:room][:tech],
     roomtype: params[:room][:roomtype], numpeople: params[:room][:numpeople],
-    arrangement: params[:room][:arrangement], operate_start: params[:room][:operate_start],
-    operate_end: params[:room][:operate_end], description: params[:room][:description])
+    arrangement: params[:room][:arrangement], operate_start: params[:room][:operate_start].to_time,
+    operate_end: params[:room][:operate_end].to_time, description: params[:room][:description])
     
     #flash[:notice] = "#{@room.building_name} #{@room.room_id} was successfully created."
     redirect_to rooms_path
