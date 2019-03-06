@@ -37,4 +37,6 @@ Scenario: User views History
   Given I am on the home page
   When I click Show History View
   Then I shoud see a list of My History
+  
+  
 
