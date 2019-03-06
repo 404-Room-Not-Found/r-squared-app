@@ -72,8 +72,6 @@
          Room.order(:room_id),
          :id, :room_id, :selected => params[:room_id].to_i %>
          
-         <label>Reason</label>
-         <%= f.text_field :reason %>
          
          <label>Make Reason Private</label>
          <%= f.check_box :privatereason %>

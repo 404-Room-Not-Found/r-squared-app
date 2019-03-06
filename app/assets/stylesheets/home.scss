@@ -9,6 +9,7 @@ table {
   max-width: 100%;
   padding: 24px;
   table-layout: fixed;
+  overflow-y: auto;
 }
 
 tr:hover {
@@ -36,6 +37,40 @@ div.hidden { display: none; }
   max-width: 80%;
 }
 
+
 #myCheck{
   width: 20px;
 }
+
+#tableID{
+
+  height:1000px;
+  overflow-y:auto;
+}
+
+#private{
+  display: inline-block;
+
+}
+#reason{
+  display: inlIDine-block;
+  width: 70%;
+  
+}
+.submit{
+  max-width: 70%;
+  margin-left: 16%;
+}
+
+.thebody{
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.colom{
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
