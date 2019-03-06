@@ -24,9 +24,6 @@
     </div>
     </center>
         <h2>Welcome back <%= current_user_name %>!</h2>
-          <% if @current_user[:usertype] == "Admin" %>
-              <%=link_to'<button class = "btn" title = "View Users" type = "button"> View Users </button> '.html_safe, show_users_path%>
-          <% end %>
         
         <main>
             <center>
@@ -111,11 +108,20 @@
                <% else %>
                 <h1 style = "display: none;">No reservations.</h1>
               <% end %>
-              <%if current_user_name == "Admin"%>
+              <%if @current_user[:usertype] == "Admin" %>
+              <br>
+              <center>
+                <h1>Rooms</h1>
+              </center>
              <%=link_to'<button class = "btn" title = "Add Room" type = "button"> Add Room </button> '.html_safe, add_path%>
              <%=link_to'<button class = "btn" title = "Delete Room" type = "button"> Delete Room </button> '.html_safe, delete_path%>
-             <% end %>
              
+             <br>
+              <center>
+                <h1>Users</h1>
+              </center>
+             <%=link_to'<button class = "btn" title = "View Users" type = "button"> View Users </button> '.html_safe, show_users_path%>
+             <% end %>
           </center>
       
           

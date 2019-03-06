@@ -13,6 +13,14 @@
     <!--<%= params.inspect %>-->
     <body>
         <main>
+          <center>
+            <div class="container" style="background-color: green">
+            <% flash.each do |key, value| %>
+              <div class="alert alert-<%= key %>"><%= value %></div>
+            <% end %>
+            <%= yield %>
+          </div>
+          </center>
             <fieldset>
             <legend>Users</legend>
             <table>
@@ -20,8 +28,8 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>User Type</th>
-                <th>Give Admin Privileges</th>
-                <th>Remove User</th>
+                <!--<th>Give Admin Privileges</th>-->
+                <!--<th>Remove User</th>-->
                 
               </tr>
             
@@ -30,11 +38,10 @@
                   <td><%= user.name %></td>
                   <td><%= user.email %></td>
                   <td><%= user.usertype %></td>
-                  <td><%= %></td>
                 </tr>
               <% end %>
             </table>
-            <%= link_to 'Back', :back, :class => "btn" %>
+            <%= link_to 'Back', home_index_path, :class => "btn" %>
             </fieldset>
         </main>
     </body>

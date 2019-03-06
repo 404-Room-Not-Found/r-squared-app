@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
 before_action :validate_access 
   def booking_params
     params.require(:booking).permit(:room_id,:booker_id,
-    :time_start,:time_end, :building_name, :reason, :privatereason)
+    :time_start,:time_end, :building_name, :reason, :privatereason, :booker_name)
   end 
 
   def show
@@ -24,6 +24,7 @@ before_action :validate_access
   def create
     @user =  User.find(session[:user_id])
     @book_status = false
+    booking_params[:booker_name] = @user.name
     start_time = DateTime.new(booking_params["time_start(1i)"].to_i, booking_params["time_start(2i)"].to_i, booking_params["time_start(3i)"].to_i, booking_params["time_start(4i)"].to_i, booking_params["time_start(5i)"].to_i)
     end_time = DateTime.new(booking_params["time_end(1i)"].to_i, booking_params["time_end(2i)"].to_i, booking_params["time_end(3i)"].to_i, booking_params["time_end(4i)"].to_i, booking_params["time_end(5i)"].to_i)
     room = Booking.where(:room_id => booking_params[:room_id])

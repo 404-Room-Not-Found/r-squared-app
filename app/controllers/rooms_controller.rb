@@ -49,7 +49,7 @@ before_action :validate_access
     arrangement: params[:room][:arrangement], operate_start: params[:room][:operate_start],
     operate_end: params[:room][:operate_end], description: params[:room][:description])
     
-    flash[:notice] = "#{@room.building_name} #{@room.room_id} was successfully created."
+    #flash[:notice] = "#{@room.building_name} #{@room.room_id} was successfully created."
     redirect_to rooms_path
   end
 
@@ -72,18 +72,9 @@ before_action :validate_access
       @room_number = Room.find(Booking.find(params[:id]).room_id).room_id
       @room_id = Booking.find(params[:id]).room_id
       
-      puts "TRYING TO DESTROY"
-      puts @building_name
-      puts @room_number
-      puts "END"
-      
       @Initial_Bookings = Booking.where(:building_name => @building_name, :room_id => @room_id).count
-      puts "PRE DELETE"
-      puts @Initial_Bookings
       
       @Bookings = Booking.where(:building_name => @building_name, :room_id => @room_id)
-      puts "TOTAL RECORDS"
-      puts @Bookings
       
       @Bookings.each do |booking|
         booking.destroy
@@ -92,9 +83,6 @@ before_action :validate_access
   end
     
     @Updated_Bookings = Booking.where(:building_name => @building_name, :room_id => @room_id).count
-    puts "POST DELETE"
-    puts @Updated_Bookings
-    
       #flash[:notice] = "Reservation are influenced"
     
       @Room = Room.find(params[:id])
