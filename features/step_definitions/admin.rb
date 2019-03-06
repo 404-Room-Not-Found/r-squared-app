@@ -19,3 +19,11 @@ end
 Then("I should see Delete") do
   page.has_content?("Delete Room")
 end
+
+When("I click on View User") do
+  visit('/show_users')
+end
+
+Then("I should see Users") do
+  page.has_content?("User")
+end

@@ -3,6 +3,11 @@ As a user
 I want to login correctly 
 So that I can avoid bypasser
 
+Scenario: User want to create an account
+Given I am on the login page
+And I click on New User
+Then I should be directed to create an account
+
 Scenario: User submits a valid username and password
 Given a valid user 
 Given a logged in user
