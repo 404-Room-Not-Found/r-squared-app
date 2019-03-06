@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+* {
+  box-sizing: border-box;
+}
+
 body>h2 {
   margin: 16px;
 }
@@ -62,15 +66,21 @@ div.hidden { display: none; }
   margin-left: 16%;
 }
 
-.thebody{
+.row:after {
   content: "";
   display: table;
   clear: both;
 }
 
-.colom{
+.column {
   float: left;
-  width: 50%;
   padding: 10px;
 }
 
+.left {
+  width: 75%;
+}
+
+.right {
+  width: 25%;
+}

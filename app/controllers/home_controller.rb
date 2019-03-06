@@ -14,7 +14,9 @@ class HomeController < ApplicationController
     def params
       @params
     end
-     
+    
+   render json:{data: 'index', status: 200, message: "go home" }
+   
     before_action :validate_access 
 
 private 
