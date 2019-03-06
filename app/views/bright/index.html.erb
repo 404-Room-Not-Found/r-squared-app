@@ -17,12 +17,23 @@
           <div id = "map">
             <img src="/assets/BrightFloorPlans_Floor1-1.jpg" width="850" height="750" alt="HRBB_Floor_1" usemap="#HRBB_Floor_One">
             <map name="HRBB_Floor_One">
+              <% current_uri = request.path_info %>
               <% room = Room.where(["building_name ? and room_id = ?", "HRBB", 124]) %>
-              <area shape="rect" coords="328,178,447,274" href= "<%= url_for room_path(1) %>" alt="126">
-              <area shape="rect" coords="222,33,542,175" href= "<%= url_for room_path(2) %>" alt="124">
-              <area shape="rect" coords="454,178,551,274" href= "<%= url_for room_path(3) %>" alt="129">
-              <area shape="rect" coords="287,427,448,565" href= "<%= url_for room_path(4) %>" alt="113">
-              <area shape="rect" coords="691,427,821,519" href= "<%= url_for room_path(5) %>" alt="104">
+              <% if Room.where(:id => 1).count > 0 %>
+                <area shape="rect" coords="328,178,447,274" href= "<%= url_for room_path(1, :current_page => current_uri) %>" alt="126">
+              <% end %>
+              <% if Room.where(:id => 2).count > 0 %>
+              <area shape="rect" coords="222,33,542,175" href= "<%= url_for room_path(2, :current_page => current_uri) %>" alt="124">
+              <% end %>
+              <% if Room.where(:id => 3).count > 0 %>
+              <area shape="rect" coords="454,178,551,274" href= "<%= url_for room_path(3, :current_page => current_uri) %>" alt="129">
+              <% end %>
+              <% if Room.where(:id => 4).count > 0 %>
+              <area shape="rect" coords="287,427,448,565" href= "<%= url_for room_path(4, :current_page => current_uri) %>" alt="113">
+              <% end %>
+              <% if Room.where(:id => 5).count > 0 %>
+              <area shape="rect" coords="691,427,821,519" href= "<%= url_for room_path(5, :current_page => current_uri) %>" alt="104">
+              <% end %>
             </map>
           </div>
            <div id = "table">

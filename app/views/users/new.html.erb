@@ -33,17 +33,28 @@
                      
                      <label>Create Password</label>
                      <%= f.password_field :password %>
-                     
-                    <label>Classification</label>
-                     <fieldset>
-                     <label>I am a</label> <br>
-                     Student <%= f.radio_button :usertype, 'Student', checked: true %> 
-                     Admin <%= f.radio_button :usertype, 'Admin'%>
-                     </fieldset>
+                    <div style="display: none;">
+                        <label>Classification</label>
+                         <fieldset>
+                         <label>I am a</label> <br>
+                         Student <%= f.radio_button :usertype, 'Student', checked: true %> 
+                         </fieldset>
+                     </div>
                       
                     <%= f.submit "Create Account" %>
+                    
                     <%= link_to "Cancel", root_path, :class => "btn" %>
-                 <% end %>
+                    '
+                    <center>
+                      <div class="container" style="background-color: red">
+                      <% flash.each do |key, value| %>
+                        <div class="alert alert-<%= key %>"><%= value %></div>
+                      <% end %>
+                      <%= yield %>
+                    </div>
+                    </center>
+                    
+                    <% end %>
               </center>
             </div>
         </div>

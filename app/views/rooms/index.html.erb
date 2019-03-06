@@ -18,12 +18,14 @@
       <td><%= room.building_name %></td>
       <td><%= room.room_id %></td>
       <td><%= room.roomtype %></td>
-      <td><%= room.operate_start.strftime("%k:%M") %></td>
-      <td><%= room.operate_end.strftime("%k:%M") %></td>
+      <td><%= (room.operate_start + 6.hours).strftime("%k:%M") %></td>
+      <td><%= (room.operate_end + 6.hours).strftime("%k:%M") %></td>
       <td><%= room.tech %></td>
       <td><%= room.arrangement%> </td>
       <td><%= room.numpeople%> </td>
+      <% if @current_user = User.find(session[:user_id]).usertype == "Admin" %>
       <td><%= link_to "Edit",edit_room_path(room)  %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>

@@ -40,6 +40,13 @@
           <div class = "submit"><%= submit_tag "Edit" %><div>
         <% end %>
         
+        <div class="container" style="background-color: red">
+          <% flash.each do |key, value| %>
+            <div class="alert alert-<%= key %>"><%= value %></div>
+          <% end %>
+          <%= yield %>
+        </div>
+        
         <%= link_to 'Back', :back, :class => "btn" %>
     </body>
 

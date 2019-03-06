@@ -2,15 +2,25 @@ class RoomsController < ApplicationController
 before_action :validate_access 
 
   def room_params
-    # todo: fix
-    params[:Room]='wtf'
-    params.permit(:room_id, :roomtype, :building_name)
+    params.require(:room).permit(:room_id, :roomtype, :building_name, :tech, :arrangement, :numpeople, :operate_start, :operate_end)
   end
 
   def show
+    url = params[:current_page]
+    puts "URL"
+    puts url
     id = params[:id] # retrieve Room ID from URI route
-    @room = Room.find(id) # look up Room by unique ID
-    # will render app/views/Rooms/show.<extension> by default
+    @room_exist = Room.where(:id => params[:id]).count
+    if @room_exist > 0
+      @room = Room.find(id) # look up Room by unique ID
+      # will render app/views/Rooms/show.<extension> by default
+    elsif url.include?('bright')
+      redirect_to bright_path
+    elsif url.include?('rdmc')
+      redirect_to rdmc_path
+    else
+      redirect_to rooms_path
+    end
   end
 
   def index
@@ -36,10 +46,10 @@ before_action :validate_access
     @room = Room.create!(building_name: params[:room][:building_name], 
     room_id: params[:Roomid], tech: params[:room][:tech],
     roomtype: params[:room][:roomtype], numpeople: params[:room][:numpeople],
-    arrangement: params[:room][:arrangement], operate_start: params[:room][:operate_start],
-    operate_end: params[:room][:operate_end], description: params[:room][:description])
+    arrangement: params[:room][:arrangement], operate_start: params[:room][:operate_start].to_time,
+    operate_end: params[:room][:operate_end].to_time, description: params[:room][:description])
     
-    flash[:notice] = "#{@room.building_name} #{@room.room_id} was successfully created."
+    #flash[:notice] = "#{@room.building_name} #{@room.room_id} was successfully created."
     redirect_to rooms_path
   end
 
@@ -49,21 +59,35 @@ before_action :validate_access
 
   def update
     @room = Room.find params[:id]
-    @room.update_attributes!(Room_params)
-    flash[:notice] = "#{@room.name} was successfully updated."
-    redirect_to room_path(@room)
+    @room.update_attributes!(room_params)
+    redirect_to rooms_path
   end
 
   def destroy
-
-      @Booking = Booking.find(params[:id])
-      @Booking.destroy
-      @current_bookings = Booking.where(:booker_id => session[:user_id])
-      flash[:notice] = "Reservation are influenced"
+    @HasBookings = Booking.where(:id => params[:id]).count
+    if(@HasBookings > 0)
+    if Booking.find(params[:id])
+      @booking = Booking.find(params[:id])
+      @building_name = @booking.building_name
+      @room_number = Room.find(Booking.find(params[:id]).room_id).room_id
+      @room_id = Booking.find(params[:id]).room_id
+      
+      @Initial_Bookings = Booking.where(:building_name => @building_name, :room_id => @room_id).count
+      
+      @Bookings = Booking.where(:building_name => @building_name, :room_id => @room_id)
+      
+      @Bookings.each do |booking|
+        booking.destroy
+      end
+    end 
+  end
+    
+    @Updated_Bookings = Booking.where(:building_name => @building_name, :room_id => @room_id).count
+      #flash[:notice] = "Reservation are influenced"
     
       @Room = Room.find(params[:id])
       @Room.destroy
-      flash[:notice] = "No reservation are influenced"
+      #flash[:notice] = "No reservation are influenced"
   
     redirect_to delete_path
   end

@@ -67,6 +67,15 @@
         <% end %>
       </fieldset>
     </main>
+    
+     <center>
+     <div class="container" style="background-color: red">
+          <% flash.each do |key, value| %>
+            <div class="alert alert-<%= key %>"><%= value %></div>
+          <% end %>
+          <%= yield %>
+    </div>
+    </center>
   </body>
   <div class="container">
       <%= debug(params) if Rails.env.development? %>

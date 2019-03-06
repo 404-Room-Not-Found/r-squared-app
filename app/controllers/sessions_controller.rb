@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
         redirect_to home_index_url
       end
     else
-      #flash.now[:alert] = "Email or password is invalid"
+      flash.now[:alert] = "Email or password is invalid"
       render "new"
     end
   end

@@ -15,6 +15,14 @@
         <%= render './layouts/nav.html.erb' %>
         
   <!----------------------Make_booking BUTTON -------------------------------------------->
+   <center>
+   <div class="container" style="background-color: green">
+          <% flash.each do |key, value| %>
+            <div class="alert alert-<%= key %>"><%= value %></div>
+          <% end %>
+          <%= yield %>
+    </div>
+    </center>
         <h2>Welcome back <%= current_user_name %>!</h2>
         
       <div class = "row">  
@@ -33,18 +41,22 @@
                     <th>Room Number</th>
                     <th>Room Type</th>
                     <th>Reason</th>
-                    <th>Operate Start</th>
-                    <th>Operate End</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
                   </tr>
                   <% @current_bookings.each do |booking| %>
                      <tr>
                       <% if @current_user[:usertype] == "Admin" %>
                           <td><%= User.find(booking.booker_id).name %></td>
-                      <% end %>  
+                      <% end %>
                       <td><%= Room.find(booking.room_id).building_name %></td>
                       <td><%= Room.find(booking.room_id).room_id %></td>
                       <td><%= Room.find(booking.room_id).roomtype %></td>
+                      <% if booking.reason == "" %>
+                      <td> NONE </td>
+                      <% else %>
                       <td><%= booking.reason %></td>
+                      <% end %>
                       <td><%= booking.time_start.strftime("%b %d %Y, %-l.%M%P") %></td>
                       <td><%= booking.time_end.strftime("%b %d %Y, %-l.%M%P") %></td>
                       <td><%= link_to "Edit", edit_booking_path(booking) %></td>
@@ -94,7 +106,11 @@
                           <td><%= Room.find(booking.room_id).building_name %></td>
                           <td><%= Room.find(booking.room_id).room_id %></td>
                           <td><%= Room.find(booking.room_id).roomtype %></td>
-                          <td><%= booking.reason %></td>
+                           <% if booking.reason == "" %>
+                              <td> NONE </td>
+                              <% else %>
+                              <td><%= booking.reason %></td>
+                           <% end %>
                           <td><%= booking.time_start.strftime("%b %d %Y, %-l.%M%P") %></td>
                           <td><%= booking.time_end.strftime("%b %d %Y, %-l.%M%P") %></td>
                           
@@ -105,8 +121,24 @@
                  <% else %>
                   <h1 style = "display: none;">No reservations.</h1>
                 <% end %>
-               
-               
+
+              <%if @current_user[:usertype] == "Admin" %>
+              <br>
+              <center>
+                <h1>Rooms</h1>
+              </center>
+             <%=link_to'<button class = "btn" title = "Add Room" type = "button"> Add Room </button> '.html_safe, add_path%>
+             <%=link_to'<button class = "btn" title = "Delete Room" type = "button"> Delete Room </button> '.html_safe, delete_path%>
+             
+             <br>
+              <center>
+                <h1>Users</h1>
+              </center>
+             <%=link_to'<button class = "btn" title = "View Users" type = "button"> View Users </button> '.html_safe, show_users_path%>
+             <% end %>
+          </center>
+      
+
             </center>
   
           

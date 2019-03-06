@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   root 'sessions#new'
 
   get 'sessions/new'
-  get 'app/views/users/new.html.erb', to: 'users#new', as: 'user'
+  get 'app/views/users/new.html.erb', to: 'users#new', as: 'new_user'
+  get 'app/views/users/index.html.erb', to: 'users#index', as: 'show_users'
   get 'app/views/login/index.html.erb', to: 'login#index', as: 'login'
   get 'app/views/home/index.html.erb', to: 'home#index', as: 'home'
   get 'app/views/results/index.html.erb', to: 'results#index', as: 'results'
@@ -32,7 +33,10 @@ Rails.application.routes.draw do
     
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create', as: 'login_path'
+  get    '/create',  to: 'users#new'
+  post   '/create',  to: 'users#create', as: 'users_path'
   delete '/logout',  to: 'sessions#destroy'
+  delete '/user', to: 'users#destroy'
 
    resources :home
    resources :login
