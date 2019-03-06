@@ -21,7 +21,7 @@
         <h1>Making a new booking</h1>
         </center>
         <%= form_for @booking, :url => { :action => "create" }, html: {class: "tobestyled"} do |f| %>
-         <center style="max-width: 70%;margin-left: 15%;"> 
+         <center style="max-width: 90%;margin-left: 5%;"> 
          <label>Booker</label>
          
          <% if current_user.usertype == "Student" %>
@@ -68,7 +68,7 @@
         <h1>Making a booking from Search</h1>
         </center>
         <%= form_for @booking, :url => { :action => "create" }, html: {class: "tobestyled"} do |f| %>
-         <center  style="max-width: 70%;margin-left: 15%;">
+         <center  style="max-width: 90%;margin-left: 5%;">
          <label>Booker</label>
          <%= f.collection_select :booker_id,
          User.all,
