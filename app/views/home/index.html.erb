@@ -80,8 +80,8 @@
                  <th><% @current_date.to_s %></th>
             
                  <% if @history_bookings != nil %>
-                    <table id="history" width= 90% style ="display: none;">
                       <h1 id= "history1" style ="display: none;">My History</h1>
+                      <table id="history" width= 90% style ="display: none;" height=300px>
                       <tr>
                         <% if @current_user[:usertype] == "Admin" %>
                         <th>Booker</th>

@@ -34,7 +34,7 @@
          <%= f.collection_select :building_name, Room.select('DISTINCT building_name'), :building_name, :building_name %>
          
          <label>Room Number</label>
-         <%= f.collection_select :room_id, Room.order(:room_id), :id, :room_id %>
+         <%= f.collection_select :room_id, Room.all, :id, :room_id %>
          
          <div>
          <label>Reason</label>
