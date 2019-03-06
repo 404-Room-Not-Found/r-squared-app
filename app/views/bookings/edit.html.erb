@@ -13,6 +13,7 @@
         <%= render './layouts/nav.html.erb' %>
         <%= form_for @booking, :url => {:action => "update", :id => @booking}, 
         html:{method:'put'} do |f| %>
+        <center style="max-width: 90%;margin-left: 5%;"> 
           <label>Booker</label>
           <%= f.collection_select :booker_id, User.all, :id, :name %>
           
@@ -22,23 +23,23 @@
           <label>Room id</label>
           <%= f.collection_select :room_id, Room.all, :id, :room_id %>
           
-         <div style = "text-align:center;">
-             <div id = "reason">
-                 <label>Reason</label>
-                 <%= f.text_field :reason %>
-            </div> 
-                 
-                 <div id="private"> Private:  <%= f.check_box :privatereason %></div>
-        </div>
-          
-          
-          <label> time & day</label>
-          <%= f.datetime_select :time_start %>
-          <label>End time & day</label>
-          <%= f.datetime_select :time_end %>
+         <div>
+         <label>Reason</label>
+         <%= f.text_field :reason %>
+        
+      
+        <label>Make Reason Private <%= f.check_box :privatereason, class: "checkbox" %></label>
+        <br>
+        
+         <label>Start time & day</label>
+         <%= f.datetime_select :time_start %><br>
+         
+         <label>End time & day</label>
+         <%= f.datetime_select :time_end %>
           
           <div class = "submit"><%= submit_tag "Edit" %><div>
         <% end %>
+        </center>
         
         <div class="container" style="background-color: red">
           <% flash.each do |key, value| %>
