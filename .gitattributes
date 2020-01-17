@@ -1,1 +1,2 @@
 chema.rb merge=ours diff=ruby
+*.html linguist-language=ruby
